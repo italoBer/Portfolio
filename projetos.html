@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Arquivo completo de projetos de Italo Bernardo: automação, integração de sistemas e back-end." />
+<meta name="theme-color" content="#050505" />
+<title>Projetos · Italo Bernardo</title>
+<template id="__bundler_thumbnail" data-bg-color="#000000">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#000"/><g fill="none" stroke="#fff" stroke-width="4"><rect x="300" y="250" width="240" height="300" rx="10"/><rect x="660" y="250" width="240" height="300" rx="10"/></g><rect x="690" y="300" width="180" height="46" rx="6" fill="#0e9a28"/></svg>
+</template>
+  <!-- Chegada da transição: esconde antes da primeira pintura -->
+  <script>try{if(sessionStorage.getItem('warp:arrive')==='1')document.documentElement.classList.add('warp-arriving')}catch(e){}</script>
+<style>
+@font-face{font-family:'Zerafoc';src:url('uploads/zerafoc/Zerafoc.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Zerafoc';src:url('uploads/zerafoc/Zerafoc-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@300..700&family=JetBrains+Mono:wght@300..600&display=swap" rel="stylesheet" />
+<style>
+:root{--bg:#050505;--text:#ececec;--text-muted:#9a9a9a;--accent:#0e9a28;--accent-label:#0e9a28;--accent-glow:rgba(14,154,40,.22);--border:rgba(255,255,255,.06);--f-display:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;--f-hero:'Zerafoc','Bricolage Grotesque',sans-serif;--f-body:'Geist',ui-sans-serif,system-ui,sans-serif;--f-mono:'JetBrains Mono',monospace;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;--space-16:4rem;--space-24:6rem;--radius:10px;--ease:cubic-bezier(.16,1,.3,1)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html.warp-arriving body{opacity:0}
+body{transition:opacity .7s var(--ease)}
+a{color:var(--accent-label);text-decoration:none}
+a:hover{color:#12b330}
+.starfield{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(1px 1px at 12% 22%,rgba(255,255,255,.55),transparent),radial-gradient(1px 1px at 78% 14%,rgba(255,255,255,.4),transparent),radial-gradient(1.4px 1.4px at 34% 68%,rgba(255,255,255,.5),transparent),radial-gradient(1px 1px at 64% 82%,rgba(255,255,255,.35),transparent),radial-gradient(1px 1px at 88% 56%,rgba(255,255,255,.45),transparent),radial-gradient(1px 1px at 22% 88%,rgba(255,255,255,.3),transparent),radial-gradient(900px 600px at 82% 8%,rgba(14,154,40,.05),transparent)}
+.container{width:100%;max-width:1180px;margin:0 auto;padding:0 var(--space-8);position:relative;z-index:1}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:var(--space-6) 0;background:linear-gradient(180deg,rgba(5,5,5,.92),rgba(5,5,5,.55) 70%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6)}
+.brand{display:flex;align-items:center;font-family:var(--f-body);font-size:1.15rem;font-weight:550;letter-spacing:-.01em;color:var(--text)}
+.brand em{font-style:normal;font-weight:550;color:var(--accent-label)}
+.brand-o{display:inline-block}
+.brand:hover .brand-o{animation:oBounce .75s cubic-bezier(.3,1.6,.4,1)}
+@keyframes oBounce{0%{transform:translateY(0)}35%{transform:translateY(-6px)}70%{transform:translateY(1px)}100%{transform:translateY(0)}}
+.gw{display:inline-block;vertical-align:top;cursor:pointer;transition:color .3s var(--ease)}
+.gw:hover{color:var(--accent-label)}
+.gw.glitching{text-align:left;white-space:nowrap;overflow:hidden;vertical-align:top;transform:translateZ(0)}
+/* Enquanto o ruído repinta, o blur do header sai de cena (senão a tela toda pisca) */
+body.glitching .nav,body.warping .nav{backdrop-filter:none;-webkit-backdrop-filter:none}
+/* O visual do card aceita foto no lugar do desenho: basta trocar o <svg> por <img class="proj-photo"> */
+.proj-photo{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05);transition:filter .5s var(--ease)}
+.proj-card:hover .proj-photo{filter:grayscale(.15) contrast(1)}
+.back{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);display:inline-flex;align-items:center;gap:var(--space-2);transition:color .35s var(--ease)}
+.back:hover{color:var(--accent-label)}
+.back svg{width:14px;height:14px}
+.head{padding:calc(var(--space-24) + 3rem) 0 var(--space-16)}
+.section-mark{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-label);margin-bottom:var(--space-6)}
+.page-title{font-family:var(--f-hero);font-size:clamp(1.9rem,4.6vw,3.5rem);font-weight:400;line-height:1.05;letter-spacing:.01em;margin:0 0 var(--space-6)}
+.page-title em{font-style:italic;color:var(--accent)}
+.page-lede{font-size:1.1rem;color:var(--text-muted);max-width:56ch;line-height:1.7;margin:0}
+.filters{display:flex;flex-wrap:wrap;gap:var(--space-2);margin:var(--space-12) 0 0;padding-top:var(--space-8);border-top:1px solid var(--border)}
+.filter{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.5rem .85rem;border:1px solid var(--border);border-radius:100px;background:transparent;color:var(--text-muted);cursor:pointer;transition:border-color .35s var(--ease),color .35s var(--ease)}
+.filter:hover{border-color:var(--accent);color:var(--accent-label)}
+.filter.on{border-color:var(--accent);color:#fff;background:rgba(14,154,40,.12)}
+.grid-wrap{padding-bottom:var(--space-24)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);margin-top:var(--space-8);align-items:start}
+.proj-card{border:1px solid var(--border);border-radius:var(--radius);background-color:rgba(12,12,12,.72);overflow:hidden;transition:border-color .5s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease),opacity .45s var(--ease)}
+.proj-card:hover{border-color:var(--accent);transform:translate3d(0,-4px,0);box-shadow:0 14px 35px var(--accent-glow)}
+.proj-card[hidden]{display:none}
+.proj-visual{height:150px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.025);overflow:hidden}
+.proj-visual svg{width:100%;height:100%;display:block}
+.proj-body{padding:var(--space-6)}
+.proj-body h3{margin:0 0 var(--space-3);font-family:var(--f-display);font-size:1.2rem;font-weight:400;letter-spacing:-.01em}
+.tag-row{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+.chip{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.04em;padding:.3rem .6rem;border:1px solid var(--border);border-radius:100px;color:var(--text-muted);transition:all .3s}
+.chip:hover{border-color:var(--accent);color:var(--accent-label)}
+.proj-desc{margin:var(--space-3) 0 0;font-size:.9rem;color:var(--text-muted);line-height:1.55}
+.empty{font-family:var(--f-mono);font-size:.8rem;color:var(--text-muted);padding:var(--space-12) 0}
+.foot{border-top:1px solid var(--border);padding:var(--space-12) 0 var(--space-16);display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap}
+.foot p{margin:0;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;color:var(--text-muted)}
+.btn{display:inline-flex;align-items:center;gap:var(--space-2);font-family:var(--f-mono);font-size:.78rem;letter-spacing:.06em;padding:.75rem 1.25rem;border:1px solid var(--border);border-radius:100px;color:var(--text);background:transparent;transition:all .3s var(--ease)}
+.btn svg{width:15px;height:15px}
+.btn:hover{border-color:var(--accent);color:var(--accent-label)}
+.btn-primary{border-color:var(--accent)}
+.btn-ico{width:24px;height:24px;margin:-3px 2px -3px -4px;flex:none;background-color:currentColor;-webkit-mask:var(--i) center/contain no-repeat;mask:var(--i) center/contain no-repeat}
+.btn-primary:hover{background:var(--accent);color:#fff}
+.reveal{opacity:0;transform:translate3d(0,18px,0);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.lang-switch{display:flex;align-items:center;gap:5px;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em}
+.lang-switch button{background:none;border:0;padding:5px 3px;font:inherit;letter-spacing:inherit;color:var(--text);opacity:.32;cursor:pointer;transition:opacity .35s var(--ease),color .35s var(--ease)}
+.lang-switch button:hover{opacity:.75}
+.lang-switch button.on{opacity:1;color:var(--accent-label)}
+.lang-switch .sep{opacity:.18}
+.nav-right{display:flex;align-items:center;gap:var(--space-6)}
+html.i18n-wait body{visibility:hidden}
+@media (max-width:640px){.nav-right{gap:var(--space-4)}.back span{display:none}.lang-switch{font-size:.66rem}}
+@media (max-width:900px){.proj-grid{grid-template-columns:1fr}.container{padding:0 var(--space-6)}.head{padding:calc(var(--space-16) + 3rem) 0 var(--space-12)}}
+@media (max-width:640px){.container{padding:0 var(--space-4)}.nav{padding:var(--space-4) 0}.brand{font-size:1rem}.page-lede{font-size:1rem}.filters{gap:6px;margin-top:var(--space-8);padding-top:var(--space-6)}.filter{font-size:.64rem;padding:.45rem .7rem}.proj-visual{height:130px}.proj-body{padding:var(--space-4)}.grid-wrap{padding-bottom:var(--space-16)}.foot{flex-direction:column;align-items:flex-start;gap:var(--space-4);padding:var(--space-8) 0 var(--space-12)}}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}html.warp-arriving body{opacity:1}}
+</style>
+<script>(function(){var s=null;try{s=localStorage.getItem('ib-lang')}catch(e){}var l=(navigator.languages&&navigator.languages[0])||navigator.language||'pt';var g=(s==='pt'||s==='en')?s:(/^pt/i.test(l)?'pt':'en');document.documentElement.lang=g==='en'?'en':'pt-BR';if(g==='en'){document.documentElement.className+=' i18n-wait';setTimeout(function(){document.documentElement.classList.remove('i18n-wait')},1200)}})()</script>
+</head>
+<body>
+<div class="starfield" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand" data-warp aria-label="Voltar ao início" data-en-aria="Back to home"><span>Ital<span class="brand-o">o</span> <em>Bernardo</em></span></a>
+    <div class="nav-right">
+    <a href="index.html" class="back" data-warp>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H6m0 0l5-5m-5 5l5 5"/></svg>
+      <span data-en="Back to home">Voltar ao início</span>
+    </a>
+    <div class="lang-switch" role="group" aria-label="Idioma" data-en-aria="Language">
+      <button type="button" data-lang="pt">PT</button><span class="sep" aria-hidden="true">/</span><button type="button" data-lang="en">EN</button>
+    </div>
+    </div>
+  </div>
+</nav>
+
+<header class="head">
+  <div class="container">
+    <div class="section-mark reveal" data-en="Archive · Projects">Arquivo · Projetos</div>
+    <h1 class="page-title reveal" data-glitch-words data-en="Everything I have <em>built</em> so far.">Tudo o que eu <em>construí</em> até aqui.</h1>
+    <p class="page-lede reveal" data-en="Systems in production, automations that save hours every month and studies that became the base for the next project. Filter by technology to find what matters.">Sistemas em produção, automações que economizam horas por mês e estudos que viraram base pro próximo projeto. Filtre por tecnologia pra achar o que interessa.</p>
+    <div class="filters reveal" id="filters">
+      <button type="button" class="filter on" data-f="all" data-en="All">Todos</button>
+      <button type="button" class="filter" data-f="JavaScript">JavaScript</button>
+      <button type="button" class="filter" data-f="Python">Python</button>
+      <button type="button" class="filter" data-f="Java">Java</button>
+      <button type="button" class="filter" data-f="Automação" data-en="Automation">Automação</button>
+      <button type="button" class="filter" data-f="Banco" data-en="Database">Banco de dados</button>
+    </div>
+  </div>
+</header>
+
+<main class="grid-wrap">
+  <div class="container">
+    <div class="proj-grid" id="grid">
+<article class="proj-card reveal" tabindex="0" data-tech="Python Automação">
+          <div class="proj-visual" aria-hidden="true">
+            <!-- Espaço reservado: quando houver foto do projeto, troque o <svg> abaixo por
+                 <img class="proj-photo" src="uploads/NOME.png" alt=""> -->
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><path d="M30 46h20l6 8h26v46H30z"/><path d="M42 34h20l6 8h26v46H42" stroke-opacity=".45"/></g>
+              <text x="60" y="84" text-anchor="middle" font-family="monospace" font-size="10" fill="#0e9a28" fill-opacity=".75">MM0001X</text>
+              <path d="M112 77h74" stroke="#0e9a28" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+              <path d="M186 77l-8-5v10z" fill="#0e9a28"/>
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="200" y="30" width="72" height="90" rx="4"/></g>
+              <g fill="#ffffff" fill-opacity=".1"><rect x="208" y="40" width="56" height="16" rx="3"/><rect x="208" y="62" width="56" height="16" rx="3"/></g>
+              <rect x="208" y="84" width="56" height="16" rx="3" fill="#0e9a28" fill-opacity=".55"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h3>FolderFlow</h3>
+            <div class="tag-row"><span class="chip">Python</span><span class="chip">Tkinter</span><span class="chip">Trello API</span><span class="chip" data-en="Desktop">Desktop</span></div>
+            <p class="proj-desc" data-en="Desktop app that manages client art folders in a shared OneDrive: batch creation, automatic numbering with monthly reset, instant search and renaming that updates the Trello card in the same move. Distributed as an .exe with auto-update through GitHub Releases. <a href=&quot;https://github.com/italoBer/FolderFlow&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Code on GitHub ↗</a>">App desktop que gerencia as pastas de arte dos clientes num OneDrive compartilhado: criação em lote, numeração automática com reset mensal, busca instantânea e renomeio que já atualiza o card no Trello. Distribuído como .exe com atualização automática via GitHub Releases. <a href="https://github.com/italoBer/FolderFlow" target="_blank" rel="noopener">Código no GitHub ↗</a></p>
+          </div>
+        </article>
+
+        <article class="proj-card reveal" tabindex="0" data-tech="JavaScript Automação">
+          <div class="proj-visual" aria-hidden="true">
+            <!-- Espaço reservado: quando houver foto do projeto, troque o <svg> abaixo por
+                 <img class="proj-photo" src="uploads/NOME.png" alt=""> -->
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="26" y="30" width="52" height="34" rx="4"/><rect x="26" y="86" width="52" height="34" rx="4"/><rect x="186" y="22" width="96" height="106" rx="4"/></g>
+              <g stroke="#ffffff" stroke-opacity=".35" stroke-width="1.2" fill="none"><path d="M194 38h18M224 38h18M254 38h18"/></g>
+              <text x="52" y="51" text-anchor="middle" font-family="monospace" font-size="11" fill="#0e9a28" fill-opacity=".7">ML</text>
+              <text x="52" y="107" text-anchor="middle" font-family="monospace" font-size="11" fill="#0e9a28" fill-opacity=".7">SHP</text>
+              <path d="M84 47h56M84 103h56M146 47v56M146 75h42" stroke="#0e9a28" stroke-width="2" stroke-dasharray="4 3" fill="none"/>
+              <circle cx="146" cy="75" r="3" fill="#0e9a28"/>
+              <g fill="#ffffff" fill-opacity=".12"><rect x="194" y="48" width="20" height="12" rx="2"/><rect x="194" y="66" width="20" height="12" rx="2"/><rect x="224" y="48" width="20" height="12" rx="2"/><rect x="224" y="66" width="20" height="12" rx="2"/><rect x="224" y="84" width="20" height="12" rx="2"/><rect x="254" y="66" width="20" height="12" rx="2"/></g>
+              <rect x="254" y="48" width="20" height="12" rx="2" fill="#0e9a28" fill-opacity=".6"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h3 data-en="Order Automation → Trello">Automação de Pedidos → Trello</h3>
+            <div class="tag-row"><span class="chip">JavaScript</span><span class="chip">Tampermonkey</span><span class="chip">Trello</span><span class="chip" data-en="Metrics">Métricas</span></div>
+            <p class="proj-desc" data-en="Cards created and moved automatically in Trello from Mercado Livre and Shopee orders, with customer metrics and a view of the coming days. Saves 40 to 50h/month and is still in production. <a href=&quot;https://github.com/italoBer/trello-automacoes&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Code on GitHub ↗</a>">Cards criados e movidos automaticamente no Trello a partir dos pedidos do Mercado Livre e Shopee, com métricas de clientes e visão dos próximos dias. Economiza 40–50h/mês e segue em produção. <a href="https://github.com/italoBer/trello-automacoes" target="_blank" rel="noopener">Código no GitHub ↗</a></p>
+          </div>
+        </article>
+
+        <article class="proj-card reveal" tabindex="0" data-tech="JavaScript Automação">
+          <div class="proj-visual" aria-hidden="true">
+            <!-- Espaço reservado: quando houver foto do projeto, troque o <svg> abaixo por
+                 <img class="proj-photo" src="uploads/NOME.png" alt=""> -->
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <rect x="70" y="28" width="160" height="94" rx="3" stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" stroke-dasharray="6 4" fill="none"/>
+              <g stroke="#ffffff" stroke-opacity=".85" stroke-width="1.8"><path d="M70 136h160M70 131v10M230 131v10"/><path d="M244 28v94M239 28h10M239 122h10"/></g>
+              <text x="150" y="80" text-anchor="middle" font-family="monospace" font-size="13" fill="#0e9a28" fill-opacity=".65">&lt; 5s</text>
+              <g stroke="#ffffff" stroke-opacity=".7" stroke-width="1.6" fill="none"><path d="M86 44h60M86 56h40"/><circle cx="200" cy="98" r="14"/></g>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h3 data-en="Automatic Layout Generator">Gerador Automático de Croqui</h3>
+            <div class="tag-row"><span class="chip">JavaScript</span><span class="chip" data-en="Automation">Automação</span></div>
+            <p class="proj-desc" data-en="Generates the full order layout in under 5 seconds, against the ~5 minutes in CorelDRAW, across hundreds of orders a day. Nobody has to open Corel anymore. <a href=&quot;https://github.com/italoBer/trello-automacoes&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Code on GitHub ↗</a>">Gera o croqui completo do pedido em menos de 5 segundos, contra os ~5 minutos no CorelDRAW, em centenas de pedidos por dia. Ninguém mais precisa abrir o Corel. <a href="https://github.com/italoBer/trello-automacoes" target="_blank" rel="noopener">Código no GitHub ↗</a></p>
+          </div>
+        </article>
+
+        <article class="proj-card reveal" tabindex="0" data-tech="Java Banco">
+          <div class="proj-visual" aria-hidden="true">
+            <!-- Espaço reservado: quando houver foto do projeto, troque o <svg> abaixo por
+                 <img class="proj-photo" src="uploads/NOME.png" alt=""> -->
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="24" y="28" width="98" height="94" rx="4"/><path d="M24 48h98"/></g>
+              <g font-family="monospace" font-size="9" fill="#0e9a28" fill-opacity=".8"><text x="34" y="72">POST /tasks</text><text x="34" y="90">GET  /tasks</text><text x="34" y="108">PUT  /tasks</text></g>
+              <text x="160" y="66" text-anchor="middle" font-family="monospace" font-size="9" fill="#0e9a28" fill-opacity=".6">auth</text>
+              <path d="M130 77h56" stroke="#0e9a28" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+              <path d="M186 77l-8-5v10z" fill="#0e9a28"/>
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><ellipse cx="238" cy="42" rx="32" ry="9"/><path d="M206 42v66c0 5 14.3 9 32 9s32-4 32-9V42"/><ellipse cx="238" cy="75" rx="32" ry="9" stroke-opacity=".4"/></g>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h3>Todo List API</h3>
+            <div class="tag-row"><span class="chip">Java 17</span><span class="chip">Spring Boot</span><span class="chip">JPA</span><span class="chip">Docker</span></div>
+            <p class="proj-desc" data-en="Task REST API in Java with Spring Boot: full CRUD, Basic Auth through a custom filter, BCrypt password hashing, business rule validation and global exception handling. Deployed on Render with Docker. Study project from the Rocketseat Java course. <a href=&quot;https://github.com/italoBer/Todo-List&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Code on GitHub ↗</a>">API REST de tarefas em Java com Spring Boot: CRUD completo, Basic Auth em filtro próprio, senhas com BCrypt, validações de regra de negócio e tratamento global de exceções. Deploy no Render com Docker. Projeto de estudo do curso de Java da Rocketseat. <a href="https://github.com/italoBer/Todo-List" target="_blank" rel="noopener">Código no GitHub ↗</a></p>
+          </div>
+        </article>
+
+        <article class="proj-card reveal" tabindex="0" data-tech="JavaScript HTML CSS">
+          <div class="proj-visual" aria-hidden="true">
+            <!-- Espaço reservado: quando houver foto do projeto, troque o <svg> abaixo por
+                 <img class="proj-photo" src="uploads/NOME.png" alt=""> -->
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="106" y="16" width="88" height="118" rx="8"/><circle cx="150" cy="42" r="11"/></g>
+              <g fill="#ffffff" fill-opacity=".12"><rect x="118" y="64" width="64" height="13" rx="3"/><rect x="118" y="82" width="64" height="13" rx="3"/></g>
+              <rect x="118" y="100" width="64" height="13" rx="3" fill="#0e9a28" fill-opacity=".55"/>
+              <g stroke="#0e9a28" stroke-opacity=".75" stroke-width="1.6" fill="none"><path d="M96 60H62M96 88H62"/><circle cx="54" cy="60" r="7"/><circle cx="54" cy="88" r="7"/><path d="M204 60h34M204 88h34"/><circle cx="246" cy="60" r="7"/><circle cx="246" cy="88" r="7"/></g>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h3>DevLinks</h3>
+            <div class="tag-row"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span><span class="chip">Figma</span></div>
+            <p class="proj-desc" data-en="Link aggregator built as an online business card, with a light/dark theme switch saved in the browser and a layout built from a Figma file. Study project from the Rocketseat Discover course. <a href=&quot;https://github.com/italoBer/Projeto1-linktree&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Code on GitHub ↗</a>">Agregador de links para usar como cartão de visitas online, com troca de tema claro/escuro salva no navegador e layout construído a partir do Figma. Projeto de estudo do curso Discover da Rocketseat. <a href="https://github.com/italoBer/Projeto1-linktree" target="_blank" rel="noopener">Código no GitHub ↗</a></p>
+          </div>
+        </article>
+
+        <article class="proj-card reveal" tabindex="0" data-tech="Automação Banco">
+          <div class="proj-visual" aria-hidden="true">
+            <!-- Espaço reservado: quando houver foto do projeto, troque o <svg> abaixo por
+                 <img class="proj-photo" src="uploads/NOME.png" alt=""> -->
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <g fill="#ffffff" fill-opacity=".1"><rect x="34" y="40" width="22" height="22" rx="3"/><rect x="62" y="40" width="22" height="22" rx="3"/><rect x="34" y="68" width="22" height="22" rx="3"/><rect x="62" y="68" width="22" height="22" rx="3"/><rect x="48" y="96" width="22" height="22" rx="3"/></g>
+              <path d="M100 75h84" stroke="#0e9a28" stroke-width="2.2" stroke-dasharray="5 4"/>
+              <path d="M184 75l-8-5v10z" fill="#0e9a28"/>
+              <text x="142" y="66" text-anchor="middle" font-family="monospace" font-size="10" fill="#0e9a28" fill-opacity=".7">945</text>
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="198" y="34" width="72" height="82" rx="4"/><path d="M198 54h72M222 54v62M246 54v62"/></g>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h3 data-en="Catalog Migration ML → Tray">Migração de Catálogo ML → Tray</h3>
+            <div class="tag-row"><span class="chip">Tray</span><span class="chip">Mercado Livre</span><span class="chip" data-en="Shipping">Frete</span><span class="chip">DNS</span></div>
+            <p class="proj-desc" data-en="945 products cataloged and migrated with a custom 12-category structure and estimated weight for shipping costs. Includes DNS and corporate email set up for the client.">945 produtos catalogados e migrados com estrutura própria de 12 categorias e peso estimado pro cálculo de frete. Inclui DNS e e-mail corporativo configurados pro cliente.</p>
+          </div>
+        </article>
+    </div>
+    <p class="empty" id="empty" hidden data-en="No projects with that technology here yet.">Nenhum projeto com essa tecnologia por aqui ainda.</p>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="container nav-inner">
+    <p>Italo Bernardo · 2026</p>
+    <a href="index.html" class="btn btn-primary" data-warp>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H6m0 0l5-5m-5 5l5 5"/></svg>
+      <span data-en="Back to home">Voltar ao início</span>
+    </a>
+  </div>
+</footer>
+
+<script src="i18n.js"></script>
+<script src="warp.js"></script>
+<script src="glitch.js"></script>
+<script>
+  // Entrada dos blocos
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.proj-body h3').forEach(function (el) {
+    if (window.Glitch) window.Glitch.splitWords(el);
+  });
+
+  document.querySelectorAll('.reveal').forEach(function (el, i) {
+    el.style.transitionDelay = (i % 4) * 70 + 'ms';
+    io.observe(el);
+  });
+
+  // Filtro por tecnologia
+  var grid = document.getElementById('grid');
+  var empty = document.getElementById('empty');
+  var cards = Array.from(grid.querySelectorAll('.proj-card'));
+  document.getElementById('filters').addEventListener('click', function (e) {
+    var b = e.target.closest('.filter');
+    if (!b) return;
+    document.querySelectorAll('.filter').forEach(function (f) { f.classList.toggle('on', f === b); });
+    var f = b.dataset.f, shown = 0;
+    cards.forEach(function (c) {
+      var hay = ((c.dataset.tech || '') + ' ' + c.querySelector('h3').textContent + ' ' +
+        Array.from(c.querySelectorAll('.chip')).map(function (t) { return t.textContent; }).join(' ')).toLowerCase();
+      var ok = f === 'all' || hay.split(/[^a-z0-9à-ú+#.]+/).indexOf(f.toLowerCase()) > -1;
+      c.hidden = !ok;
+      if (ok) shown++;
+    });
+    empty.hidden = shown > 0;
+  });
+</script>
+</body>
+</html>

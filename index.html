@@ -1,0 +1,3149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Italo Bernardo, desenvolvedor backend em formação. Java, automação e integração de sistemas." />
+  <meta name="theme-color" content="#050505" />
+  <title>Italo Bernardo · Desenvolvedor</title>
+
+  <template id="__bundler_thumbnail" data-bg-color="#000000">
+    <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#000"/><circle cx="600" cy="400" r="70" fill="#fff"/><circle cx="600" cy="400" r="200" fill="none" stroke="#007315" stroke-width="6"/><circle cx="600" cy="400" r="300" fill="none" stroke="#ffffff" stroke-width="3" opacity=".5"/><circle cx="800" cy="400" r="14" fill="#0a8f22"/><circle cx="300" cy="400" r="9" fill="#fff"/></svg>
+  </template>
+  <!-- Chegada da transição: esconde antes da primeira pintura -->
+  <script>try{if(sessionStorage.getItem('warp:arrive')==='1')document.documentElement.classList.add('warp-arriving')}catch(e){}</script>
+  <!-- Zerafoc: fonte dos títulos grandes -->
+  <style>
+    @font-face{font-family:'Zerafoc';src:url('uploads/zerafoc/Zerafoc.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+    @font-face{font-family:'Zerafoc';src:url('uploads/zerafoc/Zerafoc-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
+  </style>
+  <!-- Tipografia importada -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300..700&family=JetBrains+Mono:wght@300..600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* =========================================================
+       SISTEMA DE TEMAS E DESIGN SYSTEM (CLEAN)
+       ========================================================= */
+    :root {
+      /* Cor de fundo do body — fica ESTÁVEL durante toda a página.
+         Quem muda com o tema é o conteúdo das seções. */
+      --bg: #050505;
+      --bg-card: rgba(255, 255, 255, 0.02);
+      --text: #ececec;
+      --text-muted: #9a9a9a;
+      /* Acento padrão (usado pelo nav, footer, e qualquer elemento fora de seção) */
+      --accent: #0e9a28;
+      /* Mesmo matiz do acento, clareado até 4.97:1 sobre o preto.
+         Usado APENAS em texto pequeno, onde #0e9a28 não tem contraste. */
+      --accent-label: #0e9a28;
+      --accent-glow: rgba(14, 154, 40, 0.22);
+      --border: rgba(255, 255, 255, 0.06);
+      --f-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
+      --f-hero: 'Zerafoc', 'Bricolage Grotesque', sans-serif;
+      --f-body: 'Geist', ui-sans-serif, system-ui, sans-serif;
+      --f-mono: 'JetBrains Mono', monospace;
+
+      /* Escala de Espaçamento */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+      --space-24: 6rem;
+      --space-32: 8rem;
+
+      /* Layout */
+      --container: 1140px;
+      --gutter: clamp(1rem, 5vw, 2.5rem);
+      --radius: 8px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* =========================================================
+       TEMA POR SEÇÃO (não por body) — cada seção SEMPRE carrega
+       seu próprio tema. O body só controla qual cena SVG aparece
+       no fundo. Resultado: zero flicker de fonte/cor ao rolar,
+       cada bloco já chega com a identidade certa.
+       ========================================================= */
+    section[data-theme="cosmos"] {
+      --bg-card: rgba(255, 255, 255, 0.025);
+      --text: #f2f2f2;
+      --text-muted: #9a9a9a;
+      --accent: #0e9a28;
+      /* Mesmo matiz do acento, clareado até 4.97:1 sobre o preto.
+         Usado APENAS em texto pequeno, onde #0e9a28 não tem contraste. */
+      --accent-label: #0e9a28;
+      --accent-glow: rgba(14, 154, 40, 0.22);
+      --border: rgba(255, 255, 255, 0.08);
+      --f-display: 'JetBrains Mono', monospace;
+      --f-body: 'Geist', sans-serif;
+    }
+
+    section[data-theme="greece"] {
+      --bg-card: rgba(255, 255, 255, 0.02);
+      --text: #f2f2f2;
+      --text-muted: #9a9a9a;
+      --accent: #0e9a28;
+      --accent-glow: rgba(14, 154, 40, 0.20);
+      --border: rgba(255, 255, 255, 0.07);
+      --f-display: 'Fraunces', Georgia, serif;
+      --f-body: 'Geist', sans-serif;
+    }
+
+    /* O body não muda fonte/cor de texto ao rolar — fica estável.
+       Mas o --accent acompanha o tema, pra elementos FORA das seções
+       (nav, barra de progresso, footer) seguirem a jornada de cor.
+       Como o texto das seções é escopado por section[data-theme],
+       não há mais flicker de fonte/cor no conteúdo. */
+    body[data-theme="cosmos"]    { --accent: #0e9a28; --accent-glow: rgba(14, 154, 40, 0.30); }
+    body[data-theme="greece"]    { --accent: #0e9a28; --accent-glow: rgba(14, 154, 40, 0.30); }
+
+    /* =========================================================
+       RESET & BASE RESPEITANDO ACESSIBILIDADE
+       ========================================================= */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      margin: 0;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: var(--f-body);
+      font-size: 16px;
+      line-height: 1.6;
+      font-weight: 350;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 1s var(--ease), color 1s var(--ease);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+    /* =========================================================
+       LAYOUT DA JORNADA DE ROLAGEM (IMAGENS FLUTUANTES)
+       ========================================================= */
+    .fixed-graphics {
+      position: fixed;
+      top: 0; right: 0;
+      width: 60vw; height: 100vh;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+      /* Fade longo na borda esquerda: a arte só aparece com força
+         depois do conteúdo, evitando sobreposição visual */
+      -webkit-mask-image:
+        linear-gradient(to right, transparent 0%, #000 38%, #000 100%);
+              mask-image:
+        linear-gradient(to right, transparent 0%, #000 38%, #000 100%);
+      transition: opacity 1s var(--ease);
+    }
+    .graphic-layer {
+      will-change: transform, opacity;
+      backface-visibility: hidden;
+      position: absolute;
+      top: 0; right: 0;
+      width: 100%; height: 100%;
+      opacity: 0;
+      transition: opacity 1.2s var(--ease), transform 1.5s var(--ease);
+      transform: scale(0.96) translate3d(20px, 0, 0);
+    }
+    body[data-theme="cosmos"]    .layer-cosmos { opacity: 1; transform: scale(1) translate3d(0, 0, 0); }
+    body[data-theme="greece"]    .layer-greece { opacity: 1; transform: scale(1) translate3d(0, 0, 0); }
+
+    /* Animação sutil de "respiração" para as estrelas/lua */
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.55; }
+      50%      { opacity: 0.95; }
+    }
+    .twinkle { animation: twinkle 4s ease-in-out infinite; }
+    /* Rótulo do planeta e clarão do campo de estrelas (ver sky.js) */
+    .sky-label { position: fixed; z-index: 60; pointer-events: none; white-space: nowrap; font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-label); text-shadow: 0 0 14px rgba(0,0,0,.95); opacity: 0; transform: translate(-50%, -100%) translateY(-14px); transition: opacity .3s var(--ease); }
+    .sky-label.on { opacity: 1; }
+    html.sky-hot, html.sky-hot body { cursor: pointer; }
+    #starfield { transition: filter .9s var(--ease); }
+    #starfield.flare { filter: brightness(2.3); transition: filter .18s var(--ease); }
+    .twinkle.delay-a { animation-delay: -1s; }
+    .twinkle.delay-b { animation-delay: -2s; }
+    .twinkle.delay-c { animation-delay: -3s; }
+
+    /* =========================================================
+       CÉU NOTURNO FIXO (overlay global)
+       Estrelas estáticas geradas via PRNG (seed fixa = mesmo
+       campo em todo reload) + 3 estrelas cadentes em trilhos
+       rotacionados. Vive acima da arte SVG das cenas, abaixo
+       do conteúdo de texto. Não captura cliques.
+       ========================================================= */
+    #nightSky {
+      position: fixed;
+      inset: 0;
+      /* z-index -2: fica ATRÁS de tudo, inclusive da arte SVG das cenas
+         (que está em z-index -1). Onde as silhuetas dos prédios/templo
+         são opacas, elas cobrem as estrelas. Onde a arte é transparente
+         (céu, espaços entre prédios), as estrelas aparecem.
+         Meteoros também atravessam por trás das estruturas. */
+      z-index: -2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    #starfield {
+      position: absolute;
+      inset: -5%;
+      width: 110%;
+      height: 110%;
+      animation: skyDrift 80s linear infinite alternate;
+    }
+    @keyframes skyDrift {
+      from { transform: translate3d(0, 0, 0); }
+      to   { transform: translate3d(-5%, -2.6%, 0); }
+    }
+
+    /* ---- Estrelas estáticas ---- */
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: #ffffff;
+      --op-peak: 0.4;          /* opacidade de pico (varia 0.18-0.53 por estrela) */
+      --tw-dur: 5s;
+      --tw-delay: 0s;
+      animation: tw var(--tw-dur) ease-in-out infinite;
+      animation-delay: var(--tw-delay);
+      will-change: opacity, transform;
+    }
+    /* Twinkle: vai do dim (40% do pico) ao brilho cheio do pico.
+       Cada estrela tem --op-peak diferente → varia em brilho. */
+    @keyframes tw {
+      0%, 100% { opacity: calc(var(--op-peak) * 0.4); }
+      50%      { opacity: var(--op-peak); }
+    }
+
+    /* ---- Estrelas cadentes (meteors) ---- */
+    .meteor-track {
+      position: absolute;
+      left: -12vw;
+      width: 160px;
+      height: 1px;
+      transform-origin: 0 50%;
+    }
+    .meteor-track.t1 { top: 14%; transform: rotate(18deg); }
+    .meteor-track.t2 { top: 32%; transform: rotate(10deg); }
+    .meteor-track.t3 { top: 7%;  transform: rotate(24deg); }
+
+    .meteor {
+      position: absolute;
+      width: 160px;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent,
+        rgba(255, 255, 255, 0.75) 78%,
+        #ffffff 100%);
+      opacity: 0;
+      will-change: transform, opacity;
+    }
+    /* Cabeça brilhante */
+    .meteor::after {
+      content: '';
+      position: absolute;
+      right: -2px;
+      top: -1.5px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #ffffff;
+      box-shadow: 0 0 10px 1px rgba(255, 255, 255, 0.95);
+    }
+    /* Animação: só visível entre 2% e 16% do ciclo → longos
+       intervalos de espera, como na vida real. */
+    @keyframes meteor {
+      0%, 100% { transform: translateX(0);     opacity: 0; }
+      2%       {                                opacity: 1; }
+      16%      { transform: translateX(130vw); opacity: 0; }
+    }
+    .meteor-track.t1 .meteor { animation: meteor  9s ease-in infinite; animation-delay:  5s; }
+    .meteor-track.t2 .meteor { animation: meteor 11s ease-in infinite; animation-delay: 14s; }
+    .meteor-track.t3 .meteor { animation: meteor  8s ease-in infinite; animation-delay: 23s; }
+
+    /* =========================================================
+       COMPONENTE DE ANIMAÇÃO REVEAL
+       ========================================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s var(--ease), transform 1s var(--ease);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .delay-1 { transition-delay: 150ms; }
+    .delay-2 { transition-delay: 300ms; }
+    .delay-3 { transition-delay: 450ms; }
+
+    /* =========================================================
+       BARRA DE PROGRESSO LATERAL — também funciona como scrollbar
+       (clique pra pular, arraste pra navegar)
+       ========================================================= */
+    .scroll-progress {
+      /* Área de hit MAIOR pra facilitar clicar/arrastar */
+      position: fixed;
+      top: 50%;
+      left: 14px;
+      transform: translateY(-50%);
+      width: 22px;
+      height: 55vh;
+      z-index: 60;
+      pointer-events: auto;
+      cursor: pointer;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    /* Track visual (a barrinha estreita dentro da área clicável) */
+    .scroll-progress-track {
+      position: relative;
+      width: 2px;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+      transition: width 0.25s var(--ease), background 0.6s var(--ease);
+    }
+    .scroll-progress:hover .scroll-progress-track,
+    .scroll-progress.dragging .scroll-progress-track {
+      width: 4px;
+      background: rgba(255, 255, 255, 0.10);
+    }
+    .scroll-progress-fill {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 0%;
+      background: linear-gradient(to bottom,
+        transparent,
+        var(--accent) 30%,
+        var(--accent));
+      border-radius: 999px;
+      transition: background 0.8s var(--ease);
+      will-change: height;
+    }
+    /* Ponto que marca a posição atual */
+    .scroll-progress-dot {
+      position: absolute;
+      left: 50%;
+      top: 0%;
+      transform: translate(-50%, -50%);
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 8px var(--accent);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease), top 0.08s linear,
+                  background 0.8s var(--ease), width 0.25s var(--ease), height 0.25s var(--ease);
+      will-change: top;
+      pointer-events: none;
+    }
+    .scroll-progress.active .scroll-progress-dot { opacity: 1; }
+    .scroll-progress:hover .scroll-progress-dot,
+    .scroll-progress.dragging .scroll-progress-dot {
+      width: 12px; height: 12px;
+    }
+
+    /* Estado "completo" — fim da página */
+    .scroll-progress.complete .scroll-progress-track {
+      width: 3px;
+    }
+    .scroll-progress.complete .scroll-progress-fill {
+      height: 100% !important;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent-glow);
+      animation: progressPulse 1.6s var(--ease) infinite;
+    }
+    .scroll-progress.complete .scroll-progress-dot {
+      top: 100%;
+      width: 14px; height: 14px;
+      animation: progressDotPulse 1.6s var(--ease) infinite;
+    }
+    @keyframes progressPulse {
+      0%, 100% { box-shadow: 0 0 12px var(--accent-glow); }
+      50%      { box-shadow: 0 0 22px var(--accent); }
+    }
+    @keyframes progressDotPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1);   box-shadow: 0 0 8px var(--accent); }
+      50%      { transform: translate(-50%, -50%) scale(1.4); box-shadow: 0 0 18px var(--accent); }
+    }
+
+    /* Esconde em telas pequenas — não tem espaço */
+    @media (max-width: 700px) {
+      .scroll-progress { display: none; }
+    }
+
+    /* =========================================================
+       NUCLEO DE ESTILOS DA PÁGINA (ESTÉTICA CLEAN)
+       ========================================================= */
+    .container {
+      /* Em telas grandes: conteúdo ainda mais à ESQUERDA pra dar
+         espaço pra arte SVG respirar inteira no lado direito.
+         Em mobile/tablet: comportamento normal com gutter. */
+      max-width: 980px;
+      width: 100%;
+      margin: 0;
+      margin-left: max(var(--gutter), calc((100vw - 1560px) / 2));
+      padding: 0 var(--gutter);
+      position: relative;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      padding: var(--space-6) 0;
+      border-bottom: 1px solid transparent;
+      /* --nav-veil (0-1) é escrito pelo JS conforme o scroll: o blur
+         entra progressivamente em vez de estalar num ponto único. */
+      --nav-veil: 0;
+      transition: padding 0.7s var(--ease);
+    }
+    .nav::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(5,5,5,0.94), rgba(5,5,5,0.7));
+      -webkit-backdrop-filter: blur(calc(var(--nav-veil) * 16px));
+              backdrop-filter: blur(calc(var(--nav-veil) * 16px));
+      transform: translateZ(0);
+      border-bottom: 1px solid var(--border);
+      opacity: var(--nav-veil);
+      pointer-events: none;
+    }
+    .nav-inner { position: relative; z-index: 1; }
+    .nav.scrolled { padding: var(--space-4) 0; }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-weight: 550;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      transition: color 0.4s;
+    }
+    .brand em {
+      font-style: normal;
+      font-weight: 550;
+      color: var(--accent);
+      transition: color 0.4s;
+    }
+    .brand-o { display: inline-block; }
+    .brand:hover .brand-o { animation: oBounce 0.75s cubic-bezier(0.3, 1.6, 0.4, 1); }
+    @keyframes oBounce {
+      0% { transform: translateY(0); }
+      30% { transform: translateY(-8px) rotate(-14deg); }
+      55% { transform: translateY(2px) rotate(4deg); }
+      75% { transform: translateY(-3px); }
+      100% { transform: translateY(0); }
+    }
+    .nav-links {
+      position: relative;
+      list-style: none;
+      display: flex;
+      gap: var(--space-8);
+      margin: 0; padding: 0;
+    }
+    .nav-links a {
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: var(--f-mono);
+      opacity: 0.6;
+      transition: opacity 0.3s, color 0.3s;
+    }
+    /* Indicador de seção ativa: um traço com um ponto de luz que
+       desliza pelo menu conforme a página rola (como um astro em órbita) */
+    .nav-marker {
+      position: absolute;
+      bottom: -10px; left: 0;
+      height: 1px; width: 0;
+      background: linear-gradient(90deg, transparent, var(--accent) 22%, var(--accent) 78%, transparent);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform .55s var(--ease), width .55s var(--ease), opacity .4s var(--ease);
+      will-change: transform, width;
+    }
+    .nav-marker.on { opacity: 1; }
+    .nav-marker i {
+      position: absolute; top: 50%; left: 50%;
+      width: 4px; height: 4px; margin: -2px 0 0 -2px;
+      border-radius: 50%;
+      background: var(--accent-label);
+      box-shadow: 0 0 8px 1px var(--accent-glow);
+    }
+    .nav-links a.current { opacity: 1; color: var(--text); }
+    @media (max-width: 900px) { .nav-marker { display: none; } }
+    .nav-links a:hover {
+      opacity: 1;
+      color: var(--accent-label);
+    }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+    }
+
+    /* SEÇÕES EM GERAL */
+    section {
+      padding: var(--space-24) 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .section-mark {
+      font-family: var(--f-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-label);
+      margin-bottom: var(--space-4);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      transition: color 0.4s;
+    }
+    .section-title {
+      font-family: var(--f-hero);
+      font-size: clamp(1.9rem, 4.6vw, 3.5rem);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 var(--space-8);
+      transition: color 0.4s, font-family 0.6s var(--ease);
+    }
+    .section-title em {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent);
+      transition: color 0.4s;
+    }
+    .section-lede {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 58ch;
+      margin-bottom: var(--space-12);
+      transition: color 0.4s;
+    }
+
+    /* BOTÕES */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: 0.75rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      font-family: var(--f-mono);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: all 0.3s var(--ease);
+    }
+    .btn-primary {
+      background-color: transparent;
+      color: var(--text);
+      border-color: var(--accent);
+    }
+    .btn-primary:hover {
+      background-color: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+    .btn:not(.btn-primary):hover {
+      border-color: var(--accent);
+      color: var(--accent-label);
+      transform: translateY(-2px);
+    }
+    html.warp-arriving body { opacity: 0; }
+    body { transition: opacity 0.75s var(--ease); }
+    .btn-ico { width: 24px; height: 24px; margin: -3px 2px -3px -4px; flex: none; background-color: currentColor; -webkit-mask: var(--i) center/contain no-repeat; mask: var(--i) center/contain no-repeat; }
+    .btn-end { opacity: .5; transition: opacity .3s var(--ease); }
+    .btn:hover .btn-end { opacity: 1; }
+    .btn svg {
+      width: 14px; height: 14px;
+      transition: transform 0.3s;
+    }
+    .btn:hover svg {
+      transform: translate(2px, -2px);
+    }
+
+    /* =========================================================
+       TEMA 1: ERA FUTURISTA (HERO)
+       ========================================================= */
+    .hero {
+      padding-top: var(--space-32);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+    .hero-grid {
+      display: grid;
+      /* Coluna do texto + coluna da caixa "Status" — mais espaço pra caixa */
+      grid-template-columns: 1.05fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+    }
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--f-mono);
+      font-size: 0.75rem;
+      color: var(--accent-label);
+      margin-bottom: var(--space-6);
+    }
+    .hero-name {
+      font-family: var(--f-hero);
+      font-size: clamp(2.4rem, 6.4vw, 4.6rem);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin: 0 0 var(--space-6);
+    }
+    /* Enquanto algo repinta rapido (ruido das palavras) o blur do header
+       sai de cena: senao ele recompoe a tela inteira a cada quadro */
+    body.warping .nav::before,
+    body.glitching .nav::before {
+      -webkit-backdrop-filter: none;
+              backdrop-filter: none;
+    }
+    .glitch-text { display: inline-block; white-space: pre; }
+    .gw { display: inline-block; vertical-align: top; cursor: pointer; transition: color .3s var(--ease); }
+    .gw.glitching { text-align: left; transform: translateZ(0); white-space: nowrap; overflow: hidden; vertical-align: top; }
+    .gw:hover { color: var(--accent-label); }
+    .hero-name.booting .glitch-text { text-shadow: 2px 0 rgba(0,115,21,.75), -2px 0 rgba(255,255,255,.35); }
+    .hero-name em {
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 300;
+    }
+    .hero-tagline {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 50ch;
+      margin-bottom: var(--space-12);
+    }
+    .hero-tagline strong {
+      color: var(--text);
+      font-weight: 450;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      margin-bottom: var(--space-16);
+    }
+
+    /* Widget lateral HUD Clean — caixa Status do Sistema */
+    .hero-aside {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-8) var(--space-12);  /* Mais respiro horizontal */
+      background-color: rgba(12,12,12,0.72);
+      transition: border-color 0.5s var(--ease), background-color 0.5s var(--ease);
+    }
+    .hero-aside h3 {
+      font-family: var(--f-mono);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin: 0 0 var(--space-6);
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--space-3);
+    }
+    .aside-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-3) 0;
+      font-size: 0.92rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    }
+    .aside-row .v {
+      text-align: right;
+      white-space: nowrap;  /* Evita quebra que bagunçava o dot verde */
+    }
+    .aside-row:last-child { border: none; }
+    .aside-row .k { color: var(--text-muted); font-family: var(--f-mono); font-size: 0.75rem; }
+    .aside-row .v { font-weight: 450; }
+    .aside-row .v.active-status { color: var(--accent-label); }
+
+    /* =========================================================
+       INTERLÚDIO MANIFESTO — entre Hero e Projeto (TEMA 1 cyber)
+       Função: dar tempo pro sol descer mais atrás dos prédios
+       antes da transição pra galáxia. Conteúdo poético, mínimo.
+       ========================================================= */
+    .manifesto {
+      min-height: 0;
+      padding-top: var(--space-12);
+      padding-bottom: var(--space-12);
+      display: flex;
+      align-items: center;
+    }
+    .manifesto-block {
+      max-width: 1000px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--space-8);
+      align-items: center;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding-block: var(--space-6);
+    }
+    .manifesto-block .section-mark { grid-column: 1 / -1; margin-bottom: calc(-1 * var(--space-4)); }
+    @media (max-width: 900px) { .manifesto-block { grid-template-columns: 1fr; gap: var(--space-4); } }
+    .manifesto-quote {
+      font-family: var(--f-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin: var(--space-6) 0 var(--space-8);
+      color: var(--text);
+    }
+    .manifesto-quote em {
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+    .manifesto-sub {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 52ch;
+    }
+    .manifesto-sub strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* =========================================================
+       TEMA 2: ERA CÓSMICA (PROJETOS & STACK)
+       ========================================================= */
+    .case-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      align-items: center;
+      margin-top: var(--space-8);
+    }
+
+    /* Visual do Terminal do Kanban */
+    .case-visual {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background-color: rgba(9, 9, 9, 0.86);
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      position: relative;
+      transition: border-color 0.4s;
+    }
+    .case-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+      background-size: 100% 3px, 6px 100%;
+      pointer-events: none;
+      z-index: 5;
+    }
+    .mock-bar {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-4);
+      background-color: rgba(255, 255, 255, 0.02);
+      border-bottom: 1px solid var(--border);
+    }
+    .mock-bar .circle { width: 8px; height: 8px; border-radius: 50%; background-color: var(--border); }
+    .mock-bar .circle.c-r { background-color: #444; }
+    .mock-bar .circle.c-y { background-color: #666; }
+    .mock-bar .circle.c-g { background-color: var(--accent); }
+    .mock-bar .url {
+      margin-left: var(--space-4);
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      opacity: 0.4;
+      letter-spacing: 0.05em;
+    }
+    .mock-board {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-3);
+      padding: var(--space-4);
+      min-height: 250px;
+    }
+    .mock-col {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+    .mock-col h4 {
+      margin: 0;
+      font-family: var(--f-mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      opacity: 0.5;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--space-2);
+    }
+    .mock-card {
+      padding: var(--space-3);
+      background-color: rgba(255, 255, 255, 0.01);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.72rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+    .mock-card .tag {
+      display: inline-block;
+      font-family: var(--f-mono);
+      font-size: 0.55rem;
+      padding: 1px 4px;
+      border-radius: 2px;
+      border: 1px solid var(--border);
+      margin-bottom: var(--space-1);
+      opacity: 0.7;
+    }
+
+    .case-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .case-body .meta-sub {
+      font-family: var(--f-mono);
+      font-size: 0.75rem;
+      color: var(--accent-label);
+      margin-bottom: var(--space-2);
+    }
+    .case-body h3 {
+      font-family: var(--f-hero);
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      margin: 0 0 var(--space-4);
+      line-height: 1.2;
+    }
+    .case-body h3 em { font-style: italic; font-weight: 400; color: var(--accent); }
+    .case-body p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: var(--space-6);
+    }
+    .case-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-4);
+      margin-bottom: var(--space-8);
+      border-top: 1px solid var(--border);
+      padding-top: var(--space-4);
+    }
+    .case-meta dt { font-family: var(--f-mono); font-size: 0.68rem; text-transform: uppercase; color: var(--text-muted); opacity: 0.6; }
+    .case-meta dd { margin: 0; font-size: 0.88rem; font-weight: 450; margin-top: 2px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-8); }
+    .chip {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      padding: 0.3rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      opacity: 0.8;
+      transition: all 0.3s;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent-label); }
+
+    /* GALERIA DE PROJETOS */
+    .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);margin-top:var(--space-8);align-items:start}
+    .proj-card{border:1px solid var(--border);border-radius:var(--radius);background-color:rgba(12,12,12,0.72);overflow:hidden;transition:border-color .5s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease);will-change:transform;transform:translateZ(0);backface-visibility:hidden}
+    .proj-card:hover{border-color:var(--accent);transform:translate3d(0,-4px,0);box-shadow:0 14px 35px var(--accent-glow)}
+    .proj-visual{height:150px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.025);overflow:hidden}
+    .proj-visual svg{width:100%;height:100%;display:block}
+    .proj-body{padding:var(--space-6)}
+    .proj-body h3{margin:0 0 var(--space-3);font-family:var(--f-display);font-size:1.2rem;font-weight:400;letter-spacing:-0.01em}
+    .proj-body .tag-row{margin-bottom:0}
+    .proj-desc{max-height:0;opacity:0;overflow:hidden;margin:0;font-size:.9rem;color:var(--text-muted);line-height:1.55;transition:max-height .55s var(--ease),opacity .4s var(--ease) .05s,margin .55s var(--ease)}
+    .proj-card:hover .proj-desc,.proj-card:focus-within .proj-desc{max-height:220px;opacity:1;margin:var(--space-3) 0 0}
+    .proj-desc a{color:var(--accent-label)}
+    .proj-desc a:hover{text-decoration:underline}
+    .proj-more{display:flex;align-items:center;gap:var(--space-6);flex-wrap:wrap;margin-top:var(--space-8);padding-top:var(--space-8);border-top:1px solid var(--border)}
+    .proj-more-note{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;color:var(--text-muted);max-width:38ch;line-height:1.6}
+    @media (max-width:900px){.proj-grid{grid-template-columns:1fr}.proj-desc{max-height:none;opacity:1;margin:var(--space-3) 0 0}}
+
+    /* GRID DA STACK */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+    .stack-group {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-6);
+      background-color: rgba(12,12,12,0.72);
+      transition: border-color .5s var(--ease), transform .5s var(--ease), box-shadow .5s var(--ease);
+    }
+    .stack-group:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .stack-group h3 {
+      margin: 0 0 var(--space-2);
+      font-family: var(--f-display);
+      font-size: 1.15rem;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+    .group-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin: 0 0 var(--space-6);
+    }
+    .stack-list {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+    .stack-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      padding: var(--space-2) 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+    }
+    .stack-item:last-child { border: none; }
+    .stack-icon {
+      width: 24px; height: 24px;
+      display: grid;
+      place-items: center;
+      color: var(--accent-label);
+      opacity: 0.8;
+    }
+    .stack-icon svg { width: 16px; height: 16px; }
+    .stack-name { font-size: 0.9rem; font-weight: 400; }
+    .stack-note { font-family: var(--f-mono); font-size: 0.65rem; color: var(--text-muted); margin-left: auto; opacity: 0.7; }
+
+    /* LOGS DE PROBLEMAS */
+    .problems {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.85fr) 1.5fr;
+      gap: var(--space-8);
+      align-items: start;
+      margin-top: var(--space-12);
+    }
+    @media (max-width: 900px) { .problems { grid-template-columns: 1fr; gap: var(--space-6); } }
+    .mission-list { display: flex; flex-direction: column; }
+    .mission-item {
+      position: relative;
+      display: block; width: 100%; text-align: left;
+      background: transparent; border: 0;
+      border-top: 1px solid var(--border);
+      padding: var(--space-6) 0 var(--space-6) var(--space-4);
+      cursor: pointer; color: inherit;
+      transition: padding-left .45s var(--ease);
+    }
+    .mission-list .mission-item:last-child { border-bottom: 1px solid var(--border); }
+    .mission-item::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: var(--accent);
+      transform: scaleY(0);
+      transform-origin: center;
+      transition: transform .45s var(--ease);
+    }
+    .mission-item.on::before { transform: scaleY(0.6); }
+    .mission-item:focus { outline: none; }
+    .mission-item:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; }
+    .mission-item .m-num {
+      display: block; font-family: var(--f-mono); font-size: .68rem;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--text-muted); margin-bottom: 6px;
+      transition: color .4s var(--ease);
+    }
+    .mission-item.on .m-num { color: var(--accent-label); }
+    .mission-item .m-title {
+      display: block; font-family: var(--f-display);
+      font-size: 1.05rem; font-weight: 400; line-height: 1.35;
+      color: var(--text-muted); letter-spacing: -.01em;
+      transition: color .4s var(--ease);
+    }
+    .mission-item.on .m-title, .mission-item:hover .m-title { color: var(--text); }
+    .mission-item.on { padding-left: var(--space-6); }
+    .mission-panels { display: grid; }
+    .problem {
+      grid-area: 1 / 1;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate3d(0, 14px, 0);
+      transition: opacity .6s var(--ease), transform .85s var(--ease), visibility .6s;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-8);
+      background-color: rgba(12,12,12,0.72);
+      transition: border-color 0.5s var(--ease);
+    }
+    .problem.on { opacity: 1; visibility: visible; pointer-events: auto; transform: none; }
+    /* Ruído curto de "bug" no número ao trocar de missão */
+    .problem.on .mission-metric b { animation: glitchIn .52s steps(1, end) both; }
+    @keyframes glitchIn {
+      0%   { transform: translate3d(-4px,0,0); text-shadow: 3px 0 var(--text), -3px 0 var(--accent); clip-path: inset(24% 0 34% 0); }
+      18%  { transform: translate3d(5px,0,0);  text-shadow: -4px 0 var(--text), 4px 0 var(--accent); clip-path: inset(58% 0 8% 0); }
+      36%  { transform: translate3d(-3px,0,0); text-shadow: 2px 0 var(--text), -2px 0 var(--accent); clip-path: inset(6% 0 62% 0); }
+      54%  { transform: translate3d(2px,0,0);  text-shadow: -2px 0 var(--accent); clip-path: inset(0 0 0 0); }
+      72%  { transform: none; text-shadow: 1px 0 var(--accent); }
+      100% { transform: none; text-shadow: none; clip-path: inset(0 0 0 0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .problem.on .mission-metric b { animation: none; }
+    }
+    .mission-metric {
+      display: flex; align-items: baseline; gap: var(--space-3);
+      margin-bottom: var(--space-6); flex-wrap: wrap;
+    }
+    .mission-metric b {
+      font-family: var(--f-display); font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+      font-weight: 400; color: var(--accent-label); letter-spacing: 0; line-height: 1;
+    }
+    .mission-metric span {
+      font-family: var(--f-mono); font-size: .7rem; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+    .problem-head {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-2);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--space-4);
+      margin-bottom: var(--space-6);
+    }
+    .problem-num { font-family: var(--f-mono); font-size: 0.75rem; color: var(--accent-label); white-space: nowrap; }
+    .problem-title { margin: 0; font-family: var(--f-display); font-size: 1.35rem; font-weight: 400; letter-spacing: -0.02em; }
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6) var(--space-8);
+    }
+    .problem-cell.resultado { grid-column: 1 / -1; border-top: 1px solid var(--border); padding-top: var(--space-6); }
+    @media (max-width: 700px) { .problem-grid { grid-template-columns: 1fr; } }
+    .problem-cell h4 {
+      margin: 0 0 var(--space-2);
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+    .problem-cell p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin: 0; }
+    .problem-cell.resultado p { color: var(--text); }
+    .problem-cell.resultado h4 { color: var(--accent-label); }
+
+    /* PROCESSO EM PASSOS */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-12);
+      position: relative;
+    }
+    .process::before {
+      content: '';
+      position: absolute;
+      top: 22px; left: 5%; right: 5%;
+      height: 1px;
+      background-color: var(--border);
+      z-index: 0;
+    }
+    .step {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .step-mark {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background-color: var(--bg);
+      border: 1px solid var(--border);
+      display: grid;
+      place-items: center;
+      margin: 0 auto var(--space-4);
+      font-family: var(--f-mono);
+      font-size: 0.8rem;
+      color: var(--accent-label);
+      font-weight: 550;
+      transition: all 0.4s var(--ease);
+    }
+    .step:hover .step-mark {
+      border-color: var(--accent);
+      transform: scale(1.1);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+    .step-name { font-weight: 450; font-size: 0.95rem; margin-bottom: var(--space-1); }
+    .step-desc { font-size: 0.72rem; color: var(--text-muted); max-width: 14ch; margin: 0 auto; line-height: 1.3; }
+
+    /* APRENDENDO AGORA — cards de áreas em estudo */
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-8);
+    }
+    .learn-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-8);
+      background-color: rgba(12,12,12,0.72);
+      transition: border-color .5s var(--ease), transform .5s var(--ease), box-shadow .5s var(--ease);
+    }
+    .learn-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px var(--accent-glow);
+    }
+    .learn-card .learn-meta {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-label);
+      margin: 0 0 var(--space-3);
+    }
+    .learn-card h3 {
+      font-family: var(--f-display);
+      font-size: 1.35rem;
+      font-weight: 400;
+      font-style: italic;
+      margin: 0 0 var(--space-3);
+      letter-spacing: -0.01em;
+    }
+    .learn-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin: 0 0 var(--space-4);
+    }
+    .learn-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    /* =========================================================
+       TEMA 3: ERA CLÁSSICA (SOBRE & CONTATO)
+       ========================================================= */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      margin-top: var(--space-8);
+      align-items: start;
+    }
+    .about-text, .timeline-container {
+      position: relative;
+      background: linear-gradient(180deg, rgba(6,8,7,.82), rgba(6,8,7,.72));
+      border-radius: var(--radius);
+      padding: var(--space-6);
+    }
+    .about-text p {
+      font-size: 1.05rem;
+      color: #b9c0bb;
+      line-height: 1.7;
+      margin: 0 0 var(--space-4);
+    }
+    .about-text p strong { color: var(--text); font-weight: 450; }
+    .about-text .quote {
+      font-family: var(--f-display);
+      font-style: italic;
+      font-size: 1.45rem;
+      line-height: 1.4;
+      color: var(--accent-label);
+      margin: var(--space-8) 0;
+      padding-left: var(--space-6);
+      border-left: 2px solid var(--accent);
+      transition: font-family 0.6s var(--ease);
+    }
+
+    /* =========================================================
+       O FILÓSOFO — Aristóteles apontando pra cima, na seção
+       de Filosofia. Fica ATRÁS do texto, ancorado na base, e
+       sobe suavemente quando a seção entra. A luz de recorte
+       verde da arte é o mesmo acento do site.
+       ========================================================= */
+    #sobre { position: relative; overflow: hidden; }
+    #sobre > .container { position: relative; z-index: 1; }
+    .philosopher {
+      position: absolute;
+      right: -1vw;
+      bottom: 0;
+      height: min(72vh, 620px);
+      width: auto;
+      z-index: 0;
+      pointer-events: none;
+      /* Dissolve na base em vez de ser cortado numa linha reta */
+      -webkit-mask-image: linear-gradient(to bottom, #000 86%, rgba(0,0,0,.55) 95%, transparent 100%);
+              mask-image: linear-gradient(to bottom, #000 86%, rgba(0,0,0,.55) 95%, transparent 100%);
+      filter: contrast(1.06) brightness(0.88);
+    }
+    .philosopher.reveal {
+      opacity: 0;
+      transform: translateY(64px) scale(1.03);
+      transition: opacity 1.7s var(--ease), transform 2s var(--ease);
+    }
+    .philosopher.reveal.in {
+      opacity: 0.94;
+      transform: translateY(0) scale(1);
+    }
+    /* Degrau de tamanho conforme o espaço livre à direita da coluna
+       de texto (que fica fixa em 40→1020px entre ~1060 e 1560px de
+       viewport). Só some quando o espaço realmente acaba. */
+    @media (max-width: 1240px) { .philosopher { display: none; } }
+    @media (min-width: 1241px) and (max-width: 1400px) { .philosopher { height: min(52vh, 440px); } }
+
+    /* Linha do Tempo e Character Sheet */
+    .timeline-container {
+      border-left: 1px solid var(--border);
+      padding-left: var(--space-8) !important;
+      margin-left: var(--space-4);
+    }
+    .timeline {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8);
+    }
+    .timeline li {
+      position: relative;
+      padding-left: var(--space-6);
+    }
+    .timeline li::before {
+      content: '';
+      position: absolute;
+      left: -39px;
+      top: 6px;
+      width: 11px; height: 11px;
+      border-radius: 50%;
+      background-color: var(--bg);
+      border: 1px solid var(--accent);
+      transition: all 0.3s;
+    }
+    .timeline li:hover::before {
+      background-color: var(--accent);
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
+    .timeline .year {
+      font-family: var(--f-mono);
+      font-size: 0.72rem;
+      color: var(--accent-label);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-1);
+    }
+    .timeline h4 {
+      margin: 0 0 var(--space-2);
+      font-family: var(--f-display);
+      font-size: 1.15rem;
+      font-weight: 400;
+    }
+    .timeline p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* CONTATO */
+    .contact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-12);
+      margin-top: var(--space-8);
+    }
+    .contact-text .ctc-row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4) 0;
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .contact-text .ctc-row:hover {
+      padding-left: var(--space-2);
+      border-color: var(--accent);
+    }
+    .ctc-icon {
+      width: 40px; height: 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      color: var(--text-muted);
+      transition: all 0.3s;
+    }
+    .contact-text .ctc-row:hover .ctc-icon {
+      color: var(--accent-label);
+      border-color: var(--accent);
+    }
+    .ctc-icon svg { width: 18px; height: 18px; }
+    .ctc-row .label {
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .ctc-row .value {
+      font-size: 1.05rem;
+      font-family: var(--f-display);
+      margin-top: 2px;
+    }
+    .ctc-arrow { margin-left: auto; color: var(--text-muted); opacity: 0.5; transition: transform 0.3s; }
+    .ctc-row:hover .ctc-arrow { transform: translate(3px, -3px); opacity: 1; color: var(--accent-label); }
+
+    /* FORMULÁRIO ESTILO MAINFRAME/TEMPLO CLEAN */
+    .form {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--space-8);
+      background-color: rgba(12,12,12,0.72);
+    }
+    .form-field { margin-bottom: var(--space-6); }
+    .form-field label {
+      display: block;
+      font-family: var(--f-mono);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: var(--space-2);
+    }
+    .form-field input,
+    .form-field textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--border);
+      padding: var(--space-2) 0;
+      color: var(--text);
+      font-family: var(--f-body);
+      font-size: 0.95rem;
+      transition: border-color 0.3s;
+    }
+    .form-field input:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .form-field textarea { min-height: 120px; height: 120px; resize: none; }
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      font-family: var(--f-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 550;
+      background-color: transparent;
+      color: var(--text);
+      border: 1px solid var(--accent);
+      border-radius: var(--radius);
+      transition: all 0.3s var(--ease);
+    }
+    .form-submit:hover {
+      background-color: var(--accent);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px var(--accent-glow);
+    }
+    .form-status {
+      margin-top: var(--space-4);
+      font-family: var(--f-mono);
+      font-size: 0.72rem;
+      min-height: 1.2em;
+    }
+
+    /* FOOTER */
+    /* Contato + footer cabem juntos numa tela: nada de rolagem sobrando */
+    #contato { min-height: calc(100vh - 160px); padding-bottom: var(--space-8); }
+    footer {
+      padding: var(--space-6) 0;
+      border-top: 1px solid var(--border);
+      margin-top: var(--space-8);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+    }
+    .footer-inner em { color: var(--accent-label); font-family: var(--f-display); font-style: italic; }
+    .top-link {
+      font-family: var(--f-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      transition: color 0.3s;
+    }
+    .top-link:hover { color: var(--accent-label); }
+
+    /* =========================================================
+       RESPONSIVIDADE (MOBILE & TABLET)
+       ========================================================= */
+    /* --- TABLET (901px a 1100px) --- */
+    @media (max-width: 1100px) {
+      .container { max-width: 100%; margin: 0 auto; }
+      .fixed-graphics { opacity: .5; }
+      .hero-grid { grid-template-columns: 1fr .9fr; gap: var(--space-8); }
+      .stack-grid { grid-template-columns: repeat(2, 1fr); }
+      .process { grid-template-columns: repeat(3, 1fr); gap: var(--space-8) var(--space-6); }
+      .process::before { display: none; }
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        /* No mobile, volta a ser fluido com gutter dos dois lados */
+        max-width: 100%;
+        margin: 0 auto;
+      }
+      /* Seções deixam de ser telas cheias: altura pelo conteúdo */
+      section { min-height: auto; padding: var(--space-16) 0; display: block; }
+      #contato { min-height: auto; }
+      .hero { min-height: auto; padding-top: var(--space-24); padding-bottom: var(--space-16); display: block; }
+      .nav { padding: var(--space-4) 0; }
+      .nav.scrolled { padding: var(--space-3) 0; }
+      .section-title { margin-bottom: var(--space-6); }
+      .section-lede { font-size: 1.05rem; margin-bottom: var(--space-8); }
+      .hero-tagline { font-size: 1.05rem; margin-bottom: var(--space-8); }
+      .hero-actions { gap: var(--space-3); margin-bottom: var(--space-8); }
+      .hero-aside { padding: var(--space-6); }
+      .proj-visual { height: 132px; }
+      .problem { padding: var(--space-6); }
+      .mission-item { padding: var(--space-4) 0 var(--space-4) var(--space-3); }
+      .mission-item.on { padding-left: var(--space-4); }
+      .learn-card, .form { padding: var(--space-6); }
+      .about-text, .timeline-container { padding: var(--space-4) 0; background: none; }
+      .about-text .quote { font-size: 1.2rem; margin: var(--space-6) 0; padding-left: var(--space-4); }
+      /* Linha do tempo: o fio vertical passa pra própria lista */
+      .timeline-container { border-left: 0; margin-left: 0; padding-left: 0 !important; }
+      .timeline { border-left: 1px solid var(--border); padding-left: var(--space-6); }
+      .timeline li { padding-left: 0; }
+      .timeline li::before { left: -31px; }
+      footer { margin-top: var(--space-12); }
+      .fixed-graphics {
+        width: 100vw;
+        opacity: 0.18; /* Mais sutil em mobile, atrás do texto */
+        /* Máscara mais suave em mobile pra ficar de fundo */
+        -webkit-mask-image: linear-gradient(to bottom,
+          transparent 0%, #000 15%, #000 85%, transparent 100%);
+                mask-image: linear-gradient(to bottom,
+          transparent 0%, #000 15%, #000 85%, transparent 100%);
+      }
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background-color: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: var(--space-6) var(--gutter);
+        gap: var(--space-4);
+      }
+      .nav-toggle { display: block; }
+
+      .hero-grid { grid-template-columns: 1fr; gap: var(--space-12); }
+      .case-container { grid-template-columns: 1fr; gap: var(--space-8); }
+      .stack-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+      .problem-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+      .process { grid-template-columns: repeat(3, 1fr); gap: var(--space-6); }
+      .process::before { display: none; }
+      .learn-grid { grid-template-columns: 1fr; gap: var(--space-4); }
+      .about, .contact { grid-template-columns: 1fr; gap: var(--space-8); }
+    }
+
+    /* --- CELULAR --- */
+    @media (max-width: 600px) {
+      .nav-toggle { display: grid; place-items: center; width: 44px; height: 44px; font-size: 1.6rem; line-height: 1; margin-right: -8px; }
+      .brand { font-size: 1rem; }
+      .process { grid-template-columns: repeat(2, 1fr); gap: var(--space-6) var(--space-4); }
+      .learn-grid, .case-meta { grid-template-columns: 1fr; }
+      .hero-actions .btn { flex: 1 1 calc(50% - var(--space-3)); justify-content: center; }
+      .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+      .mission-metric { gap: var(--space-2); }
+      .problem { padding: var(--space-4); }
+      .problem-title { font-size: 1.15rem; }
+      /* Texto de apoio que não cabe em tela pequena */
+      .step-desc, .proj-more-note, .stack-note { display: none; }
+      .proj-more { margin-top: var(--space-6); padding-top: var(--space-6); }
+    }
+
+    @media (max-width: 400px) {
+      .process { grid-template-columns: 1fr; gap: var(--space-4); }
+      .step { display: flex; align-items: center; gap: var(--space-4); text-align: left; }
+      .step-mark { margin: 0; width: 38px; height: 38px; }
+      .step-name { margin: 0; }
+      .hero-actions .btn { flex: 1 1 100%; }
+      .manifesto-sub { display: none; }
+    }
+
+    /* Acessibilidade: prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+<script>(function(){var s=null;try{s=localStorage.getItem('ib-lang')}catch(e){}var l=(navigator.languages&&navigator.languages[0])||navigator.language||'pt';var g=(s==='pt'||s==='en')?s:(/^pt/i.test(l)?'pt':'en');document.documentElement.lang=g==='en'?'en':'pt-BR';if(g==='en'){document.documentElement.className+=' i18n-wait';setTimeout(function(){document.documentElement.classList.remove('i18n-wait')},1200)}})()</script>
+<style>html.i18n-wait body{visibility:hidden}.lang-switch{display:flex;align-items:center;gap:5px;font-family:var(--f-mono,ui-monospace);font-size:.7rem;letter-spacing:.1em}.lang-switch button{background:none;border:0;padding:5px 3px;font:inherit;letter-spacing:inherit;color:var(--text);opacity:.32;cursor:pointer;transition:opacity .35s var(--ease),color .35s var(--ease)}.lang-switch button:hover{opacity:.75}.lang-switch button.on{opacity:1;color:var(--accent-label)}.lang-switch .sep{opacity:.18}.nav-right{display:flex;align-items:center;gap:var(--space-4)}@media (max-width:600px){.lang-switch{font-size:.66rem}}</style>
+</head>
+
+<body data-theme="cosmos">
+
+  <!-- ========================================================
+       CÉU NOTURNO FIXO · 2 camadas
+       1. Campo de estrelas estáticas (geradas via PRNG seed fixa)
+       2. 3 estrelas cadentes em trilhos rotacionados
+       ======================================================== -->
+  <div id="nightSky" aria-hidden="true">
+    <div id="starfield"></div>
+    <div class="meteor-track t1"><div class="meteor"></div></div>
+    <div class="meteor-track t2"><div class="meteor"></div></div>
+    <div class="meteor-track t3"><div class="meteor"></div></div>
+  </div>
+
+  <!-- ========================================================
+       BARRA DE PROGRESSO LATERAL · também é scrollbar
+       (clique pra pular, arraste pra navegar)
+       ======================================================== -->
+  <div class="scroll-progress" id="scrollProgress"
+       role="scrollbar" aria-label="Progresso da página · clique ou arraste para navegar"
+       aria-orientation="vertical">
+    <div class="scroll-progress-track">
+      <div class="scroll-progress-fill" id="scrollProgressFill"></div>
+      <div class="scroll-progress-dot"  id="scrollProgressDot"></div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       CENAS DE FUNDO (SVG INLINE) — uma por tema
+       Cidade Cyberpunk · Cosmos · Grécia Antiga
+       Cada cena = glow radial + silhuetas + acentos com bloom.
+       Tudo SVG: zero dependência de arquivo externo.
+       ======================================================== -->
+  <div class="fixed-graphics" aria-hidden="true">
+
+    <!-- TEMA 2 · Cosmos · estrela brilhando + órbitas + galáxia distante -->
+    <svg class="graphic-layer layer-cosmos" viewBox="0 0 800 1000"
+         preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Halo da estrela — objectBoundingBox pra mover com o grupo -->
+        <radialGradient id="cosmosHalo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.42"/>
+          <stop offset="12%"  stop-color="#f2f2f2" stop-opacity="0.30"/>
+          <stop offset="28%"  stop-color="#dcdcdc" stop-opacity="0.16"/>
+          <stop offset="48%"  stop-color="#c8c8c8" stop-opacity="0.07"/>
+          <stop offset="70%"  stop-color="#c8c8c8" stop-opacity="0.02"/>
+          <stop offset="100%" stop-color="#c8c8c8" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="cosmosCore" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#ffffff" stop-opacity="1"/>
+          <stop offset="40%"  stop-color="#ffffff" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#c8c8c8" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="cosmosSpace" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#000000" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+        </linearGradient>
+        <filter id="cosmosBloom" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur stdDeviation="2.5"/>
+        </filter>
+        <filter id="cosmosBloomBig" x="-200%" y="-200%" width="500%" height="500%">
+          <feGaussianBlur stdDeviation="8"/>
+        </filter>
+        <filter id="cosmosHaloBlur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="18"/>
+        </filter>
+      </defs>
+
+      <!-- Atmosfera espacial -->
+      <rect width="800" height="1000" fill="url(#cosmosSpace)"/>
+
+      <!-- ====== SISTEMA SOLAR (todo envolvido pra mover junto) ======
+           Sol, halo, órbitas e planetas viajam juntos enquanto você scrolla -->
+      <g id="cosmosSunGroup" data-origin-x="440" data-origin-y="470">
+        <!-- Luz do sol (halo + núcleo): escala junto no pulso, ver sky.js -->
+        <g id="sunLight">
+        <!-- Halo da estrela (blur extra dissolve bordas) -->
+        <circle cx="440" cy="470" r="420" fill="url(#cosmosHalo)" filter="url(#cosmosHaloBlur)"/>
+        <!-- Núcleo da estrela -->
+        <circle cx="440" cy="470" r="95" fill="url(#cosmosCore)" filter="url(#cosmosBloomBig)" opacity="0.85"/>
+        <circle cx="440" cy="470" r="22" fill="#ffffff" filter="url(#cosmosBloom)"/>
+        <circle cx="440" cy="470" r="11" fill="#ffffff"/>
+        </g>
+
+        <!-- Órbitas inclinadas (caminho dos planetas) -->
+        <g transform="rotate(-18 440 470)" fill="none">
+          <ellipse cx="440" cy="470" rx="380" ry="100" stroke="#ffffff" stroke-width="1.05" opacity="0.4"/>
+          <ellipse cx="440" cy="470" rx="290" ry="78"  stroke="#ffffff" stroke-width="1.3" opacity="0.55"/>
+          <ellipse cx="440" cy="470" rx="210" ry="56"  stroke="#ffffff" stroke-width="1.15" opacity="0.45"/>
+          <ellipse cx="440" cy="470" rx="140" ry="38"  stroke="#ffffff" stroke-width="1" opacity="0.38"/>
+        </g>
+
+        <!-- Planetas — posições atualizadas pelo JS conforme scrolla -->
+        <circle id="cosmosPlanet1" cx="620" cy="470" r="5"   fill="#ffffff" filter="url(#cosmosBloom)"/>
+        <circle id="cosmosPlanet2" cx="720" cy="470" r="3.5" fill="#e6e6e6" filter="url(#cosmosBloom)"/>
+        <circle id="cosmosPlanet3" cx="650" cy="470" r="4"   fill="#ffffff" filter="url(#cosmosBloom)"/>
+        <circle id="cosmosPlanet4" cx="580" cy="470" r="2.5" fill="#dcdcdc" filter="url(#cosmosBloom)"/>
+      </g>
+
+      <!-- Estrelas distantes -->
+      <g fill="#ffffff">
+        <circle class="twinkle"         cx="80"  cy="120" r="1.6" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle delay-a" cx="220" cy="200" r="1.0"/>
+        <circle class="twinkle delay-b" cx="640" cy="130" r="1.8" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle delay-c" cx="750" cy="290" r="1.2"/>
+        <circle class="twinkle"         cx="120" cy="320" r="1.4"/>
+        <circle class="twinkle delay-a" cx="320" cy="70"  r="2.0" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle delay-b" cx="720" cy="700" r="1.6" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle delay-c" cx="180" cy="780" r="1.0"/>
+        <circle class="twinkle"         cx="80"  cy="600" r="1.4"/>
+        <circle class="twinkle delay-a" cx="380" cy="850" r="1.2"/>
+        <circle class="twinkle delay-b" cx="700" cy="880" r="1.6" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle delay-c" cx="240" cy="640" r="1.0"/>
+        <circle class="twinkle"         cx="100" cy="450" r="1.2"/>
+        <circle class="twinkle delay-a" cx="350" cy="280" r="1.0"/>
+        <circle class="twinkle delay-b" cx="60"  cy="800" r="1.5"/>
+        <circle class="twinkle delay-c" cx="510" cy="170" r="1.3" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle"         cx="600" cy="940" r="1.4"/>
+        <circle class="twinkle delay-a" cx="200" cy="900" r="1.1"/>
+        <circle class="twinkle delay-b" cx="780" cy="540" r="1.3"/>
+      </g>
+
+      <!-- Linhas de constelação (sutis) -->
+      <g stroke="#ffffff" stroke-width="1.3" fill="none" opacity="0.62" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="80,120 220,200 320,70 510,170 640,130"/>
+        <polyline points="180,780 240,640 380,850 700,880"/>
+      </g>
+      <g fill="#ffffff" opacity="0.8">
+        <circle cx="80" cy="120" r="2.2"/><circle cx="220" cy="200" r="1.9"/><circle cx="320" cy="70" r="2.2"/><circle cx="510" cy="170" r="1.9"/><circle cx="640" cy="130" r="2.2"/>
+        <circle cx="180" cy="780" r="2.1"/><circle cx="240" cy="640" r="1.8"/><circle cx="380" cy="850" r="2.1"/><circle cx="700" cy="880" r="2.2"/>
+      </g>
+    </svg>
+
+    <!-- TEMA 3 · Grécia Antiga · sol dourado + templo alinhado -->
+    <svg class="graphic-layer layer-greece" viewBox="0 0 800 1000"
+         preserveAspectRatio="xMaxYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Glow do sol — objectBoundingBox pra acompanhar translate -->
+        <radialGradient id="greekSun" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.5"/>
+          <stop offset="12%"  stop-color="#ededed" stop-opacity="0.34"/>
+          <stop offset="28%"  stop-color="#c4c4c4" stop-opacity="0.16"/>
+          <stop offset="48%"  stop-color="#9a9a9a" stop-opacity="0.07"/>
+          <stop offset="70%"  stop-color="#9a9a9a" stop-opacity="0.02"/>
+          <stop offset="100%" stop-color="#9a9a9a" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="greekHaze" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%"   stop-color="#000000" stop-opacity="0.6"/>
+          <stop offset="42%"  stop-color="#000000" stop-opacity="0.5"/>
+          <stop offset="64%"  stop-color="#060606" stop-opacity="0.45"/>
+          <stop offset="76%"  stop-color="#0a0a0a" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#000000" stop-opacity="0.2"/>
+        </linearGradient>
+        <filter id="greekBloom" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2.4"/>
+        </filter>
+        <filter id="greekHaloBlur" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="16"/>
+        </filter>
+        <filter id="cloudSoft" x="-30%" y="-120%" width="160%" height="340%">
+          <feGaussianBlur stdDeviation="9"/>
+        </filter>
+        <linearGradient id="cloudRim" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+          <stop offset="22%" stop-color="#ffffff" stop-opacity="0.35"/>
+          <stop offset="52%" stop-color="#ffffff" stop-opacity="0.6"/>
+          <stop offset="80%" stop-color="#ffffff" stop-opacity="0.25"/>
+          <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Atmosfera quente -->
+      <rect width="800" height="1000" fill="url(#greekHaze)"/>
+
+      <!-- ====== SOL (envolvido pra mover via JS) ====== -->
+      <g id="greekSunGroup" data-origin-x="500" data-origin-y="180">
+        <circle cx="500" cy="180" r="360" fill="url(#greekSun)" filter="url(#greekHaloBlur)"/>
+        <circle cx="500" cy="180" r="42" fill="#f0f0f0" opacity="0.3" filter="url(#greekBloom)"/>
+        <circle cx="500" cy="180" r="22" fill="#ffffff" opacity="0.9"/>
+      </g>
+
+      <!-- Nuvens do pôr do sol (escuras, iluminadas por baixo) -->
+      <g id="atmoCloudsFar" fill="#0b0b0b" opacity="0.9" filter="url(#cloudSoft)">
+        <ellipse cx="250" cy="385" rx="170" ry="15"/>
+        <ellipse cx="370" cy="368" rx="110" ry="11"/>
+        <ellipse cx="600" cy="340" rx="150" ry="13"/>
+        <ellipse cx="520" cy="420" rx="210" ry="17"/>
+        <ellipse cx="90" cy="430" rx="130" ry="12"/>
+      </g>
+      <g id="atmoCloudsNear" fill="#121212" opacity="0.9" filter="url(#cloudSoft)">
+        <ellipse cx="170" cy="295" rx="200" ry="20"/>
+        <ellipse cx="330" cy="278" rx="120" ry="14"/>
+        <ellipse cx="690" cy="250" rx="180" ry="18"/>
+        <ellipse cx="560" cy="215" rx="120" ry="12"/>
+      </g>
+      <g stroke="url(#cloudRim)" stroke-width="1.1" fill="none" opacity="0.45" stroke-linecap="round">
+        <path d="M100 398 Q 250 404 410 396"/>
+        <path d="M330 434 Q 520 442 720 430"/>
+        <path d="M0 312 Q 170 320 360 306"/>
+        <path d="M520 266 Q 690 274 800 262"/>
+      </g>
+
+      <!-- Partículas de poeira na luz -->
+      <g fill="#ffffff" opacity="0.55" filter="url(#greekBloom)">
+        <circle cx="320" cy="280" r="1"/>
+        <circle cx="380" cy="340" r="1.2"/>
+        <circle cx="450" cy="310" r="0.9"/>
+        <circle cx="560" cy="290" r="1.2"/>
+        <circle cx="640" cy="260" r="1"/>
+        <circle cx="280" cy="390" r="1"/>
+        <circle cx="400" cy="430" r="0.9"/>
+        <circle cx="580" cy="430" r="1"/>
+        <circle cx="700" cy="390" r="0.9"/>
+      </g>
+
+      <!--
+        ============================================
+        TEMPLO — coordenadas MOVIDAS 80 PRA CIMA
+        e fuste 28px mais curto (520→412 de altura total):
+          y=320-460  → frontão triangular
+          y=460-500  → arquitrave (40px, 3 fásceas)
+          y=500-522  → capitéis (22px)
+          y=522-762  → fustes (240px, 28 mais curto)
+          y=762-772  → bases das colunas
+          y=772-812  → estilóbato (3 degraus, 40px)
+        Topo do templo y=320, base y=812.
+        ============================================
+      -->
+
+      <g id="templeGroup">
+      <!-- Frontão -->
+      <polygon points="170,460 450,320 730,460" fill="#000000" opacity="0.97"/>
+      <polyline points="170,460 450,320 730,460"
+                fill="none" stroke="#ffffff" stroke-width="2.6" opacity="0.95" stroke-linejoin="round"/>
+      <!-- Pequeno alívio decorativo dentro do frontão -->
+      <circle cx="450" cy="415" r="13" fill="none" stroke="#ffffff" stroke-width="1.8" opacity="0.8"/>
+
+      <!-- Arquitrave (3 fásceas, larguras crescentes pra baixo) -->
+      <g fill="#000000">
+        <rect x="170" y="460" width="560" height="14"/>
+        <rect x="162" y="474" width="576" height="14"/>
+        <rect x="154" y="488" width="592" height="12"/>
+      </g>
+      <g stroke="#ffffff" stroke-width="2" opacity="0.85" fill="none">
+        <line x1="170" y1="460" x2="730" y2="460"/>
+        <line x1="170" y1="474" x2="730" y2="474"/>
+        <line x1="162" y1="488" x2="738" y2="488"/>
+        <line x1="154" y1="500" x2="746" y2="500"/>
+      </g>
+
+      <!-- Meander (greek key) na fáscea do meio (y=474-488) -->
+      <g stroke="#ffffff" stroke-width="1.7" fill="none" opacity="0.9" stroke-linejoin="round">
+        <path d="M 175 485 h 22 v -10 h -14 v 6 h 9
+                 M 207 485 h 22 v -10 h -14 v 6 h 9
+                 M 239 485 h 22 v -10 h -14 v 6 h 9
+                 M 271 485 h 22 v -10 h -14 v 6 h 9
+                 M 303 485 h 22 v -10 h -14 v 6 h 9
+                 M 335 485 h 22 v -10 h -14 v 6 h 9
+                 M 367 485 h 22 v -10 h -14 v 6 h 9
+                 M 399 485 h 22 v -10 h -14 v 6 h 9
+                 M 431 485 h 22 v -10 h -14 v 6 h 9
+                 M 463 485 h 22 v -10 h -14 v 6 h 9
+                 M 495 485 h 22 v -10 h -14 v 6 h 9
+                 M 527 485 h 22 v -10 h -14 v 6 h 9
+                 M 559 485 h 22 v -10 h -14 v 6 h 9
+                 M 591 485 h 22 v -10 h -14 v 6 h 9
+                 M 623 485 h 22 v -10 h -14 v 6 h 9
+                 M 655 485 h 22 v -10 h -14 v 6 h 9
+                 M 687 485 h 22 v -10 h -14 v 6 h 9"/>
+      </g>
+
+      <!-- COLUNAS DÓRICAS (6) — capitel + fuste + base -->
+      <g fill="#000000">
+        <!-- Col 1 (x=200) -->
+        <rect x="178" y="500" width="44" height="14"/>     <!-- ábaco -->
+        <rect x="184" y="514" width="32" height="8"/>      <!-- equino -->
+        <rect x="186" y="522" width="28" height="240"/>    <!-- fuste 240px -->
+        <rect x="180" y="762" width="40" height="10"/>     <!-- base -->
+        <!-- Col 2 (x=300) -->
+        <rect x="278" y="500" width="44" height="14"/>
+        <rect x="284" y="514" width="32" height="8"/>
+        <rect x="286" y="522" width="28" height="240"/>
+        <rect x="280" y="762" width="40" height="10"/>
+        <!-- Col 3 (x=400) -->
+        <rect x="378" y="500" width="44" height="14"/>
+        <rect x="384" y="514" width="32" height="8"/>
+        <rect x="386" y="522" width="28" height="240"/>
+        <rect x="380" y="762" width="40" height="10"/>
+        <!-- Col 4 (x=500) -->
+        <rect x="478" y="500" width="44" height="14"/>
+        <rect x="484" y="514" width="32" height="8"/>
+        <rect x="486" y="522" width="28" height="240"/>
+        <rect x="480" y="762" width="40" height="10"/>
+        <!-- Col 5 (x=600) -->
+        <rect x="578" y="500" width="44" height="14"/>
+        <rect x="584" y="514" width="32" height="8"/>
+        <rect x="586" y="522" width="28" height="240"/>
+        <rect x="580" y="762" width="40" height="10"/>
+        <!-- Col 6 (x=700) -->
+        <rect x="678" y="500" width="44" height="14"/>
+        <rect x="684" y="514" width="32" height="8"/>
+        <rect x="686" y="522" width="28" height="240"/>
+        <rect x="680" y="762" width="40" height="10"/>
+      </g>
+
+      <!-- Borda dourada sutil nos ábacos -->
+      <g stroke="#ffffff" stroke-width="2" opacity="0.85" fill="none">
+        <line x1="178" y1="500" x2="222" y2="500"/>
+        <line x1="278" y1="500" x2="322" y2="500"/>
+        <line x1="378" y1="500" x2="422" y2="500"/>
+        <line x1="478" y1="500" x2="522" y2="500"/>
+        <line x1="578" y1="500" x2="622" y2="500"/>
+        <line x1="678" y1="500" x2="722" y2="500"/>
+      </g>
+
+      <!-- Caneluras verticais nas colunas -->
+      <g stroke="#ffffff" stroke-width="1.3" opacity="0.7">
+        <line x1="192" y1="524" x2="192" y2="760"/><line x1="200" y1="524" x2="200" y2="760"/><line x1="208" y1="524" x2="208" y2="760"/>
+        <line x1="292" y1="524" x2="292" y2="760"/><line x1="300" y1="524" x2="300" y2="760"/><line x1="308" y1="524" x2="308" y2="760"/>
+        <line x1="392" y1="524" x2="392" y2="760"/><line x1="400" y1="524" x2="400" y2="760"/><line x1="408" y1="524" x2="408" y2="760"/>
+        <line x1="492" y1="524" x2="492" y2="760"/><line x1="500" y1="524" x2="500" y2="760"/><line x1="508" y1="524" x2="508" y2="760"/>
+        <line x1="592" y1="524" x2="592" y2="760"/><line x1="600" y1="524" x2="600" y2="760"/><line x1="608" y1="524" x2="608" y2="760"/>
+        <line x1="692" y1="524" x2="692" y2="760"/><line x1="700" y1="524" x2="700" y2="760"/><line x1="708" y1="524" x2="708" y2="760"/>
+      </g>
+
+      <!-- Estilóbato (3 degraus alargando) -->
+      <g fill="#000000">
+        <rect x="160" y="772" width="580" height="12"/>
+        <rect x="148" y="784" width="604" height="14"/>
+        <rect x="136" y="798" width="628" height="14"/>
+      </g>
+      <g stroke="#ffffff" stroke-width="1.8" opacity="0.8" fill="none">
+        <line x1="160" y1="772" x2="740" y2="772"/>
+        <line x1="148" y1="784" x2="752" y2="784"/>
+        <line x1="136" y1="798" x2="764" y2="798"/>
+        <line x1="136" y1="812" x2="764" y2="812"/>
+      </g>
+      </g>
+    </svg>
+
+  </div>
+
+  <div id="atmoGlow" aria-hidden="true" style="position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0;background:radial-gradient(130% 90% at 65% 80%, rgba(255,255,255,0.16), rgba(190,190,190,0.07) 45%, transparent 72%)"></div>
+
+  <!-- ========================================================
+       NAV
+       ======================================================== -->
+  <nav class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#hero" class="brand" aria-label="Início" data-en-aria="Home">
+        <span>Ital<span class="brand-o">o</span> <em>Bernardo</em></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" data-en="Home">Início</a></li>
+        <li><a href="#projeto" data-warp-dbl="projetos.html" title="Clique duas vezes para ver todos os projetos" data-en="Projects" data-en-title="Double-click to see all projects">Projetos</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#aprendendo" data-en="Studies">Estudos</a></li>
+        <li><a href="#sobre" data-en="About">Sobre</a></li>
+        <li><a href="#contato" data-en="Contact">Contato</a></li>
+        <span class="nav-marker" id="navMarker" aria-hidden="true"><i></i></span>
+      </ul>
+      <div class="nav-right">
+        <div class="lang-switch" id="langSwitch" role="group" aria-label="Idioma" data-en-aria="Language">
+          <button type="button" data-lang="pt">PT</button><span class="sep" aria-hidden="true">/</span><button type="button" data-lang="en">EN</button>
+        </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu">≡</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================
+       HERO (TEMA 1: FUTURISTA / CYBERPUNK CLEAN)
+       ======================================================== -->
+  <header class="hero" id="hero" data-theme="cosmos">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="hero-meta">
+          <span data-en="Portfolio · 2026">Portfólio · 2026</span>
+        </div>
+
+        <h1 class="hero-name">
+          <span class="glitch-text" data-t="Olá!" data-en="Hello!">Olá!</span><br>
+          <span class="glitch-text" data-t="Sou o " data-en="I'm ">Sou o </span><em class="glitch-text" data-t="Italo!">Italo!</em>
+        </h1>
+
+        <p class="hero-tagline" data-en="Developer in training focused on <strong>Java backend</strong>. <strong>Systems automation and integration</strong>, with experience in e-commerce and technical support. IT Technician · CS undergrad.">
+          Dev em formação com foco em <strong>backend Java</strong>.
+          <strong>Automação e integração de sistemas</strong>, com experiência
+          em e-commerce e suporte técnico. Técnico em Informática · ADS.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#projeto" class="btn btn-primary">
+            <span data-en="View Projects">Ver Projetos</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="https://github.com/italoBer" target="_blank" rel="noopener" class="btn">
+            <span class="btn-ico" style="--i:url('uploads/github-sign.png')" aria-hidden="true"></span>
+            GitHub
+            <svg class="btn-end" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/italoBer" target="_blank" rel="noopener" class="btn">
+            <span class="btn-ico" style="--i:url('uploads/linkedin.png')" aria-hidden="true"></span>
+            LinkedIn
+            <svg class="btn-end" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+          </a>
+          <a href="uploads/Curriculo_Italo_Bernardo_Julho_2026.pdf" download class="btn">
+            <span class="btn-ico" style="--i:url('uploads/cv.png')" aria-hidden="true"></span>
+            <span data-en="Resume">Currículo</span>
+            <svg class="btn-end" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <aside class="hero-aside reveal delay-1" aria-label="Status HUD" data-en-aria="Status HUD">
+        <h3 data-en="System Status">Status do Sistema</h3>
+        <div class="aside-row">
+          <span class="k" data-en="Availability">Disponibilidade</span>
+          <span class="v active-status" data-en="Open to opportunities">Aberto a oportunidades</span>
+        </div>
+        <div class="aside-row">
+          <span class="k" data-en="Current Focus">Foco Atual</span>
+          <span class="v">Backend Java · Spring</span>
+        </div>
+        <div class="aside-row">
+          <span class="k" data-en="Education">Formação</span>
+          <span class="v" data-en="Software Dev · Uninter">ADS · Uninter</span>
+        </div>
+        <div class="aside-row">
+          <span class="k" data-en="Location">Localização</span>
+          <span class="v" data-en="Divinópolis · Brazil">Divinópolis · MG</span>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       MANIFESTO · interlúdio entre Hero e Projeto (TEMA 1 cyber)
+       Dá tempo pro sol descer atrás dos prédios antes de virar
+       galáxia. Conteúdo curto, poético.
+       ======================================================== -->
+  <section id="manifesto" class="manifesto" data-theme="cosmos">
+    <div class="container manifesto-block">
+      <p class="section-mark reveal">
+        <span data-en="How I work">Como eu trabalho</span>
+      </p>
+      <h2 class="manifesto-quote reveal delay-1" data-en="I learn by <em>building</em>.<br>Every problem is a <em>lesson</em>.">
+        Aprendo <em>construindo</em>.<br>Cada problema é uma <em>aula</em>.
+      </h2>
+      <p class="manifesto-sub reveal delay-2" data-en="<strong>AI became my pair programmer</strong>, e-commerce was the first workshop and college is the formal base.">
+        <strong>A IA virou meu par de programação</strong>, o e-commerce foi a primeira
+        oficina e a ADS é a base formal.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       PROJETO DESTAQUE (TEMA 2: COSMOS / ASTRONOMIA)
+       ======================================================== -->
+  <section id="projeto" data-theme="cosmos">
+    <div class="container">
+      <div class="section-mark reveal">
+        <span data-en="01 · Projects">01 · Projetos</span>
+      </div>
+
+      <h2 class="section-title reveal" data-en="Building <em>systems</em> from scratch to deploy.">Construindo <em>sistemas</em> do zero ao deploy.</h2>
+      <p class="section-lede reveal delay-1" data-en="A few things I have built and maintain. Hover a card for the summary.">
+        Algumas coisas que construí e mantenho. Passe o mouse em cada card pra ver o resumo.
+      </p>
+
+      <div class="proj-grid">
+        <article class="proj-card reveal" tabindex="0">
+          <div class="proj-visual" aria-hidden="true">
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><path d="M30 46h20l6 8h26v46H30z"/><path d="M42 34h20l6 8h26v46H42" stroke-opacity=".45"/></g>
+              <text x="60" y="84" text-anchor="middle" font-family="monospace" font-size="10" fill="#0e9a28" fill-opacity=".75">MM0001X</text>
+              <path d="M112 77h74" stroke="#0e9a28" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+              <path d="M186 77l-8-5v10z" fill="#0e9a28"/>
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="200" y="30" width="72" height="90" rx="4"/></g>
+              <g fill="#ffffff" fill-opacity=".1"><rect x="208" y="40" width="56" height="16" rx="3"/><rect x="208" y="62" width="56" height="16" rx="3"/></g>
+              <rect x="208" y="84" width="56" height="16" rx="3" fill="#0e9a28" fill-opacity=".55"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h3>FolderFlow</h3>
+            <div class="tag-row"><span class="chip">Python</span><span class="chip">Tkinter</span><span class="chip">Trello API</span><span class="chip" data-en="Desktop">Desktop</span></div>
+            <p class="proj-desc" data-en="Desktop app that manages client art folders in a shared OneDrive: batch creation, automatic numbering with monthly reset, instant search and renaming that updates the Trello card in the same move. Distributed as an .exe with auto-update through GitHub Releases. <a href=&quot;https://github.com/italoBer/FolderFlow&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Code on GitHub ↗</a>">App desktop que gerencia as pastas de arte dos clientes num OneDrive compartilhado: criação em lote, numeração automática com reset mensal, busca instantânea e renomeio que já atualiza o card no Trello. Distribuído como .exe com atualização automática via GitHub Releases. <a href="https://github.com/italoBer/FolderFlow" target="_blank" rel="noopener">Código no GitHub ↗</a></p>
+          </div>
+        </article>
+
+        <article class="proj-card reveal delay-1" tabindex="0">
+          <div class="proj-visual" aria-hidden="true">
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="26" y="30" width="52" height="34" rx="4"/><rect x="26" y="86" width="52" height="34" rx="4"/><rect x="186" y="22" width="96" height="106" rx="4"/></g>
+              <g stroke="#ffffff" stroke-opacity=".35" stroke-width="1.2" fill="none"><path d="M194 38h18M224 38h18M254 38h18"/></g>
+              <text x="52" y="51" text-anchor="middle" font-family="monospace" font-size="11" fill="#0e9a28" fill-opacity=".7">ML</text>
+              <text x="52" y="107" text-anchor="middle" font-family="monospace" font-size="11" fill="#0e9a28" fill-opacity=".7">SHP</text>
+              <path d="M84 47h56M84 103h56M146 47v56M146 75h42" stroke="#0e9a28" stroke-width="2" stroke-dasharray="4 3" fill="none"/>
+              <circle cx="146" cy="75" r="3" fill="#0e9a28"/>
+              <g fill="#ffffff" fill-opacity=".12"><rect x="194" y="48" width="20" height="12" rx="2"/><rect x="194" y="66" width="20" height="12" rx="2"/><rect x="224" y="48" width="20" height="12" rx="2"/><rect x="224" y="66" width="20" height="12" rx="2"/><rect x="224" y="84" width="20" height="12" rx="2"/><rect x="254" y="66" width="20" height="12" rx="2"/></g>
+              <rect x="254" y="48" width="20" height="12" rx="2" fill="#0e9a28" fill-opacity=".6"/>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h3 data-en="Order Automation → Trello">Automação de Pedidos → Trello</h3>
+            <div class="tag-row"><span class="chip">JavaScript</span><span class="chip">Tampermonkey</span><span class="chip">Trello</span><span class="chip" data-en="Metrics">Métricas</span></div>
+            <p class="proj-desc" data-en="Cards created and moved automatically in Trello from Mercado Livre and Shopee orders, with customer metrics and a view of the coming days. Saves 40 to 50h/month and is still in production. <a href=&quot;https://github.com/italoBer/trello-automacoes&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Code on GitHub ↗</a>">Cards criados e movidos automaticamente no Trello a partir dos pedidos do Mercado Livre e Shopee, com métricas de clientes e visão dos próximos dias. Economiza 40–50h/mês e segue em produção. <a href="https://github.com/italoBer/trello-automacoes" target="_blank" rel="noopener">Código no GitHub ↗</a></p>
+          </div>
+        </article>
+
+        <article class="proj-card reveal delay-1" tabindex="0">
+          <div class="proj-visual" aria-hidden="true">
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <rect x="70" y="28" width="160" height="94" rx="3" stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" stroke-dasharray="6 4" fill="none"/>
+              <g stroke="#ffffff" stroke-opacity=".85" stroke-width="1.8"><path d="M70 136h160M70 131v10M230 131v10"/><path d="M244 28v94M239 28h10M239 122h10"/></g>
+              <text x="150" y="80" text-anchor="middle" font-family="monospace" font-size="13" fill="#0e9a28" fill-opacity=".65">&lt; 5s</text>
+              <g stroke="#ffffff" stroke-opacity=".7" stroke-width="1.6" fill="none"><path d="M86 44h60M86 56h40"/><circle cx="200" cy="98" r="14"/></g>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h3 data-en="Automatic Layout Generator">Gerador Automático de Croqui</h3>
+            <div class="tag-row"><span class="chip">JavaScript</span><span class="chip" data-en="Automation">Automação</span></div>
+            <p class="proj-desc" data-en="Generates the full order layout in under 5 seconds, against the ~5 minutes in CorelDRAW, across hundreds of orders a day. Nobody has to open Corel anymore. <a href=&quot;https://github.com/italoBer/trello-automacoes&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Code on GitHub ↗</a>">Gera o croqui completo do pedido em menos de 5 segundos, contra os ~5 minutos no CorelDRAW, em centenas de pedidos por dia. Ninguém mais precisa abrir o Corel. <a href="https://github.com/italoBer/trello-automacoes" target="_blank" rel="noopener">Código no GitHub ↗</a></p>
+          </div>
+        </article>
+
+        <article class="proj-card reveal delay-2" tabindex="0">
+          <div class="proj-visual" aria-hidden="true">
+            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="24" y="28" width="98" height="94" rx="4"/><path d="M24 48h98"/></g>
+              <g font-family="monospace" font-size="9" fill="#0e9a28" fill-opacity=".8"><text x="34" y="72">POST /tasks</text><text x="34" y="90">GET  /tasks</text><text x="34" y="108">PUT  /tasks</text></g>
+              <text x="160" y="66" text-anchor="middle" font-family="monospace" font-size="9" fill="#0e9a28" fill-opacity=".6">auth</text>
+              <path d="M130 77h56" stroke="#0e9a28" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
+              <path d="M186 77l-8-5v10z" fill="#0e9a28"/>
+              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><ellipse cx="238" cy="42" rx="32" ry="9"/><path d="M206 42v66c0 5 14.3 9 32 9s32-4 32-9V42"/><ellipse cx="238" cy="75" rx="32" ry="9" stroke-opacity=".4"/></g>
+            </svg>
+          </div>
+          <div class="proj-body">
+            <h3>Todo List API</h3>
+            <div class="tag-row"><span class="chip">Java 17</span><span class="chip">Spring Boot</span><span class="chip">JPA</span><span class="chip">Docker</span></div>
+            <p class="proj-desc" data-en="Task REST API in Java with Spring Boot: full CRUD, Basic Auth through a custom filter, BCrypt password hashing, business rule validation and global exception handling. Deployed on Render with Docker. Study project from the Rocketseat Java course. <a href=&quot;https://github.com/italoBer/Todo-List&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Code on GitHub ↗</a>">API REST de tarefas em Java com Spring Boot: CRUD completo, Basic Auth em filtro próprio, senhas com BCrypt, validações de regra de negócio e tratamento global de exceções. Deploy no Render com Docker. Projeto de estudo do curso de Java da Rocketseat. <a href="https://github.com/italoBer/Todo-List" target="_blank" rel="noopener">Código no GitHub ↗</a></p>
+          </div>
+        </article>
+      </div>
+
+      <div class="proj-more reveal">
+        <a href="projetos.html" class="btn btn-primary" data-warp>
+          <span data-en="See all projects">Ver todos os projetos</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h13m0 0l-5-5m5 5l-5 5"/></svg>
+        </a>
+        <span class="proj-more-note" data-en="Full archive, with the studies and experiments that did not fit here.">Arquivo completo, com os estudos e experimentos que não couberam aqui.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       STACK / FERRAMENTAS (TEMA 2: COSMOS)
+       ======================================================== -->
+  <section id="stack" data-theme="cosmos" style="min-height: auto;">
+    <div class="container">
+      <div class="section-mark reveal">
+        <span data-en="02 · Tech Constellation">02 · Constelação Tecnológica</span>
+      </div>
+
+      <h2 class="section-title reveal" data-en="Tools that orbit my <em>workflow</em>.">Ferramentas que orbitam meu <em>fluxo</em>.</h2>
+      <p class="section-lede reveal delay-1" data-en="Languages and tools I build with.">
+        Linguagens e ferramentas com as quais construo.
+      </p>
+
+      <div class="stack-grid">
+        <!-- Backend -->
+        <div class="stack-group reveal">
+          <h3>01 · Backend</h3>
+          <p class="group-meta" data-en="Data engineering, APIs and performance.">Engenharia de dados, APIs e performance.</p>
+          <ul class="stack-list">
+            <li class="stack-item">
+              <span class="stack-name">Java</span>
+              <span class="stack-note" data-en="Current focus · OOP">Foco atual · POO</span>
+            </li>
+            <li class="stack-item">
+              <span class="stack-name">Spring Boot</span>
+              <span class="stack-note" data-en="JPA · Hibernate (studying)">JPA · Hibernate (em estudo)</span>
+            </li>
+            <li class="stack-item">
+              <span class="stack-name">PostgreSQL / SQL</span>
+              <span class="stack-note" data-en="Data Modeling">Modelagem de Dados</span>
+            </li>
+            <li class="stack-item">
+              <span class="stack-name">Python</span>
+              <span class="stack-note" data-en="Scripting &amp; Automation">Scripting &amp; Automação</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Frontend -->
+        <div class="stack-group reveal delay-1">
+          <h3>02 · Frontend</h3>
+          <p class="group-meta" data-en="Building clean, responsive interfaces.">Construção de interfaces limpas e responsivas.</p>
+          <ul class="stack-list">
+            <li class="stack-item">
+              <span class="stack-name">HTML5 / CSS3</span>
+              <span class="stack-note" data-en="Semantic &amp; Flexbox/Grid">Semântico &amp; Flexbox/Grid</span>
+            </li>
+            <li class="stack-item">
+              <span class="stack-name">JavaScript</span>
+              <span class="stack-note" data-en="Modern ES6+">ES6+ Moderno</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- IA & Workflow -->
+        <div class="stack-group reveal delay-2">
+          <h3 data-en="03 · AI &amp; Tools">03 · IA &amp; Ferramentas</h3>
+          <p class="group-meta" data-en="Engineering acceleration and optimization.">Aceleração de engenharia e otimização.</p>
+          <ul class="stack-list">
+            <li class="stack-item">
+              <span class="stack-name">VS Code · IntelliJ · Eclipse</span>
+              <span class="stack-note">IDEs</span>
+            </li>
+            <li class="stack-item">
+              <span class="stack-name">Git &amp; GitHub</span>
+              <span class="stack-note" data-en="Version control">Versionamento</span>
+            </li>
+            <li class="stack-item">
+              <span class="stack-name">Claude Code · Antigravity</span>
+              <span class="stack-note" data-en="AI in the dev flow">IA no fluxo de dev</span>
+            </li>
+            <li class="stack-item">
+              <span class="stack-name">Tampermonkey</span>
+              <span class="stack-note" data-en="Automations in production">Automações em produção</span>
+            </li>
+            <li class="stack-item">
+              <span class="stack-name">Bling · Tray · ML · Shopee</span>
+              <span class="stack-note" data-en="E-commerce platforms">Plataformas e-commerce</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       LOGS DE PROBLEMAS SOLVIDOS (TEMA 2: COSMOS)
+       ======================================================== -->
+  <section id="problemas" data-theme="cosmos">
+    <div class="container">
+      <div class="section-mark reveal">
+        <span data-en="03 · Mission Log">03 · Registro de Missões</span>
+      </div>
+
+      <h2 class="section-title reveal" data-en="Real problems, practical <em>solutions</em>.">Problemas reais, <em>soluções</em> práticas.</h2>
+      <p class="section-lede reveal delay-1" data-en="Real e-commerce bottlenecks turned into automation.">
+        Gargalos reais de e-commerce convertidos em automação.
+      </p>
+
+      <div class="problems reveal">
+        <div class="mission-list" id="missionList">
+          <button type="button" class="mission-item on" data-mission="0">
+            <span class="m-num" data-en="01 · Automation">01 · Automação</span>
+            <span class="m-title" data-en="Manual order flow between platforms">Fluxo de pedidos manual entre plataformas</span>
+          </button>
+          <button type="button" class="mission-item" data-mission="1">
+            <span class="m-num" data-en="02 · Layouts">02 · Croqui</span>
+            <span class="m-title" data-en="Layouts built by hand in CorelDRAW">Croquis montados à mão no CorelDRAW</span>
+          </button>
+          <button type="button" class="mission-item" data-mission="2">
+            <span class="m-num" data-en="03 · Folders">03 · Pastas</span>
+            <span class="m-title" data-en="Thousands of art folders in a shared OneDrive">Milhares de pastas de arte num OneDrive compartilhado</span>
+          </button>
+          <button type="button" class="mission-item" data-mission="3">
+            <span class="m-num" data-en="04 · Migration">04 · Migração</span>
+            <span class="m-title" data-en="Migrating 945 products across platforms">Migração de 945 produtos entre plataformas</span>
+          </button>
+        </div>
+        <div class="mission-panels" id="missionPanels">
+        <!-- Caso 1 -->
+        <article class="problem on">
+          <div class="mission-metric" data-en="<b>40 to 50 h/month</b><span>of manual work eliminated</span>"><b>40 a 50 h/mês</b><span>de trabalho manual eliminadas</span></div>
+          <div class="problem-head">
+            <span class="problem-num" data-en="01 · AUTOMATION">01 · AUTOMAÇÃO</span>
+            <h3 class="problem-title" data-en="Manual Order Flow between Platforms">Fluxo de Pedidos Manual entre Plataformas</h3>
+          </div>
+          <div class="problem-grid">
+            <div class="problem-cell">
+              <h4 data-en="Original Bottleneck">Gargalo Original</h4>
+              <p data-en="Mercado Livre and Shopee orders were added and organized by hand in Trello, eating dozens of hours a month from the operation.">Pedidos do Mercado Livre e Shopee eram adicionados e organizados manualmente no Trello, consumindo dezenas de horas por mês da operação.</p>
+            </div>
+            <div class="problem-cell">
+              <h4 data-en="Automation Built">Automação Desenvolvida</h4>
+              <p data-en="JavaScript scripts (Tampermonkey) that create Trello cards with the order data, move cards between columns automatically and show operation metrics: how many customers there are, how many are left and the view of the coming days.">Scripts em JavaScript (Tampermonkey) que criam os cards no Trello com as informações do pedido, movem os cards automaticamente entre colunas e exibem métricas da operação: quantos clientes há, quantos faltam e a visão dos próximos dias.</p>
+            </div>
+            <div class="problem-cell resultado">
+              <h4 data-en="Practical Result">Resultado Prático</h4>
+              <p data-en="40 to 50 monthly hours of manual work eliminated, along with many other practical improvements for the whole team. The automations are still in production, with a recurring monthly maintenance contract.">De 40 a 50 horas mensais de trabalho manual eliminadas, entre diversas outras melhorias de praticidade para a equipe inteira. Automações seguem em produção, com contrato recorrente de manutenção mensal.</p>
+            </div>
+          </div>
+        </article>
+        <!-- Caso 2 -->
+        <article class="problem">
+          <div class="mission-metric" data-en="<b>5 min to 5 s</b><span>per layout generated</span>"><b>5 min para 5 s</b><span>por croqui gerado</span></div>
+          <div class="problem-head">
+            <span class="problem-num" data-en="02 · LAYOUTS">02 · CROQUI</span>
+            <h3 class="problem-title" data-en="Layouts Built by Hand in CorelDRAW">Croquis Montados à Mão no CorelDRAW</h3>
+          </div>
+          <div class="problem-grid">
+            <div class="problem-cell">
+              <h4 data-en="Original Bottleneck">Gargalo Original</h4>
+              <p data-en="Every order layout was built by hand in CorelDRAW, around 5 minutes per piece, with hundreds of orders a day going through the operation.">Cada croqui de pedido era montado manualmente no CorelDRAW, cerca de 5 minutos por peça, com centenas de pedidos por dia passando pela operação.</p>
+            </div>
+            <div class="problem-cell">
+              <h4 data-en="Automation Built">Automação Desenvolvida</h4>
+              <p data-en="A script that generates the complete layout automatically from the order data, with nobody having to open Corel.">Script que gera o croqui completo automaticamente a partir das informações do pedido, sem a pessoa precisar abrir o Corel.</p>
+            </div>
+            <div class="problem-cell resultado">
+              <h4 data-en="Practical Result">Resultado Prático</h4>
+              <p data-en="Layout ready in under 5 seconds, against the ~5 minutes before, freeing the team from repetitive work across hundreds of daily orders.">Croqui pronto em menos de 5 segundos, contra os ~5 minutos de antes, liberando a equipe do trabalho repetitivo em centenas de pedidos diários.</p>
+            </div>
+          </div>
+        </article>
+        <!-- Caso 3 -->
+        <article class="problem">
+          <div class="mission-metric" data-en="<b>zero duplicates</b><span>with several people creating at once</span>"><b>zero duplicidade</b><span>com várias pessoas criando ao mesmo tempo</span></div>
+          <div class="problem-head">
+            <span class="problem-num" data-en="03 · FOLDERS">03 · PASTAS</span>
+            <h3 class="problem-title" data-en="Thousands of Art Folders in a Shared OneDrive">Milhares de Pastas de Arte num OneDrive Compartilhado</h3>
+          </div>
+          <div class="problem-grid">
+            <div class="problem-cell">
+              <h4 data-en="Original Bottleneck">Gargalo Original</h4>
+              <p data-en="A print shop handling thousands of client folders a month inside a OneDrive shared by several employees: folders created by hand, repeated codes, and finding anything meant waiting for sync.">Gráfica com milhares de pastas de clientes por mês num OneDrive compartilhado por vários funcionários: pastas criadas à mão, códigos repetidos e busca dependendo da sincronização do OneDrive.</p>
+            </div>
+            <div class="problem-cell">
+              <h4 data-en="Solution Built">Solução Desenvolvida</h4>
+              <p data-en="FolderFlow, a Python + Tkinter desktop app: batch creation of numbered folders, codes in the MM0001X format with monthly reset, a local JSON index for instant search, OneDrive sync paused during heavy writes, and renaming that also updates the Trello card and moves it to the approval list. Shipped as an .exe with auto-update through GitHub Releases.">FolderFlow, app desktop em Python + Tkinter: criação em lote de pastas numeradas, código no formato MM0001X com reset mensal, índice local em JSON para busca instantânea, pausa do OneDrive durante a escrita em massa e renomeio que já atualiza o card no Trello e move para a lista de aprovação. Entregue como .exe com atualização automática via GitHub Releases.</p>
+            </div>
+            <div class="problem-cell resultado">
+              <h4 data-en="Practical Result">Resultado Prático</h4>
+              <p data-en="Dozens of folders created in one action with no repeated codes, any folder found in seconds by code or client name, and Trello kept in sync with no extra step. Monthly reports show volume per person and folders left empty.">Dezenas de pastas criadas numa ação só, sem código repetido, qualquer pasta encontrada em segundos por código ou nome do cliente e o Trello em dia sem passo extra. Relatório mensal mostra volume por responsável e pastas que ficaram vazias.</p>
+            </div>
+          </div>
+        </article>
+        <!-- Caso 4 -->
+        <article class="problem">
+          <div class="mission-metric" data-en="<b>945 products</b><span>cataloged and migrated</span>"><b>945 produtos</b><span>catalogados e migrados</span></div>
+          <div class="problem-head">
+            <span class="problem-num" data-en="04 · MIGRATION">04 · MIGRAÇÃO</span>
+            <h3 class="problem-title" data-en="Migrating 945 Products across Platforms">Migração de 945 Produtos entre Plataformas</h3>
+          </div>
+          <div class="problem-grid">
+            <div class="problem-cell">
+              <h4 data-en="Original Bottleneck">Gargalo Original</h4>
+              <p data-en="A heavy auto parts catalog locked inside Mercado Livre, with no structure to move to the client's own Tray store, and inconsistent categories and shipping weights.">Catálogo de autopeças pesadas preso ao Mercado Livre, sem estrutura para migrar para loja própria na Tray, com categorias e pesos de frete inconsistentes.</p>
+            </div>
+            <div class="problem-cell">
+              <h4 data-en="Solution Built">Solução Desenvolvida</h4>
+              <p data-en="Cataloging and migration of ~945 products between Mercado Livre and Tray, with a custom 12-category structure and weight estimates for shipping calculation.">Catalogação e migração de ~945 produtos entre Mercado Livre e Tray, com estrutura própria de 12 categorias e estimativa de peso para cálculo de frete.</p>
+            </div>
+            <div class="problem-cell resultado">
+              <h4 data-en="Practical Result">Resultado Prático</h4>
+              <p data-en="The full catalog running on Tray with shipping calculated correctly, plus DNS and corporate email configured for the client.">Catálogo completo operando na Tray com frete calculado corretamente, além de DNS e e-mail corporativo configurados para o cliente.</p>
+            </div>
+          </div>
+        </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       ATUALMENTE APRENDENDO (TEMA 2: COSMOS · transição)
+       ======================================================== -->
+  <section id="aprendendo" data-theme="cosmos" style="min-height: auto;">
+    <div class="container">
+      <div class="section-mark reveal">
+        <span data-en="04 · Actively Studying">04 · Em Estudo Ativo</span>
+      </div>
+
+      <h2 class="section-title reveal" data-en="Where I am <em>growing</em> now.">Onde estou <em>crescendo</em> agora.</h2>
+      <p class="section-lede reveal delay-1" data-en="No progress bars: learning is not a percentage.">
+        Sem barras de progresso: aprendizado não é porcentagem.
+      </p>
+
+      <div class="learn-grid">
+        <div class="learn-card reveal">
+          <p class="learn-meta" data-en="Languages in Focus">Linguagens em Foco</p>
+          <h3>Java &amp; SQL</h3>
+          <p data-en="Going deep into real object orientation (classes, inheritance, interfaces, collections) together with SQL and relational modeling. A solid base for robust back-end work and for what college asks.">
+            Aprofundando orientação a objetos de verdade (classes, herança,
+            interfaces, coleções) junto com SQL e modelagem relacional.
+            Base sólida pra back-end robusto e pro que a ADS pede.
+          </p>
+          <div class="learn-tags">
+            <span class="chip">Java</span>
+            <span class="chip" data-en="OOP">POO</span>
+            <span class="chip">SQL</span>
+            <span class="chip" data-en="Relational modeling">Modelagem relacional</span>
+          </div>
+        </div>
+
+        <div class="learn-card reveal delay-1">
+          <p class="learn-meta" data-en="Backend &amp; Architecture">Backend &amp; Arquitetura</p>
+          <h3 data-en="Robust APIs">APIs robustas</h3>
+          <p data-en="Structuring routes, validation, real authentication, error handling and layered organization. Moving from &quot;it works&quot; to &quot;it holds growth&quot;.">
+            Estruturando rotas, validação, autenticação real, tratamento de erros e
+            organização por camadas. Saindo do "funciona" para o "segura crescer".
+          </p>
+          <div class="learn-tags">
+            <span class="chip">Spring Boot</span>
+            <span class="chip">JPA / Hibernate</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">REST</span>
+          </div>
+        </div>
+
+        <div class="learn-card reveal delay-2">
+          <p class="learn-meta" data-en="Applied AI">IA Aplicada</p>
+          <h3 data-en="LLMs as a tool">LLMs como ferramenta</h3>
+          <p data-en="Serious prompt engineering, model integration through APIs, basic RAG and knowing when <em>not</em> to use AI. The difference between a tool and an ornament.">
+            Prompt engineering sério, integração de modelos via API, RAG básico
+            e quando <em>não</em> usar IA. A diferença entre ferramenta e enfeite.
+          </p>
+          <div class="learn-tags">
+            <span class="chip">OpenAI API</span>
+            <span class="chip">Claude API</span>
+            <span class="chip">Prompt design</span>
+          </div>
+        </div>
+
+        <div class="learn-card reveal delay-3">
+          <p class="learn-meta" data-en="DevOps Basics">DevOps Básico</p>
+          <h3 data-en="Deploy &amp; cloud">Deploy &amp; nuvem</h3>
+          <p data-en="Taking a project from localhost to the world: server configuration, environment variables, simple CI/CD, essential monitoring.">
+            Levar projeto do localhost para o mundo: configuração de servidor,
+            variáveis de ambiente, CI/CD simples, monitoramento essencial.
+          </p>
+          <div class="learn-tags">
+            <span class="chip">Vercel</span>
+            <span class="chip">Railway</span>
+            <span class="chip">Git workflow</span>
+            <span class="chip">.env</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SOBRE MIM & TRAJETÓRIA (TEMA 3: CLÁSSICO / GREGO / FILOSÓFICO)
+       ======================================================== -->
+  <section id="sobre" data-theme="greece">
+    <img src="uploads/Aristoteles.png" alt="" aria-hidden="true" class="philosopher reveal" />
+    <div class="container">
+      <div class="section-mark reveal">
+        <span data-en="05 · Philosophy &amp; Path">05 · Filosofia &amp; Trajetória</span>
+      </div>
+
+      <h2 class="section-title reveal" data-en="The art of <em>simplifying</em> the complex.">A arte de <em>simplificar</em> o complexo.</h2>
+
+      <div class="about">
+        <div class="about-text reveal delay-1">
+          <p data-en="My technical path started in practice, inside the rush of an <strong>e-commerce</strong> operation. That is where I felt the real pain of operational bottlenecks.">
+            Minha jornada técnica começou na prática, no dinamismo de uma operação de <strong>e-commerce</strong>. Lá, entendi de perto a dor real de gargalos operacionais.
+          </p>
+
+          <div class="quote" data-en="&quot;I automated 40 to 50 monthly hours of manual work, so there would be time left for what actually requires thinking.&quot;">
+            "Automatizei de 40 a 50 horas mensais de trabalho manual, pra sobrar tempo pro que exige pensar."
+          </div>
+
+          <p data-en="Generative AI became my <strong>development co-pilot</strong>: with JavaScript in the browser and scripts, I started automating the team's daily bureaucracy.">
+            A IA generativa virou meu <strong>co-piloto de desenvolvimento</strong>: com JavaScript no navegador e scripts, passei a automatizar a burocracia do dia a dia do time.
+          </p>
+          <p data-en="Today I study <strong>Systems Analysis and Development at Uninter</strong> to solidify my software engineering foundations and specialize in <strong>backend development</strong>, with enough front-end to get by when needed. I aim for well designed code that supports healthy growth and stays easy to maintain.">
+            Hoje, curso <strong>Análise e Desenvolvimento de Sistemas (ADS) na Uninter</strong> para solidificar meus pilares em engenharia de software e me especializar em <strong>desenvolvimento backend</strong> — com front-end suficiente pra me virar quando preciso. Busco criar código bem desenhado, que suporte crescimento saudável e de fácil manutenção.
+          </p>
+        </div>
+
+        <div class="timeline-container reveal delay-2">
+          <ul class="timeline">
+            <li>
+              <div class="year" data-en="Since Apr 2026">Desde Abr 2026</div>
+              <h4 data-en="Technical Support and Automation · Freelance">Suporte Técnico e Automação · Autônomo</h4>
+              <p data-en="Migration of 945 products between Mercado Livre and Tray, corporate DNS/email and recurring maintenance of automations in production.">Migração de 945 produtos entre Mercado Livre e Tray, DNS/e-mail corporativo e manutenção recorrente de automações em produção.</p>
+            </li>
+            <li>
+              <div class="year" data-en="Mar 2026">Mar 2026</div>
+              <h4 data-en="Systems Analysis &amp; Development · Uninter">ADS · Uninter</h4>
+              <p data-en="Start of the degree. Logic, OOP, relational databases, UML and web development.">Início da graduação. Lógica, POO, banco de dados relacional, UML e desenvolvimento web.</p>
+            </li>
+            <li>
+              <div class="year" data-en="2024 to 2026">2024 a 2026</div>
+              <h4>Flag Brasil E-commerce</h4>
+              <p data-en="First level technical support and customer service, invoicing in Bling, art created in CorelDRAW and automations in JavaScript.">Suporte técnico de 1º nível e atendimento ao cliente, NF-e no Bling, criação de artes no CorelDRAW e automações em JavaScript.</p>
+            </li>
+            <li>
+              <div class="year">2023</div>
+              <h4 data-en="IT Technician · CECON">Técnico em Informática · CECON</h4>
+              <p data-en="Technical degree completed in programming, networks and computer maintenance.">Formação técnica concluída em programação, redes e manutenção de computadores.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       CONTATO (TEMA 3: CLÁSSICO / GREGO)
+       ======================================================== -->
+  <section id="contato" data-theme="greece">
+    <div class="container">
+      <div class="section-mark reveal">
+        <span data-en="06 · Dialogue Channel">06 · Canal de Diálogo</span>
+      </div>
+
+      <div class="contact">
+        <div class="contact-text reveal">
+          <h2 class="section-title" data-en="Build or <em>talk</em>?">Construir ou <em>conversar</em>?</h2>
+          <p class="section-lede" data-en="Opportunities, technology or an automation idea? Get in touch.">
+            Oportunidades, tecnologia ou uma ideia de automação? Me chama.
+          </p>
+
+          <a href="https://github.com/italoBer" target="_blank" rel="noopener" class="ctc-row">
+            <span class="ctc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2C6.5 2 2 6.5 2 12c0 4.4 2.9 8.2 6.8 9.5.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.4-3.4-1.4-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5 0-1.1.4-2 1-2.7 0-.3-.4-1.3.1-2.7 0 0 .8-.3 2.7 1 .8-.2 1.7-.3 2.5-.3.8 0 1.7.1 2.5.3 1.9-1.3 2.7-1 2.7-1 .5 1.4.2 2.4.1 2.7.6.7 1 1.6 1 2.7 0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.7c0 .3.2.6.7.5C19.1 20.2 22 16.4 22 12c0-5.5-4.5-10-10-10z"/></svg>
+            </span>
+            <div>
+              <div class="label">GitHub</div>
+              <div class="value">github.com/italoBer</div>
+            </div>
+            <span class="ctc-arrow">↗</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/italoBer" target="_blank" rel="noopener" class="ctc-row">
+            <span class="ctc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v8M8 6v.5M12 18v-5M16 18v-3.5c0-1-.7-1.5-1.5-1.5S13 13.5 13 14.5"/></svg>
+            </span>
+            <div>
+              <div class="label">LinkedIn</div>
+              <div class="value">linkedin.com/in/italoBer</div>
+            </div>
+            <span class="ctc-arrow">↗</span>
+          </a>
+
+          <a href="#" class="ctc-row" id="mailRow" data-u="italoubernardo123" data-d="gmail.com">
+            <span class="ctc-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg>
+            </span>
+            <div>
+              <div class="label">Email</div>
+              <div class="value" data-en="Open your email client">Abrir seu cliente de e-mail</div>
+            </div>
+            <span class="ctc-arrow">↗</span>
+          </a>
+        </div>
+
+        <form class="form reveal delay-1" id="contactForm" novalidate data-web3forms-key="7e6ba933-3ef3-42cc-b519-208f2917b40e">
+          <div class="form-field">
+            <label for="f-name" data-en="Your Name">Seu Nome</label>
+            <input type="text" id="f-name" name="name" required autocomplete="name" placeholder="Como devo lhe chamar" data-en-ph="What should I call you" />
+          </div>
+          <div class="form-field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" name="email" required autocomplete="email" placeholder="nome@provedor.com" data-en-ph="name@provider.com" />
+          </div>
+          <div class="form-field">
+            <label for="f-msg" data-en="Message">Mensagem</label>
+            <textarea id="f-msg" name="message" required placeholder="Escreva aqui os detalhes da proposta ou projeto..." data-en-ph="Write the details of the proposal or project here..."></textarea>
+          </div>
+          <button type="submit" class="form-submit" data-en="Send Message">Enviar Mensagem</button>
+          <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       FOOTER
+       ======================================================== -->
+  <footer>
+    <div class="container footer-inner">
+      <a href="#hero" class="top-link">
+        <span data-en="Go back">Retroceder</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M19 19L6 6M6 6h9M6 6v9"/></svg>
+      </a>
+    </div>
+  </footer>
+
+  <script src="i18n.js"></script>
+  <!-- =========================================================
+       JS — INTERAÇÕES DE ROLAGEM, MENU MOBILE E FORM
+       ========================================================= -->
+  <script>
+    (function () {
+      /* =========================================================
+         CAMPO DE ESTRELAS — gerado proceduralmente com PRNG
+         (Linear Congruential Generator) com seed fixa, pra que
+         o campo seja IDÊNTICO em todo reload.
+         ========================================================= */
+      // Menos estrelas em telas pequenas: mesmo céu, metade do custo
+      const STAR_COUNT = window.innerWidth <= 900 ? 85 : 160;
+      let seed = 12345;
+      function rand() {
+        seed = (seed * 9301 + 49297) % 233280;
+        return seed / 233280;
+      }
+
+      const starfield = document.getElementById('starfield');
+      const stars = [];
+
+      if (starfield) {
+        for (let i = 0; i < STAR_COUNT; i++) {
+          const star = document.createElement('div');
+          star.className = 'star';
+
+          // Tamanho: 90% pequenas (1px), 5% médias (1.4px), 5% maiores (1.8px)
+          const sizeRoll = rand();
+          const size = sizeRoll < 0.9 ? 1 : sizeRoll < 0.95 ? 1.4 : 1.8;
+          star.style.width  = size + 'px';
+          star.style.height = size + 'px';
+
+          // Posição em %
+          star.style.left = (Math.pow(rand(), 1.45) * 100).toFixed(2) + '%'; // mais densas à esquerda
+          star.style.top  = (rand() * 100).toFixed(2) + '%';
+
+          // Pico de opacidade entre 0.18 e 0.53 (cada estrela com seu brilho)
+          const opPeak = 0.22 + rand() * 0.42;
+          star.style.setProperty('--op-peak', opPeak.toFixed(3));
+
+          // Twinkle dessincronizado: duração 3-8s, delay aleatório
+          const dur = 3 + rand() * 5;
+          const delay = -rand() * dur;
+          star.style.setProperty('--tw-dur',   dur.toFixed(2) + 's');
+          star.style.setProperty('--tw-delay', delay.toFixed(2) + 's');
+
+          // Parallax: cada estrela tem seu fator próprio (0.15 a 0.50)
+          const parallax = 0.15 + rand() * 0.35;
+          stars.push({ el: star, parallax: parallax });
+
+          starfield.appendChild(star);
+        }
+      }
+
+      // O parallax das estrelas é desenhado dentro do loop único
+      // de scroll (mais abaixo), usando a posição JÁ suavizada.
+      function updateParallax(scrollPct) {
+        stars.forEach(s => {
+          const offset = scrollPct * 40 * s.parallax;
+          s.el.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+        });
+      }
+
+      // Menu de Navegação - Mudança ao rolar
+      const nav = document.getElementById('nav');
+
+      // Barra de progresso lateral
+      const progress     = document.getElementById('scrollProgress');
+      const progressFill = document.getElementById('scrollProgressFill');
+      const progressDot  = document.getElementById('scrollProgressDot');
+
+      // Planetas do cosmos — IDs dos circles que vão orbitar
+      const planets = [
+        { id: 'cosmosPlanet1', rx: 380, ry: 100, speedMult: 1.0, startAngle:  10 },
+        { id: 'cosmosPlanet2', rx: 290, ry:  78, speedMult: 1.6, startAngle: 140 },
+        { id: 'cosmosPlanet3', rx: 210, ry:  56, speedMult: 2.3, startAngle: 220 },
+        { id: 'cosmosPlanet4', rx: 140, ry:  38, speedMult: 3.2, startAngle:  60 }
+      ].map(p => ({ ...p, el: document.getElementById(p.id) })).filter(p => p.el);
+
+      /* =========================================================
+         SOL CONTÍNUO — atravessa as 3 eras como o mesmo astro.
+         Trajetória LINEAR sobre o scroll total: o sol descende
+         constantemente, e na transição entre cenas ele aparece
+         exatamente onde estava (mesmo astro, eras diferentes).
+         ========================================================= */
+      const sunGroups = [
+        { el: document.getElementById('cosmosSunGroup'), ox: 440, oy: 470 },
+        { el: document.getElementById('greekSunGroup'),  ox: 500, oy: 180 }
+      ].filter(g => g.el);
+
+      const SUN_Y_START =  300;  // posição no topo da página (scroll 0%)
+      const SUN_Y_END   =  720;  // posição no fim da página (scroll 100%)
+      const SUN_X_TARGET = 500;  // x constante — centralizado
+
+      function updateSunTrajectory(scrollPct) {
+        const targetY = SUN_Y_START + scrollPct * (SUN_Y_END - SUN_Y_START);
+        sunGroups.forEach(g => {
+          const dx = SUN_X_TARGET - g.ox;
+          const dy = targetY      - g.oy;
+          g.el.setAttribute('transform', `translate(${dx.toFixed(1)} ${dy.toFixed(1)})`);
+        });
+      }
+
+      /* =========================================================
+         CROSS-FADE CONTÍNUO DAS CENAS DE FUNDO
+         Em vez de trocar a cena num único ponto (o "pop"), cada
+         cena tem um peso que sobe/desce suavemente conforme o
+         scroll cruza a fronteira entre as eras. O sol (já alinhado
+         em x=500 pelas 3 cenas) fica sobreposto e a cor passa
+         vermelho → branco → dourado, virando um astro só.
+         ========================================================= */
+      const layerCosmos = document.querySelector('.layer-cosmos');
+      const layerGreece = document.querySelector('.layer-greece');
+      [layerCosmos, layerGreece].forEach(l => {
+        if (!l) return;
+        l.style.transition = 'none';                 // JS dirige a opacidade por frame
+        l.style.transform  = 'scale(1) translate3d(0,0,0)';
+        l.style.opacity    = '0';
+      });
+      const smoothstep = (a, b, x) => {
+        const t = Math.max(0, Math.min(1, (x - a) / (b - a)));
+        return t * t * (3 - 2 * t);
+      };
+      const temple   = document.getElementById('templeGroup');
+      const atmoFar  = document.getElementById('atmoCloudsFar');
+      const atmoNear = document.getElementById('atmoCloudsNear');
+      const atmoRims = document.querySelector('#atmoCloudsNear + g');
+      const atmoGlow = document.getElementById('atmoGlow');
+      const secProjeto = document.getElementById('projeto');
+      const secSobre   = document.getElementById('sobre');
+      function sceneBoundaries() {
+        const vh = window.innerHeight;
+        // A transição acontece ANTES da seção nova entrar: começa ~0.7 tela
+        // acima da borda e termina ~0.05 tela antes dela. Assim o conteúdo de
+        // cada seção é lido com a cena PURA — sem a galáxia (nem a cidade)
+        // vazando por cima do texto.
+        return {
+          bCosmos: secProjeto ? secProjeto.offsetTop : 0,
+          bGreece: secSobre   ? secSobre.offsetTop   : 0,
+          lead: vh * 0.7,
+          end:  vh * 0.05
+        };
+      }
+      let sceneB = sceneBoundaries();
+      function updateScenes(y) {
+        const t2 = smoothstep(sceneB.bGreece - sceneB.lead, sceneB.bGreece - sceneB.end, y);
+        const e = 1 - t2;
+        if (layerCosmos) {
+          layerCosmos.style.opacity = e.toFixed(3);
+          // saindo do espaço: estrelas "passam" pela câmera
+          layerCosmos.style.transform = 'scale(' + (1 + t2 * 0.3).toFixed(3) + ')';
+        }
+        if (layerGreece) {
+          layerGreece.style.opacity = t2.toFixed(3);
+          // entrando na atmosfera: a cena aproxima e assenta
+          layerGreece.style.transform = 'scale(' + (1 + e * 0.22).toFixed(3) + ')';
+        }
+        // camadas em paralaxe: nuvens descem de cima, templo sobe de baixo
+        if (atmoFar)   atmoFar.setAttribute('transform',   'translate(0 ' + (-90 * e).toFixed(1) + ')');
+        if (atmoNear)  atmoNear.setAttribute('transform',  'translate(0 ' + (-170 * e).toFixed(1) + ')');
+        if (atmoRims)  atmoRims.setAttribute('transform',  'translate(0 ' + (-120 * e).toFixed(1) + ')');
+        if (temple)    temple.setAttribute('transform',    'translate(0 ' + (200 * e).toFixed(1) + ')');
+        // clarão quente no meio da descida (queima de reentrada, sutil)
+        if (atmoGlow)  atmoGlow.style.opacity = (Math.sin(t2 * Math.PI) * 0.85).toFixed(3);
+      }
+
+
+      // Calcula posição (x,y) num ponto da elipse inclinada -18°
+      const tilt = -18 * Math.PI / 180;
+      const cosT = Math.cos(tilt);
+      const sinT = Math.sin(tilt);
+      const cx = 440, cy = 470;
+      function placePlanetOnOrbit(planet, angleDeg) {
+        const a = angleDeg * Math.PI / 180;
+        const xLocal = planet.rx * Math.cos(a);
+        const yLocal = planet.ry * Math.sin(a);
+        const x = cx + xLocal * cosT - yLocal * sinT;
+        const y = cy + xLocal * sinT + yLocal * cosT;
+        planet.el.setAttribute('cx', x.toFixed(1));
+        planet.el.setAttribute('cy', y.toFixed(1));
+      }
+
+      /* =========================================================
+         LOOP ÚNICO DE SCROLL
+         Antes: três listeners de scroll escrevendo estilo direto
+         dentro do evento — o navegador recalculava layout no meio
+         da rolagem e a galáxia "tremia".
+         Agora: o evento só ANOTA a posição; um único
+         requestAnimationFrame desenha tudo, uma vez por frame.
+
+         Além disso a cena de fundo não segue o scroll cru, e sim
+         uma posição interpolada (lerp) que persegue a real. Isso
+         dá o arrasto suave de câmera — o sol e os planetas param
+         de "grudar" no dedo e passam a deslizar.
+         ========================================================= */
+      let targetY = window.scrollY;   // posição real
+      let smoothY = targetY;          // posição da câmera (persegue a real)
+      let rafId   = null;
+
+      function renderFrame() {
+        const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+
+        // Interpolação da câmera
+        smoothY += (targetY - smoothY) * 0.14;
+        if (Math.abs(targetY - smoothY) < 0.25) smoothY = targetY;
+
+        /* --- Segue o dedo (sem atraso): nav e barra de progresso --- */
+        const rawPct = Math.min(1, Math.max(0, targetY / max));
+
+        // Véu do header entra progressivamente nos primeiros 160px
+        const veil = Math.min(1, Math.max(0, targetY / 160));
+        nav.style.setProperty('--nav-veil', veil.toFixed(3));
+        nav.classList.toggle('scrolled', targetY > 40);
+
+        const pct = rawPct * 100;
+        progressFill.style.height = pct.toFixed(2) + '%';
+        progressDot.style.top     = pct.toFixed(2) + '%';
+        progress.classList.toggle('active',   pct > 0.5);
+        progress.classList.toggle('complete', pct > 98);
+
+        /* --- Segue a câmera suavizada: tudo que é cenário --- */
+        const camPct = Math.min(1, Math.max(0, smoothY / max));
+        planets.forEach(p => {
+          placePlanetOnOrbit(p, p.startAngle + camPct * 360 * p.speedMult);
+        });
+        updateSunTrajectory(camPct);
+        updateScenes(smoothY);
+        updateParallax(camPct);
+
+        // Continua desenhando enquanto a câmera não alcançou o scroll
+        if (smoothY !== targetY) {
+          rafId = requestAnimationFrame(renderFrame);
+        } else {
+          rafId = null;
+        }
+      }
+
+      function requestFrame() {
+        if (rafId === null) rafId = requestAnimationFrame(renderFrame);
+      }
+
+      window.addEventListener('scroll', () => {
+        targetY = window.scrollY;
+        requestFrame();
+      }, { passive: true });
+
+      window.addEventListener('resize', () => {
+        sceneB  = sceneBoundaries();
+        targetY = window.scrollY;
+        smoothY = targetY;          // sem arrasto ao redimensionar
+        requestFrame();
+      }, { passive: true });
+
+      renderFrame();
+
+      /* =========================================================
+         SCROLLBAR INTERATIVO — clique/arraste na barra
+         Implementação SUAVE com 3 truques:
+         1) Pointer Events + setPointerCapture (unifica mouse+touch
+            e mantém eventos vindo pro nosso elemento mesmo se o
+            cursor sair dele — sem perder o drag);
+         2) Desabilita scroll-behavior:smooth do CSS durante drag —
+            evita que cada scrollTo brigue com a anim. suave anterior
+            (essa briga é a causa da sensação de "travado");
+         3) Throttle via requestAnimationFrame — só atualiza posição
+            uma vez por frame, mesmo recebendo dezenas de mousemove.
+         ========================================================= */
+      const html = document.documentElement;
+      let dragging = false;
+      let pendingDragY = null;
+      let dragRafScheduled = false;
+
+      const getPctFromY = (clientY) => {
+        const rect = progress.getBoundingClientRect();
+        return Math.max(0, Math.min(1, (clientY - rect.top) / rect.height));
+      };
+
+      const scrollToPct = (pct) => {
+        const max = html.scrollHeight - window.innerHeight;
+        window.scrollTo(0, pct * max);
+      };
+
+      const flushDragScroll = () => {
+        if (dragging && pendingDragY !== null) {
+          scrollToPct(getPctFromY(pendingDragY));
+        }
+        dragRafScheduled = false;
+      };
+
+      const startDrag = (clientY, pointerId) => {
+        dragging = true;
+        // Desliga scroll suave do CSS durante interação (sem brigas)
+        html.style.scrollBehavior = 'auto';
+        progress.classList.add('dragging');
+        // Captura o ponteiro: TODOS pointermove/up vêm pra cá daqui
+        // pra frente, mesmo se o cursor sair do elemento
+        if (pointerId !== undefined && progress.setPointerCapture) {
+          try { progress.setPointerCapture(pointerId); } catch (e) {}
+        }
+        scrollToPct(getPctFromY(clientY));
+      };
+
+      const endDrag = () => {
+        if (!dragging) return;
+        dragging = false;
+        pendingDragY = null;
+        // Restaura scroll suave pra nav/anchors voltarem a animar
+        html.style.scrollBehavior = 'smooth';
+        progress.classList.remove('dragging');
+      };
+
+      progress.addEventListener('pointerdown', (e) => {
+        // Só botão esquerdo do mouse (ou qualquer toque)
+        if (e.pointerType === 'mouse' && e.button !== 0) return;
+        e.preventDefault();
+        startDrag(e.clientY, e.pointerId);
+      });
+
+      progress.addEventListener('pointermove', (e) => {
+        if (!dragging) return;
+        pendingDragY = e.clientY;
+        // Throttle: agenda no próximo frame se ainda não houver agendamento
+        if (!dragRafScheduled) {
+          dragRafScheduled = true;
+          requestAnimationFrame(flushDragScroll);
+        }
+      });
+
+      progress.addEventListener('pointerup',          endDrag);
+      progress.addEventListener('pointercancel',      endDrag);
+      progress.addEventListener('lostpointercapture', endDrag);
+      // Safety net: se algo escapar do capture, ainda finaliza
+      window.addEventListener('pointerup', endDrag);
+
+      // Menu Mobile
+      const navToggle = document.getElementById('navToggle');
+      const navLinks = document.getElementById('navLinks');
+      navToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+      // Fecha o menu ao escolher uma seção ou apertar Esc
+      navLinks.addEventListener('click', e => {
+        if (e.target.closest('a')) navLinks.classList.remove('open');
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') navLinks.classList.remove('open');
+      });
+      navLinks.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => navLinks.classList.remove('open'));
+      });
+
+      // Animação de Reveal nos elementos
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            revealObserver.unobserve(e.target);
+          }
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+
+      document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+      // OBSERVER DE MUDANÇA DINÂMICA DE TEMAS COM ROLAGEM
+      const themeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const theme = entry.target.getAttribute('data-theme');
+            if (theme) {
+              document.body.setAttribute('data-theme', theme);
+            }
+          }
+        });
+      }, {
+        root: null,
+        rootMargin: '-45% 0px -45% 0px', // Aciona quando a seção está no centro do viewport
+        threshold: 0
+      });
+
+      document.querySelectorAll('section, header').forEach(section => {
+        themeObserver.observe(section);
+      });
+
+      // Validação básica do Formulário
+      const form = document.getElementById('contactForm');
+      const status = document.getElementById('formStatus');
+      const T = (pt, en) => (window.I18N ? window.I18N.t(pt, en) : pt);
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        const name = (data.get('name') || '').toString().trim();
+        const email = (data.get('email') || '').toString().trim();
+        const msg = (data.get('message') || '').toString().trim();
+
+        if (!name || !email || !msg) {
+          status.textContent = T('⚠ Favor preencher todos os campos do formulário.', '⚠ Please fill in every field of the form.');
+          status.style.color = '#ff6b6b';
+          return;
+        }
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          status.textContent = T('⚠ Por favor, utilize um e-mail válido.', '⚠ Please use a valid email address.');
+          status.style.color = '#ff6b6b';
+          return;
+        }
+
+        const key = (form.dataset.web3formsKey || '').trim();
+        if (!key || key === 'COLE_SUA_CHAVE_AQUI') {
+          // Sem chave configurada: cai pro cliente de e-mail do visitante
+          const to = 'italoubernardo123' + '@' + 'gmail.com';
+          window.location.href = 'mailto:' + to
+            + '?subject=' + encodeURIComponent(T('Contato pelo portfólio: ', 'Contact from the portfolio: ') + name)
+            + '&body=' + encodeURIComponent(msg + '\n\n' + name + ' (' + email + ')');
+          status.textContent = T('Abrindo seu cliente de e-mail…', 'Opening your email client…');
+          status.style.color = 'var(--accent-label)';
+          return;
+        }
+
+        const btn = form.querySelector('.form-submit');
+        btn.disabled = true;
+        const original = btn.textContent;
+        btn.textContent = T('Enviando…', 'Sending…');
+        status.textContent = '';
+
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: key,
+            subject: 'Contato pelo portfólio: ' + name,
+            from_name: name,
+            name: name, email: email, message: msg
+          })
+        }).then(r => r.json()).then(res => {
+          if (res.success) {
+            status.textContent = T('✓ Mensagem enviada! Respondo em breve.', '✓ Message sent! I will reply soon.');
+            status.style.color = 'var(--accent-label)';
+            form.reset();
+          } else {
+            throw new Error(res.message || 'falha');
+          }
+        }).catch(() => {
+          status.textContent = T('⚠ Não consegui enviar. Me chame pelo LinkedIn ou e-mail.', '⚠ Could not send it. Reach me on LinkedIn or by email.');
+          status.style.color = '#ff6b6b';
+        }).finally(() => {
+          btn.disabled = false;
+          btn.textContent = original;
+        });
+      });
+
+      /* Indicador de seção ativa no menu */
+      (function navIndicator() {
+        const marker = document.getElementById('navMarker');
+        if (!marker) return;
+        const links = Array.from(document.querySelectorAll('.nav-links a'));
+        // cada link cobre a si mesmo e as seções que pertencem ao mesmo bloco
+        const groups = {
+          '#hero': ['hero', 'manifesto'],
+          '#projeto': ['projeto'],
+          '#stack': ['stack', 'problemas'],
+          '#aprendendo': ['aprendendo'],
+          '#sobre': ['sobre'],
+          '#contato': ['contato']
+        };
+        let currentLink = null;
+
+        function place(link) {
+          if (link === currentLink) return;
+          currentLink = link;
+          links.forEach(a => a.classList.toggle('current', a === link));
+          if (!link) { marker.classList.remove('on'); return; }
+          const li = link.parentElement;
+          marker.style.width = li.offsetWidth + 'px';
+          marker.style.transform = 'translate3d(' + li.offsetLeft + 'px,0,0)';
+          marker.classList.add('on');
+        }
+
+        function sync() {
+          const probe = window.scrollY + window.innerHeight * 0.35;
+          let active = null;
+          for (const [hash, ids] of Object.entries(groups)) {
+            for (const id of ids) {
+              const el = document.getElementById(id);
+              if (!el) continue;
+              const top = el.offsetTop;
+              if (probe >= top && probe < top + el.offsetHeight) active = hash;
+            }
+          }
+          place(active ? links.find(a => a.getAttribute('href') === active) : null);
+        }
+
+        window.addEventListener('scroll', () => {
+          if (marker._q) return;
+          marker._q = requestAnimationFrame(() => { marker._q = null; sync(); });
+        }, { passive: true });
+        window.addEventListener('resize', () => { currentLink = null; sync(); });
+        sync();
+      })();
+
+      // E-mail montado em runtime (não fica exposto no HTML pra robôs)
+      const mailRow = document.getElementById('mailRow');
+      if (mailRow) {
+        mailRow.href = 'mailto:' + mailRow.dataset.u + '@' + mailRow.dataset.d;
+      }
+
+      // Hero: letras se montando a partir de ruído, uma vez ao carregar
+      (function heroGlitch() {
+        const heroName = document.querySelector('.hero-name');
+        if (!heroName) return;
+        const parts = Array.from(heroName.querySelectorAll('.glitch-text'));
+        if (!parts.length) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const noise = '#$%&/\\|<>[]{}=+*01';
+        const rand = () => noise[Math.floor(Math.random() * noise.length)];
+        const total = 820;
+        heroName.classList.add('booting');
+
+        parts.forEach((el, pi) => {
+          const target = el.dataset.t || el.textContent;
+          const start = performance.now() + pi * 90;
+          const tick = now => {
+            const p = Math.min(1, Math.max(0, (now - start) / total));
+            const shown = Math.floor(p * target.length);
+            let out = target.slice(0, shown);
+            for (let i = shown; i < target.length; i++) {
+              out += target[i] === ' ' ? ' ' : rand();
+            }
+            el.textContent = out;
+            if (p < 1) requestAnimationFrame(tick);
+            else {
+              el.textContent = target;
+              if (pi === parts.length - 1) {
+                heroName.classList.remove('booting');
+                if (window.__splitWords) window.__splitWords(heroName);
+              }
+            }
+          };
+          requestAnimationFrame(tick);
+        });
+      })();
+
+      // Cada palavra dos títulos grandes vira alvo próprio
+      function splitWords(root) {
+        if (!root || root.dataset.split === '1') return;
+        root.dataset.split = '1';
+        const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+          if (!node.nodeValue.trim()) return;
+          const frag = document.createDocumentFragment();
+          node.nodeValue.split(/(\s+)/).forEach(chunk => {
+            if (!chunk) return;
+            if (/^\s+$/.test(chunk)) { frag.appendChild(document.createTextNode(chunk)); return; }
+            const span = document.createElement('span');
+            span.className = 'gw';
+            span.textContent = chunk;
+            frag.appendChild(span);
+          });
+          node.parentNode.replaceChild(frag, node);
+        });
+      }
+      window.__splitWords = splitWords;
+
+      document.querySelectorAll('.section-title, .case-body h3').forEach(splitWords);
+      document.addEventListener('click', e => {
+        const word = e.target.closest('.gw');
+        if (word) glitchOnce(word);
+      });
+
+      // Bug curto na palavra clicada
+      function glitchOnce(el) {
+        if (!el || el._busy) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        const target = el.dataset.t || el.textContent;
+        el.dataset.t = target;
+        el._busy = true;
+        // Trava a caixa da palavra: sem isso a largura dos caracteres de ruído
+        // muda a cada quadro e reflui a linha inteira (o "flick" na tela)
+        const box = el.getBoundingClientRect();
+        el.style.width = box.width + 'px';
+        el.classList.add('glitching');
+        document.body.classList.add('glitching');
+        const noise = '#$%&/|<>[]{}=+*01';
+        const dur = 420, start = performance.now();
+        const tick = now => {
+          const p = Math.min(1, (now - start) / dur);
+          const shown = Math.floor(p * target.length);
+          let out = target.slice(0, shown);
+          for (let i = shown; i < target.length; i++) {
+            out += target[i] === ' ' ? ' ' : noise[Math.floor(Math.random() * noise.length)];
+          }
+          el.textContent = out;
+          if (p < 1) requestAnimationFrame(tick);
+          else { el.textContent = target; el._busy = false; el.classList.remove('glitching'); el.style.width = ''; if (!document.querySelector('.gw.glitching')) document.body.classList.remove('glitching'); }
+        };
+        requestAnimationFrame(tick);
+      }
+
+      // Registro de Missões: lista sempre visível + painel de detalhe
+      const missionList = document.getElementById('missionList');
+      const missionPanels = document.getElementById('missionPanels');
+      if (missionList && missionPanels) {
+        const items = Array.from(missionList.querySelectorAll('.mission-item'));
+        const cards = Array.from(missionPanels.querySelectorAll('.problem'));
+        missionList.addEventListener('click', e => {
+          const btn = e.target.closest('.mission-item');
+          if (!btn) return;
+          const i = +btn.dataset.mission;
+          items.forEach((b, n) => b.classList.toggle('on', n === i));
+          cards.forEach((c, n) => c.classList.toggle('on', n === i));
+        });
+      }
+    })();
+  </script>
+  <script src="warp.js"></script>
+  <script src="sky.js"></script>
+  <script src="astronaut.js"></script>
+</body>
+</html>
