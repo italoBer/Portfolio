@@ -111,13 +111,17 @@
        ========================================================= */
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    /* Escala global em telas largas: o tamanho base segue a ALTURA da janela,
+       para uma secao caber por tela tanto em 1080p quanto em QHD. */
+    @media (min-width: 901px) { html { font-size: clamp(13px, calc(0.94vh + 5.2px), 16px); } }
+
 
     body {
       margin: 0;
       background-color: var(--bg);
       color: var(--text);
       font-family: var(--f-body);
-      font-size: 16px;
+      font-size: 1rem;
       line-height: 1.6;
       font-weight: 350;
       -webkit-font-smoothing: antialiased;
@@ -889,7 +893,7 @@
     .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-6);margin-top:var(--space-8);align-items:start}
     .proj-card{border:1px solid var(--border);border-radius:var(--radius);background-color:rgba(12,12,12,0.72);overflow:hidden;transition:border-color .5s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease);will-change:transform;transform:translateZ(0);backface-visibility:hidden}
     .proj-card:hover{border-color:var(--accent);transform:translate3d(0,-4px,0);box-shadow:0 14px 35px var(--accent-glow)}
-    .proj-visual{height:150px;border-bottom:1px solid var(--border);background:rgba(255,255,255,.025);overflow:hidden}
+    .proj-visual{height:9.4rem;border-bottom:1px solid var(--border);background:rgba(255,255,255,.025);overflow:hidden}
     .proj-visual svg{width:100%;height:100%;display:block}
     .proj-body{padding:var(--space-6)}
     .proj-body h3{margin:0 0 var(--space-3);font-family:var(--f-display);font-size:1.2rem;font-weight:400;letter-spacing:-0.01em}
