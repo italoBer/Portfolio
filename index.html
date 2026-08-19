@@ -3,9 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Italo Bernardo, desenvolvedor backend em formação. Java, automação e integração de sistemas." />
+  <meta name="description" content="Desenvolvedor backend em formação. Java, Spring Boot e automações que economizam mais de 40 horas de trabalho manual por mês. Veja os projetos." />
   <meta name="theme-color" content="#050505" />
-  <title>Italo Bernardo · Desenvolvedor</title>
+  <title>Italo Bernardo · Desenvolvedor Backend | Java e Automação</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="icon" href="favicon-32.png?v=2" sizes="32x32" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2" />
+  <link rel="canonical" href="https://portfolio-italober.vercel.app/" />
+  <meta name="author" content="Italo Bernardo" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Italo Bernardo" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:url" content="https://portfolio-italober.vercel.app/" />
+  <meta property="og:title" content="Italo Bernardo · Desenvolvedor Backend" />
+  <meta property="og:description" content="Desenvolvedor backend em formacao. Java, Spring Boot e automacoes que economizam mais de 40 horas de trabalho manual por mes. Veja os projetos." />
+  <meta property="og:image" content="https://portfolio-italober.vercel.app/og-image.png?v=2" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Italo Bernardo, desenvolvedor backend" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Italo Bernardo · Desenvolvedor Backend" />
+  <meta name="twitter:description" content="Desenvolvedor backend em formacao. Java, Spring Boot e automacoes que economizam mais de 40 horas de trabalho manual por mes. Veja os projetos." />
+  <meta name="twitter:image" content="https://portfolio-italober.vercel.app/og-image.png?v=2" />
 
   <template id="__bundler_thumbnail" data-bg-color="#000000">
     <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg"><rect width="1200" height="800" fill="#000"/><circle cx="600" cy="400" r="70" fill="#fff"/><circle cx="600" cy="400" r="200" fill="none" stroke="#007315" stroke-width="6"/><circle cx="600" cy="400" r="300" fill="none" stroke="#ffffff" stroke-width="3" opacity=".5"/><circle cx="800" cy="400" r="14" fill="#0a8f22"/><circle cx="300" cy="400" r="9" fill="#fff"/></svg>
@@ -14,8 +34,8 @@
   <script>try{if(sessionStorage.getItem('warp:arrive')==='1')document.documentElement.classList.add('warp-arriving')}catch(e){}</script>
   <!-- Zerafoc: fonte dos títulos grandes -->
   <style>
-    @font-face{font-family:'Zerafoc';src:url('uploads/zerafoc/Zerafoc.ttf') format('truetype');font-weight:400;font-style:normal;font-display:swap}
-    @font-face{font-family:'Zerafoc';src:url('uploads/zerafoc/Zerafoc-Italic.ttf') format('truetype');font-weight:400;font-style:italic;font-display:swap}
+    @font-face{font-family:'Zerafoc';src:url('uploads/zerafoc/Zerafoc.ttf?v=2') format('truetype');font-weight:400;font-style:normal;font-display:swap}
+    @font-face{font-family:'Zerafoc';src:url('uploads/zerafoc/Zerafoc-Italic.ttf?v=2') format('truetype');font-weight:400;font-style:italic;font-display:swap}
   </style>
   <!-- Tipografia importada -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -178,6 +198,7 @@
     .sky-label.on { opacity: 1; }
     html.sky-hot, html.sky-hot body { cursor: pointer; }
     #starfield { transition: filter .9s var(--ease); }
+    #cosmosSunGroup, #greekSunGroup, #sunLight { will-change: transform; }
     #starfield.flare { filter: brightness(2.3); transition: filter .18s var(--ease); }
     .twinkle.delay-a { animation-delay: -1s; }
     .twinkle.delay-b { animation-delay: -2s; }
@@ -224,7 +245,6 @@
       --tw-delay: 0s;
       animation: tw var(--tw-dur) ease-in-out infinite;
       animation-delay: var(--tw-delay);
-      will-change: opacity, transform;
     }
     /* Twinkle: vai do dim (40% do pico) ao brilho cheio do pico.
        Cada estrela tem --op-peak diferente → varia em brilho. */
@@ -1604,8 +1624,8 @@
         <filter id="cosmosBloom" x="-100%" y="-100%" width="300%" height="300%">
           <feGaussianBlur stdDeviation="2.5"/>
         </filter>
-        <filter id="cosmosBloomBig" x="-200%" y="-200%" width="500%" height="500%">
-          <feGaussianBlur stdDeviation="8"/>
+        <filter id="cosmosBloomBig" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur stdDeviation="6"/>
         </filter>
         <filter id="cosmosHaloBlur" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="18"/>
@@ -1621,7 +1641,7 @@
         <!-- Luz do sol (halo + núcleo): escala junto no pulso, ver sky.js -->
         <g id="sunLight">
         <!-- Halo da estrela (blur extra dissolve bordas) -->
-        <circle cx="440" cy="470" r="420" fill="url(#cosmosHalo)" filter="url(#cosmosHaloBlur)"/>
+        <circle cx="440" cy="470" r="420" fill="url(#cosmosHalo)"/>
         <!-- Núcleo da estrela -->
         <circle cx="440" cy="470" r="95" fill="url(#cosmosCore)" filter="url(#cosmosBloomBig)" opacity="0.85"/>
         <circle cx="440" cy="470" r="22" fill="#ffffff" filter="url(#cosmosBloom)"/>
@@ -1720,7 +1740,7 @@
 
       <!-- ====== SOL (envolvido pra mover via JS) ====== -->
       <g id="greekSunGroup" data-origin-x="500" data-origin-y="180">
-        <circle cx="500" cy="180" r="360" fill="url(#greekSun)" filter="url(#greekHaloBlur)"/>
+        <circle cx="500" cy="180" r="360" fill="url(#greekSun)"/>
         <circle cx="500" cy="180" r="42" fill="#f0f0f0" opacity="0.3" filter="url(#greekBloom)"/>
         <circle cx="500" cy="180" r="22" fill="#ffffff" opacity="0.9"/>
       </g>
@@ -1941,17 +1961,17 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a>
           <a href="https://github.com/italoBer" target="_blank" rel="noopener" class="btn">
-            <span class="btn-ico" style="--i:url('uploads/github-sign.png')" aria-hidden="true"></span>
+            <span class="btn-ico" style="--i:url('uploads/github-sign.png?v=2')" aria-hidden="true"></span>
             GitHub
             <svg class="btn-end" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a>
           <a href="https://www.linkedin.com/in/italoBer" target="_blank" rel="noopener" class="btn">
-            <span class="btn-ico" style="--i:url('uploads/linkedin.png')" aria-hidden="true"></span>
+            <span class="btn-ico" style="--i:url('uploads/linkedin.png?v=2')" aria-hidden="true"></span>
             LinkedIn
             <svg class="btn-end" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
           </a>
-          <a href="uploads/Curriculo_Italo_Bernardo_Julho_2026.pdf" download class="btn">
-            <span class="btn-ico" style="--i:url('uploads/cv.png')" aria-hidden="true"></span>
+          <a href="uploads/Curriculo_Italo_Bernardo_Julho_2026.pdf?v=2" download class="btn">
+            <span class="btn-ico" style="--i:url('uploads/cv.png?v=2')" aria-hidden="true"></span>
             <span data-en="Resume">Currículo</span>
             <svg class="btn-end" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 4v11m0 0l-4-4m4 4l4-4M5 19h14"/></svg>
           </a>
@@ -2394,7 +2414,7 @@
        SOBRE MIM & TRAJETÓRIA (TEMA 3: CLÁSSICO / GREGO / FILOSÓFICO)
        ======================================================== -->
   <section id="sobre" data-theme="greece">
-    <img src="uploads/Aristoteles.png" alt="" aria-hidden="true" class="philosopher reveal" />
+    <img src="uploads/Aristoteles.png?v=2" alt="" aria-hidden="true" class="philosopher reveal" />
     <div class="container">
       <div class="section-mark reveal">
         <span data-en="05 · Philosophy &amp; Path">05 · Filosofia &amp; Trajetória</span>
@@ -2542,7 +2562,8 @@
          o campo seja IDÊNTICO em todo reload.
          ========================================================= */
       // Menos estrelas em telas pequenas: mesmo céu, metade do custo
-      const STAR_COUNT = window.innerWidth <= 900 ? 85 : 160;
+      const LOW_POWER = (navigator.hardwareConcurrency || 8) <= 4 || (navigator.deviceMemory || 8) <= 4;
+      const STAR_COUNT = window.innerWidth <= 900 ? 85 : (LOW_POWER ? 70 : 160);
       let seed = 12345;
       function rand() {
         seed = (seed * 9301 + 49297) % 233280;
@@ -2629,7 +2650,9 @@
         const targetY = SUN_Y_START + scrollPct * (SUN_Y_END - SUN_Y_START);
         sunGroups.forEach(g => {
           const dx = SUN_X_TARGET - g.ox;
-          const dy = targetY      - g.oy;
+          const dy = Math.round((targetY - g.oy) * 2) / 2;
+          if (g._dy === dy) return;
+          g._dy = dy;
           g.el.setAttribute('transform', `translate(${dx.toFixed(1)} ${dy.toFixed(1)})`);
         });
       }
@@ -3050,6 +3073,7 @@
 
         parts.forEach((el, pi) => {
           const target = el.dataset.t || el.textContent;
+          el.dataset.t = target;
           const start = performance.now() + pi * 90;
           const tick = now => {
             const p = Math.min(1, Math.max(0, (now - start) / total));
@@ -3149,5 +3173,32 @@
   <script src="warp.js"></script>
   <script src="sky.js"></script>
   <script src="astronaut.js"></script>
+<script>
+/* Rede de seguranca: se o navegador nao disparar os callbacks de entrada
+   (IntersectionObserver / requestAnimationFrame parados, aba em segundo plano
+   no primeiro paint, maquina muito fraca), o conteudo ficaria invisivel para
+   sempre. Aqui, passado 1,5s, se NADA entrou ainda, mostramos tudo de uma vez. */
+(function(){
+  function force(){
+    var all = document.querySelectorAll('.reveal');
+    if (!all.length) return;
+    if (document.querySelectorAll('.reveal.in').length) return; /* observer funcionou */
+    all.forEach(function(el){ el.classList.add('in'); });
+    var hero = document.querySelector('.hero-name');
+    if (hero) {
+      hero.querySelectorAll('.glitch-text').forEach(function(el){
+        if (el.dataset.t) el.textContent = el.dataset.t;
+      });
+      hero.classList.remove('booting');
+      if (window.__splitWords) window.__splitWords(hero);
+    }
+  }
+  if (!('IntersectionObserver' in window)) { document.addEventListener('DOMContentLoaded', force); return; }
+  setTimeout(force, 1500);
+  document.addEventListener('visibilitychange', function(){
+    if (!document.hidden) setTimeout(force, 300);
+  });
+})();
+</script>
 </body>
 </html>

@@ -25,8 +25,8 @@
   var el = document.createElement('div');
   el.className = 'astro';
   el.setAttribute('aria-hidden', 'true');
-  el.innerHTML = '<img class="calmo" src="uploads/astronauta-descanso.png" alt="" draggable="false">' +
-    '<img class="open" src="uploads/astronauta-aberto.png" alt="" draggable="false">';
+  el.innerHTML = '<img class="calmo" src="uploads/astronauta-descanso.png?v=2" alt="" draggable="false">' +
+    '<img class="open" src="uploads/astronauta-aberto.png?v=2" alt="" draggable="false">';
   document.body.appendChild(el);
 
   var W = function () { return window.innerWidth; }, H = function () { return window.innerHeight; };
@@ -99,7 +99,7 @@
     var h = document.createElement('div');
     h.className = 'helmet';
     h.setAttribute('aria-hidden', 'true');
-    h.innerHTML = '<img src="uploads/astronauta-capacete.png" alt="" draggable="false">';
+    h.innerHTML = '<img src="uploads/astronauta-capacete.png?v=2" alt="" draggable="false">';
     document.body.appendChild(h);
     /* sai pelo lado com mais tela livre, subindo de leve */
     var dir = sun.x < W() / 2 ? 1 : -1;

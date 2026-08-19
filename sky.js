@@ -135,14 +135,16 @@
 
   var outCubic = function (p) { return 1 - Math.pow(1 - p, 3); };
   var inOut = function (p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; };
-  var outBack = function (p) { var c = 1.9; return 1 + (c + 1) * Math.pow(p - 1, 3) + c * Math.pow(p - 1, 2); };
 
   var halo = light && light.firstElementChild;
   function setScale(s) {
     cur = s;
     /* O halo já é enorme: em escala grande ele é clareado pra virar clarão,
        não um lençol branco por cima da arte. */
-    if (halo) halo.setAttribute('opacity', Math.max(0.3, Math.min(1, 1 - (s - 1) * 0.26)).toFixed(3));
+    if (halo) {
+      var op = Math.max(0.3, Math.min(1, 1 - (s - 1) * 0.26)).toFixed(3);
+      if (halo._op !== op) { halo._op = op; halo.setAttribute('opacity', op); }
+    }
     if (s === 1) { light.removeAttribute('transform'); return; }
     var k = (1 - s);
     light.setAttribute('transform', 'translate(' + (SUN.x * k).toFixed(2) + ' ' + (SUN.y * k).toFixed(2) + ') scale(' + s.toFixed(4) + ')');
@@ -193,27 +195,25 @@
 
     var seq, big = clicks >= 6, r = big ? 1 : REST[clicks];
     if (clicks < 3) {
-      /* explosãozinha e volta, um pouco menor do que estava */
-      seq = [[cur, cur * 1.45, 240, outCubic], [cur * 1.45, r * 0.9, 340, inOut], [r * 0.9, r, 320, outBack]];
+      /* expande e volta, um pouco menor do que estava — sem repique */
+      seq = [[cur, cur * 1.45, 240, outCubic], [cur * 1.45, r, 460, inOut]];
     } else if (!big) {
-      /* explode, segura, suga tudo de volta e assenta menor ainda */
-      seq = [[cur, cur * 2.1, 210, outCubic], [cur * 2.1, cur * 1.75, 160, inOut],
-             [cur * 1.75, r * 0.5, 560, inOut], [r * 0.5, r * 1.14, 420, outCubic], [r * 1.14, r, 300, inOut]];
+      /* explode e recolhe direto até assentar menor ainda */
+      seq = [[cur, cur * 2.1, 210, outCubic], [cur * 2.1, r, 700, inOut]];
     } else {
-      /* supernova: contrai, cresce aos poucos até quase a última órbita e colapsa */
-      seq = [[cur, cur * 0.72, 380, inOut], [cur * 0.72, 2.2, 560, outCubic], [2.2, 3.6, 900, inOut],
-             [3.6, 3.35, 320, inOut], [3.35, 0.8, 1000, inOut], [0.8, 1, 460, outBack]];
+      /* supernova: cresce até quase a última órbita e colapsa de volta ao normal */
+      seq = [[cur, 2.2, 520, outCubic], [2.2, 3.6, 900, inOut], [3.6, 1, 1250, inOut]];
     }
 
     var sky = document.getElementById('starfield');
     if (big && sky) {
-      setTimeout(function () { sky.classList.add('flare'); }, 800);
-      setTimeout(function () { sky.classList.remove('flare'); }, 2200);
+      setTimeout(function () { sky.classList.add('flare'); }, 900);
+      setTimeout(function () { sky.classList.remove('flare'); }, 2100);
     }
     /* no auge da supernova, quem estiver ouvindo pode devolver algo (o capacete) */
     if (big) setTimeout(function () {
       if (window.SKY && typeof window.SKY.onBig === 'function') window.SKY.onBig();
-    }, 2100);
+    }, 1500);
 
     run(seq, function () {
       if (big) clicks = 0;
