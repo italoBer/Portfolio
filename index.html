@@ -236,6 +236,7 @@
     }
 
     /* ---- Estrelas estáticas ---- */
+    .sf-layer { position: absolute; inset: 0; will-change: transform; }
     .star {
       position: absolute;
       border-radius: 50%;
@@ -1665,22 +1666,22 @@
 
       <!-- Estrelas distantes -->
       <g fill="#ffffff">
-        <circle class="twinkle"         cx="80"  cy="120" r="1.6" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle"         cx="80"  cy="120" r="1.6"/>
         <circle class="twinkle delay-a" cx="220" cy="200" r="1.0"/>
-        <circle class="twinkle delay-b" cx="640" cy="130" r="1.8" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle delay-b" cx="640" cy="130" r="1.8"/>
         <circle class="twinkle delay-c" cx="750" cy="290" r="1.2"/>
         <circle class="twinkle"         cx="120" cy="320" r="1.4"/>
-        <circle class="twinkle delay-a" cx="320" cy="70"  r="2.0" filter="url(#cosmosBloom)"/>
-        <circle class="twinkle delay-b" cx="720" cy="700" r="1.6" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle delay-a" cx="320" cy="70"  r="2.0"/>
+        <circle class="twinkle delay-b" cx="720" cy="700" r="1.6"/>
         <circle class="twinkle delay-c" cx="180" cy="780" r="1.0"/>
         <circle class="twinkle"         cx="80"  cy="600" r="1.4"/>
         <circle class="twinkle delay-a" cx="380" cy="850" r="1.2"/>
-        <circle class="twinkle delay-b" cx="700" cy="880" r="1.6" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle delay-b" cx="700" cy="880" r="1.6"/>
         <circle class="twinkle delay-c" cx="240" cy="640" r="1.0"/>
         <circle class="twinkle"         cx="100" cy="450" r="1.2"/>
         <circle class="twinkle delay-a" cx="350" cy="280" r="1.0"/>
         <circle class="twinkle delay-b" cx="60"  cy="800" r="1.5"/>
-        <circle class="twinkle delay-c" cx="510" cy="170" r="1.3" filter="url(#cosmosBloom)"/>
+        <circle class="twinkle delay-c" cx="510" cy="170" r="1.3"/>
         <circle class="twinkle"         cx="600" cy="940" r="1.4"/>
         <circle class="twinkle delay-a" cx="200" cy="900" r="1.1"/>
         <circle class="twinkle delay-b" cx="780" cy="540" r="1.3"/>
@@ -2572,6 +2573,17 @@
 
       const starfield = document.getElementById('starfield');
       const stars = [];
+      /* 3 camadas de profundidade. O parallax move A CAMADA, nao cada estrela:
+         160 escritas de transform por frame travavam GPUs modestas (tremida). */
+      const sfLayers = [];
+      if (starfield) {
+        for (let d = 0; d < 3; d++) {
+          const L = document.createElement('div');
+          L.className = 'sf-layer';
+          starfield.appendChild(L);
+          sfLayers.push({ el: L, parallax: 0.18 + d * 0.16, y: null });
+        }
+      }
 
       if (starfield) {
         for (let i = 0; i < STAR_COUNT; i++) {
@@ -2598,20 +2610,21 @@
           star.style.setProperty('--tw-dur',   dur.toFixed(2) + 's');
           star.style.setProperty('--tw-delay', delay.toFixed(2) + 's');
 
-          // Parallax: cada estrela tem seu fator próprio (0.15 a 0.50)
-          const parallax = 0.15 + rand() * 0.35;
-          stars.push({ el: star, parallax: parallax });
-
-          starfield.appendChild(star);
+          // Profundidade: define em qual das 3 camadas a estrela entra
+          const depth = Math.min(2, Math.floor(rand() * 3));
+          stars.push({ el: star });
+          sfLayers[depth].el.appendChild(star);
         }
       }
 
       // O parallax das estrelas é desenhado dentro do loop único
       // de scroll (mais abaixo), usando a posição JÁ suavizada.
       function updateParallax(scrollPct) {
-        stars.forEach(s => {
-          const offset = scrollPct * 40 * s.parallax;
-          s.el.style.transform = `translate3d(0, ${offset.toFixed(2)}px, 0)`;
+        sfLayers.forEach(L => {
+          const y = Math.round(scrollPct * 40 * L.parallax * 2) / 2;
+          if (L.y === y) return;
+          L.y = y;
+          L.el.style.transform = `translate3d(0,${y}px,0)`;
         });
       }
 
