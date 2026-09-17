@@ -1,6 +1,6 @@
 /* Português / inglês na mesma página.
    Cada elemento traduzível carrega data-en (HTML da versão inglesa).
-   Variantes: data-en-ph (placeholder), data-en-title, data-en-aria (aria-label).
+   Variantes: data-en-ph (placeholder), data-en-title, data-en-aria (aria-label), data-en-alt (alt).
    O PT original fica guardado em memória, nunca duplicado no HTML.
    Na troca manual, o texto passa por ruído (mesma linguagem visual do site). */
 (function () {
@@ -23,7 +23,7 @@
     document.querySelectorAll('[data-en]').forEach(function (el) {
       els.push({ el: el, pt: el.innerHTML, en: el.getAttribute('data-en') });
     });
-    [['data-en-ph', 'placeholder'], ['data-en-title', 'title'], ['data-en-aria', 'aria-label']]
+    [['data-en-ph', 'placeholder'], ['data-en-title', 'title'], ['data-en-aria', 'aria-label'], ['data-en-alt', 'alt']]
       .forEach(function (pair) {
         document.querySelectorAll('[' + pair[0] + ']').forEach(function (el) {
           attrs.push({ el: el, attr: pair[1], pt: el.getAttribute(pair[1]) || '', en: el.getAttribute(pair[0]) });

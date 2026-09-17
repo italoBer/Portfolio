@@ -41,7 +41,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300..700&family=JetBrains+Mono:wght@300..600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Arimo:wght@400..700&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Geist:wght@300..700&family=JetBrains+Mono:wght@300..600&display=swap"
     rel="stylesheet"
   />
 
@@ -65,7 +65,7 @@
       --border: rgba(255, 255, 255, 0.06);
       --f-display: 'Bricolage Grotesque', ui-sans-serif, system-ui, sans-serif;
       --f-hero: 'Zerafoc', 'Bricolage Grotesque', sans-serif;
-      --f-body: 'Geist', ui-sans-serif, system-ui, sans-serif;
+      --f-body: Arimo, Arial, Helvetica, sans-serif;
       --f-mono: 'JetBrains Mono', monospace;
 
       /* Escala de Espaçamento */
@@ -104,7 +104,7 @@
       --accent-glow: rgba(14, 154, 40, 0.22);
       --border: rgba(255, 255, 255, 0.08);
       --f-display: 'JetBrains Mono', monospace;
-      --f-body: 'Geist', sans-serif;
+      --f-body: Arimo, Arial, Helvetica, sans-serif;
     }
 
     section[data-theme="greece"] {
@@ -115,7 +115,7 @@
       --accent-glow: rgba(14, 154, 40, 0.20);
       --border: rgba(255, 255, 255, 0.07);
       --f-display: 'Fraunces', Georgia, serif;
-      --f-body: 'Geist', sans-serif;
+      --f-body: Arimo, Arial, Helvetica, sans-serif;
     }
 
     /* O body não muda fonte/cor de texto ao rolar — fica estável.
@@ -143,7 +143,7 @@
       font-family: var(--f-body);
       font-size: 1rem;
       line-height: 1.6;
-      font-weight: 350;
+      font-weight: 400;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       transition: background-color 1s var(--ease), color 1s var(--ease);
@@ -375,7 +375,10 @@
       background: var(--accent);
       box-shadow: 0 0 8px var(--accent);
       opacity: 0;
-      transition: opacity 0.4s var(--ease), top 0.08s linear,
+      /* Sem transicao em 'top': o ponto tem que estar EXATAMENTE na ponta
+         do preenchimento, que nao tem transicao. Qualquer atraso aqui
+         faz o ponto arrastar atras da barra durante o scroll. */
+      transition: opacity 0.4s var(--ease),
                   background 0.8s var(--ease), width 0.25s var(--ease), height 0.25s var(--ease);
       will-change: top;
       pointer-events: none;
@@ -465,14 +468,14 @@
       display: flex;
       align-items: center;
       gap: var(--space-3);
-      font-weight: 550;
+      font-weight: 700;
       font-size: 1.15rem;
-      letter-spacing: -0.01em;
+      letter-spacing: 0;
       transition: color 0.4s;
     }
     .brand em {
       font-style: normal;
-      font-weight: 550;
+      font-weight: 700;
       color: var(--accent);
       transition: color 0.4s;
     }
@@ -724,55 +727,6 @@
     .aside-row .v.active-status { color: var(--accent-label); }
 
     /* =========================================================
-       INTERLÚDIO MANIFESTO — entre Hero e Projeto (TEMA 1 cyber)
-       Função: dar tempo pro sol descer mais atrás dos prédios
-       antes da transição pra galáxia. Conteúdo poético, mínimo.
-       ========================================================= */
-    .manifesto {
-      min-height: 0;
-      padding-top: var(--space-12);
-      padding-bottom: var(--space-12);
-      display: flex;
-      align-items: center;
-    }
-    .manifesto-block {
-      max-width: 1000px;
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: var(--space-8);
-      align-items: center;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding-block: var(--space-6);
-    }
-    .manifesto-block .section-mark { grid-column: 1 / -1; margin-bottom: calc(-1 * var(--space-4)); }
-    @media (max-width: 900px) { .manifesto-block { grid-template-columns: 1fr; gap: var(--space-4); } }
-    .manifesto-quote {
-      font-family: var(--f-display);
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      font-weight: 300;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      margin: var(--space-6) 0 var(--space-8);
-      color: var(--text);
-    }
-    .manifesto-quote em {
-      font-style: italic;
-      color: var(--accent);
-      font-weight: 400;
-    }
-    .manifesto-sub {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 52ch;
-    }
-    .manifesto-sub strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* =========================================================
        TEMA 2: ERA CÓSMICA (PROJETOS & STACK)
        ========================================================= */
     .case-container {
@@ -916,6 +870,8 @@
     .proj-card:hover{border-color:var(--accent);transform:translate3d(0,-4px,0);box-shadow:0 14px 35px var(--accent-glow)}
     .proj-visual{height:9.4rem;border-bottom:1px solid var(--border);background:rgba(255,255,255,.025);overflow:hidden}
     .proj-visual svg{width:100%;height:100%;display:block}
+    .proj-photo{width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:grayscale(1) contrast(1.05);transition:filter .5s var(--ease)}
+    .proj-card:hover .proj-photo,.proj-card:focus-visible .proj-photo{filter:grayscale(.15) contrast(1)}
     .proj-body{padding:var(--space-6)}
     .proj-body h3{margin:0 0 var(--space-3);font-family:var(--f-display);font-size:1.2rem;font-weight:400;letter-spacing:-0.01em}
     .proj-body .tag-row{margin-bottom:0}
@@ -1549,8 +1505,7 @@
       .step-mark { margin: 0; width: 38px; height: 38px; }
       .step-name { margin: 0; }
       .hero-actions .btn { flex: 1 1 100%; }
-      .manifesto-sub { display: none; }
-    }
+      }
 
     /* Acessibilidade: prefers-reduced-motion */
     @media (prefers-reduced-motion: reduce) {
@@ -1562,7 +1517,25 @@
     }
   </style>
 <script>(function(){var s=null;try{s=localStorage.getItem('ib-lang')}catch(e){}var l=(navigator.languages&&navigator.languages[0])||navigator.language||'pt';var g=(s==='pt'||s==='en')?s:(/^pt/i.test(l)?'pt':'en');document.documentElement.lang=g==='en'?'en':'pt-BR';if(g==='en'){document.documentElement.className+=' i18n-wait';setTimeout(function(){document.documentElement.classList.remove('i18n-wait')},1200)}})()</script>
-<style>html.i18n-wait body{visibility:hidden}.lang-switch{display:flex;align-items:center;gap:5px;font-family:var(--f-mono,ui-monospace);font-size:.7rem;letter-spacing:.1em}.lang-switch button{background:none;border:0;padding:5px 3px;font:inherit;letter-spacing:inherit;color:var(--text);opacity:.32;cursor:pointer;transition:opacity .35s var(--ease),color .35s var(--ease)}.lang-switch button:hover{opacity:.75}.lang-switch button.on{opacity:1;color:var(--accent-label)}.lang-switch .sep{opacity:.18}.nav-right{display:flex;align-items:center;gap:var(--space-4)}@media (max-width:600px){.lang-switch{font-size:.66rem}}</style>
+<style>html.i18n-wait body{visibility:hidden}.lang-switch{display:flex;align-items:center;gap:5px;font-family:var(--f-mono,ui-monospace);font-size:.7rem;letter-spacing:.1em}.lang-switch button{background:none;border:0;padding:5px 3px;font:inherit;letter-spacing:inherit;color:var(--text);opacity:.32;cursor:pointer;transition:opacity .35s var(--ease),color .35s var(--ease)}.lang-switch button:hover{opacity:.75}.lang-switch button.on{opacity:1;color:var(--accent-label)}.lang-switch .sep{opacity:.18}.nav-right{display:flex;align-items:center;gap:var(--space-4)}@media (max-width:600px){.lang-switch{font-size:.66rem}}
+    /* ---------------------------------------------------------------
+       Tipografia dos rotulos: fora o mono maiusculo espacado.
+       Ele estava em ~25 lugares e era o que mais dava cara de
+       template gerado. JetBrains Mono fica so onde e de fato
+       tecnico (url do mock, notas da stack, chips de tecnologia).
+       --------------------------------------------------------------- */
+    .section-mark { font-family: var(--f-body); font-size: 0.84rem; letter-spacing: 0.01em; text-transform: none; }
+    .problem-num, .mission-item .m-num, .mission-metric span, .learn-card .learn-meta,
+    .problem-cell h4, .hero-aside h3, .form-field label, .ctc-row .label,
+    .stack-group h3, .case-body .meta-sub, .timeline .year, .aside-row .k, .hero-eyebrow {
+      font-family: var(--f-body); text-transform: none; letter-spacing: 0.01em;
+    }
+    .problem-cell h4, .hero-aside h3, .form-field label, .ctc-row .label { font-size: 0.8rem; }
+    .hero-meta, .hero-meta span, .proj-more-note { font-family: var(--f-body); letter-spacing: 0.01em; }
+    .mission-metric span, .learn-card .learn-meta { font-size: 0.76rem; }
+    .btn, .form-submit, .top-link { font-family: var(--f-body); text-transform: none; letter-spacing: 0.01em; }
+    .btn, .form-submit { font-size: 0.9rem; }
+</style>
 </head>
 
 <body data-theme="cosmos">
@@ -1982,8 +1955,8 @@
       <aside class="hero-aside reveal delay-1" aria-label="Status HUD" data-en-aria="Status HUD">
         <h3 data-en="System Status">Status do Sistema</h3>
         <div class="aside-row">
-          <span class="k" data-en="Availability">Disponibilidade</span>
-          <span class="v active-status" data-en="Open to opportunities">Aberto a oportunidades</span>
+          <span class="k" data-en="Status">Situação</span>
+          <span class="v active-status" data-en="Working · Technical Support">Trabalhando · Suporte Técnico</span>
         </div>
         <div class="aside-row">
           <span class="k" data-en="Current Focus">Foco Atual</span>
@@ -2002,32 +1975,12 @@
   </header>
 
   <!-- ========================================================
-       MANIFESTO · interlúdio entre Hero e Projeto (TEMA 1 cyber)
-       Dá tempo pro sol descer atrás dos prédios antes de virar
-       galáxia. Conteúdo curto, poético.
-       ======================================================== -->
-  <section id="manifesto" class="manifesto" data-theme="cosmos">
-    <div class="container manifesto-block">
-      <p class="section-mark reveal">
-        <span data-en="How I work">Como eu trabalho</span>
-      </p>
-      <h2 class="manifesto-quote reveal delay-1" data-en="I learn by <em>building</em>.<br>Every problem is a <em>lesson</em>.">
-        Aprendo <em>construindo</em>.<br>Cada problema é uma <em>aula</em>.
-      </h2>
-      <p class="manifesto-sub reveal delay-2" data-en="<strong>AI became my pair programmer</strong>, e-commerce was the first workshop and college is the formal base.">
-        <strong>A IA virou meu par de programação</strong>, o e-commerce foi a primeira
-        oficina e a ADS é a base formal.
-      </p>
-    </div>
-  </section>
-
-  <!-- ========================================================
        PROJETO DESTAQUE (TEMA 2: COSMOS / ASTRONOMIA)
        ======================================================== -->
   <section id="projeto" data-theme="cosmos">
     <div class="container">
       <div class="section-mark reveal">
-        <span data-en="01 · Projects">01 · Projetos</span>
+        <span data-en="Projects">Projetos</span>
       </div>
 
       <h2 class="section-title reveal" data-en="Building <em>systems</em> from scratch to deploy.">Construindo <em>sistemas</em> do zero ao deploy.</h2>
@@ -2037,16 +1990,8 @@
 
       <div class="proj-grid">
         <article class="proj-card reveal" tabindex="0">
-          <div class="proj-visual" aria-hidden="true">
-            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
-              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><path d="M30 46h20l6 8h26v46H30z"/><path d="M42 34h20l6 8h26v46H42" stroke-opacity=".45"/></g>
-              <text x="60" y="84" text-anchor="middle" font-family="monospace" font-size="10" fill="#0e9a28" fill-opacity=".75">MM0001X</text>
-              <path d="M112 77h74" stroke="#0e9a28" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
-              <path d="M186 77l-8-5v10z" fill="#0e9a28"/>
-              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="200" y="30" width="72" height="90" rx="4"/></g>
-              <g fill="#ffffff" fill-opacity=".1"><rect x="208" y="40" width="56" height="16" rx="3"/><rect x="208" y="62" width="56" height="16" rx="3"/></g>
-              <rect x="208" y="84" width="56" height="16" rx="3" fill="#0e9a28" fill-opacity=".55"/>
-            </svg>
+          <div class="proj-visual">
+            <img class="proj-photo" src="uploads/folderflow-grupos.png?v=1" alt="Tela inicial do FolderFlow, com os grupos de pastas cadastrados" data-en-alt="FolderFlow home screen, with the registered folder groups" loading="lazy" width="1118" height="770">
           </div>
           <div class="proj-body">
             <h3>FolderFlow</h3>
@@ -2092,15 +2037,8 @@
         </article>
 
         <article class="proj-card reveal delay-2" tabindex="0">
-          <div class="proj-visual" aria-hidden="true">
-            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
-              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="24" y="28" width="98" height="94" rx="4"/><path d="M24 48h98"/></g>
-              <g font-family="monospace" font-size="9" fill="#0e9a28" fill-opacity=".8"><text x="34" y="72">POST /tasks</text><text x="34" y="90">GET  /tasks</text><text x="34" y="108">PUT  /tasks</text></g>
-              <text x="160" y="66" text-anchor="middle" font-family="monospace" font-size="9" fill="#0e9a28" fill-opacity=".6">auth</text>
-              <path d="M130 77h56" stroke="#0e9a28" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
-              <path d="M186 77l-8-5v10z" fill="#0e9a28"/>
-              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><ellipse cx="238" cy="42" rx="32" ry="9"/><path d="M206 42v66c0 5 14.3 9 32 9s32-4 32-9V42"/><ellipse cx="238" cy="75" rx="32" ry="9" stroke-opacity=".4"/></g>
-            </svg>
+          <div class="proj-visual">
+            <img class="proj-photo" src="uploads/todolist-api.png?v=1" alt="Requisicao POST /tasks da Todo List API respondendo 200 no Render, com o JSON da tarefa criada" data-en-alt="POST /tasks request to the Todo List API answering 200 on Render, with the created task JSON" loading="lazy" width="1300" height="638">
           </div>
           <div class="proj-body">
             <h3>Todo List API</h3>
@@ -2126,7 +2064,7 @@
   <section id="stack" data-theme="cosmos" style="min-height: auto;">
     <div class="container">
       <div class="section-mark reveal">
-        <span data-en="02 · Tech Constellation">02 · Constelação Tecnológica</span>
+        <span data-en="Tech Constellation">Constelação Tecnológica</span>
       </div>
 
       <h2 class="section-title reveal" data-en="Tools that orbit my <em>workflow</em>.">Ferramentas que orbitam meu <em>fluxo</em>.</h2>
@@ -2137,7 +2075,7 @@
       <div class="stack-grid">
         <!-- Backend -->
         <div class="stack-group reveal">
-          <h3>01 · Backend</h3>
+          <h3>Backend</h3>
           <p class="group-meta" data-en="Data engineering, APIs and performance.">Engenharia de dados, APIs e performance.</p>
           <ul class="stack-list">
             <li class="stack-item">
@@ -2161,7 +2099,7 @@
 
         <!-- Frontend -->
         <div class="stack-group reveal delay-1">
-          <h3>02 · Frontend</h3>
+          <h3>Frontend</h3>
           <p class="group-meta" data-en="Building clean, responsive interfaces.">Construção de interfaces limpas e responsivas.</p>
           <ul class="stack-list">
             <li class="stack-item">
@@ -2177,7 +2115,7 @@
 
         <!-- IA & Workflow -->
         <div class="stack-group reveal delay-2">
-          <h3 data-en="03 · AI &amp; Tools">03 · IA &amp; Ferramentas</h3>
+          <h3 data-en="AI &amp; Tools">IA &amp; Ferramentas</h3>
           <p class="group-meta" data-en="Engineering acceleration and optimization.">Aceleração de engenharia e otimização.</p>
           <ul class="stack-list">
             <li class="stack-item">
@@ -2212,7 +2150,7 @@
   <section id="problemas" data-theme="cosmos">
     <div class="container">
       <div class="section-mark reveal">
-        <span data-en="03 · Mission Log">03 · Registro de Missões</span>
+        <span data-en="Mission Log">Registro de Missões</span>
       </div>
 
       <h2 class="section-title reveal" data-en="Real problems, practical <em>solutions</em>.">Problemas reais, <em>soluções</em> práticas.</h2>
@@ -2244,7 +2182,7 @@
         <article class="problem on">
           <div class="mission-metric" data-en="<b>40 to 50 h/month</b><span>of manual work eliminated</span>"><b>40 a 50 h/mês</b><span>de trabalho manual eliminadas</span></div>
           <div class="problem-head">
-            <span class="problem-num" data-en="01 · AUTOMATION">01 · AUTOMAÇÃO</span>
+            <span class="problem-num" data-en="01 · Automation">01 · Automação</span>
             <h3 class="problem-title" data-en="Manual Order Flow between Platforms">Fluxo de Pedidos Manual entre Plataformas</h3>
           </div>
           <div class="problem-grid">
@@ -2266,7 +2204,7 @@
         <article class="problem">
           <div class="mission-metric" data-en="<b>5 min to 5 s</b><span>per layout generated</span>"><b>5 min para 5 s</b><span>por croqui gerado</span></div>
           <div class="problem-head">
-            <span class="problem-num" data-en="02 · LAYOUTS">02 · CROQUI</span>
+            <span class="problem-num" data-en="02 · Layouts">02 · Croqui</span>
             <h3 class="problem-title" data-en="Layouts Built by Hand in CorelDRAW">Croquis Montados à Mão no CorelDRAW</h3>
           </div>
           <div class="problem-grid">
@@ -2288,7 +2226,7 @@
         <article class="problem">
           <div class="mission-metric" data-en="<b>zero duplicates</b><span>with several people creating at once</span>"><b>zero duplicidade</b><span>com várias pessoas criando ao mesmo tempo</span></div>
           <div class="problem-head">
-            <span class="problem-num" data-en="03 · FOLDERS">03 · PASTAS</span>
+            <span class="problem-num" data-en="03 · Folders">03 · Pastas</span>
             <h3 class="problem-title" data-en="Thousands of Art Folders in a Shared OneDrive">Milhares de Pastas de Arte num OneDrive Compartilhado</h3>
           </div>
           <div class="problem-grid">
@@ -2310,7 +2248,7 @@
         <article class="problem">
           <div class="mission-metric" data-en="<b>945 products</b><span>cataloged and migrated</span>"><b>945 produtos</b><span>catalogados e migrados</span></div>
           <div class="problem-head">
-            <span class="problem-num" data-en="04 · MIGRATION">04 · MIGRAÇÃO</span>
+            <span class="problem-num" data-en="04 · Migration">04 · Migração</span>
             <h3 class="problem-title" data-en="Migrating 945 Products across Platforms">Migração de 945 Produtos entre Plataformas</h3>
           </div>
           <div class="problem-grid">
@@ -2339,7 +2277,7 @@
   <section id="aprendendo" data-theme="cosmos" style="min-height: auto;">
     <div class="container">
       <div class="section-mark reveal">
-        <span data-en="04 · Actively Studying">04 · Em Estudo Ativo</span>
+        <span data-en="Actively Studying">Em Estudo Ativo</span>
       </div>
 
       <h2 class="section-title reveal" data-en="Where I am <em>growing</em> now.">Onde estou <em>crescendo</em> agora.</h2>
@@ -2418,7 +2356,7 @@
     <img src="uploads/Aristoteles.png?v=2" alt="" aria-hidden="true" class="philosopher reveal" />
     <div class="container">
       <div class="section-mark reveal">
-        <span data-en="05 · Philosophy &amp; Path">05 · Filosofia &amp; Trajetória</span>
+        <span data-en="Philosophy &amp; Path">Filosofia &amp; Trajetória</span>
       </div>
 
       <h2 class="section-title reveal" data-en="The art of <em>simplifying</em> the complex.">A arte de <em>simplificar</em> o complexo.</h2>
@@ -2437,26 +2375,31 @@
             A IA generativa virou meu <strong>co-piloto de desenvolvimento</strong>: com JavaScript no navegador e scripts, passei a automatizar a burocracia do dia a dia do time.
           </p>
           <p data-en="Today I study <strong>Systems Analysis and Development at Uninter</strong> to solidify my software engineering foundations and specialize in <strong>backend development</strong>, with enough front-end to get by when needed. I aim for well designed code that supports healthy growth and stays easy to maintain.">
-            Hoje, curso <strong>Análise e Desenvolvimento de Sistemas (ADS) na Uninter</strong> para solidificar meus pilares em engenharia de software e me especializar em <strong>desenvolvimento backend</strong> — com front-end suficiente pra me virar quando preciso. Busco criar código bem desenhado, que suporte crescimento saudável e de fácil manutenção.
+            Hoje, curso <strong>Análise e Desenvolvimento de Sistemas (ADS) na Uninter</strong> para solidificar meus pilares em engenharia de software e me especializar em <strong>desenvolvimento backend</strong>, com front-end suficiente pra me virar quando preciso. Busco criar código bem desenhado, que suporte crescimento saudável e de fácil manutenção.
           </p>
         </div>
 
         <div class="timeline-container reveal delay-2">
           <ul class="timeline">
             <li>
-              <div class="year" data-en="Since Apr 2026">Desde Abr 2026</div>
+              <div class="year" data-en="Since Sep 2026">Desde Set 2026</div>
+              <h4 data-en="Technical Support · RealClub (RealByte)">Suporte Técnico · RealClub (RealByte)</h4>
+              <p data-en="Technical support for clubs running a full ERP. Each client has its own business rules, so I keep learning the system in depth and chasing every error down to its root cause.">Suporte técnico a clubes que operam um ERP completo. Cada cliente tem suas próprias regras de negócio, então sigo conhecendo o sistema a fundo e investigando cada erro até a causa raiz.</p>
+            </li>
+            <li>
+              <div class="year" data-en="Apr to Sep 2026">Abr a Set 2026</div>
               <h4 data-en="Technical Support and Automation · Freelance">Suporte Técnico e Automação · Autônomo</h4>
               <p data-en="Migration of 945 products between Mercado Livre and Tray, corporate DNS/email and recurring maintenance of automations in production.">Migração de 945 produtos entre Mercado Livre e Tray, DNS/e-mail corporativo e manutenção recorrente de automações em produção.</p>
             </li>
             <li>
-              <div class="year" data-en="Mar 2026">Mar 2026</div>
+              <div class="year" data-en="Since Mar 2026">Desde Mar 2026</div>
               <h4 data-en="Systems Analysis &amp; Development · Uninter">ADS · Uninter</h4>
-              <p data-en="Start of the degree. Logic, OOP, relational databases, UML and web development.">Início da graduação. Lógica, POO, banco de dados relacional, UML e desenvolvimento web.</p>
+              <p data-en="Graduating in 2028. Programming fundamentals, databases and software engineering.">Conclusão prevista em 2028. Fundamentos de programação, banco de dados e engenharia de software.</p>
             </li>
             <li>
               <div class="year" data-en="2024 to 2026">2024 a 2026</div>
               <h4>Flag Brasil E-commerce</h4>
-              <p data-en="First level technical support and customer service, invoicing in Bling, art created in CorelDRAW and automations in JavaScript.">Suporte técnico de 1º nível e atendimento ao cliente, NF-e no Bling, criação de artes no CorelDRAW e automações em JavaScript.</p>
+              <p data-en="Customer service and first level technical support, invoicing in Bling, art in CorelDRAW and automations in JavaScript.">Atendimento ao cliente e suporte técnico de 1º nível, NF-e no Bling, artes no CorelDRAW e automações em JavaScript.</p>
             </li>
             <li>
               <div class="year">2023</div>
@@ -2475,7 +2418,7 @@
   <section id="contato" data-theme="greece">
     <div class="container">
       <div class="section-mark reveal">
-        <span data-en="06 · Dialogue Channel">06 · Canal de Diálogo</span>
+        <span data-en="Dialogue Channel">Canal de Diálogo</span>
       </div>
 
       <div class="contact">
@@ -2764,6 +2707,7 @@
          ========================================================= */
       let targetY = window.scrollY;   // posição real
       let smoothY = targetY;          // posição da câmera (persegue a real)
+      let barY    = targetY;          // posição da barra (persegue a real, mais rápida)
       let rafId   = null;
 
       function renderFrame() {
@@ -2773,11 +2717,16 @@
         smoothY += (targetY - smoothY) * 0.14;
         if (Math.abs(targetY - smoothY) < 0.25) smoothY = targetY;
 
-        /* --- Segue o dedo (sem atraso): nav e barra de progresso --- */
-        const rawPct = Math.min(1, Math.max(0, targetY / max));
+        /* Barra de progresso: interpolação própria, mais rápida que a da
+           câmera. Preenchimento e ponto saem do MESMO número, no mesmo
+           quadro, então deslizam fluido sem o ponto atrasar da ponta. */
+        barY += (targetY - barY) * 0.22;
+        if (Math.abs(targetY - barY) < 0.25) barY = targetY;
+
+        const rawPct = Math.min(1, Math.max(0, barY / max));
 
         // Véu do header entra progressivamente nos primeiros 160px
-        const veil = Math.min(1, Math.max(0, targetY / 160));
+        const veil = Math.min(1, Math.max(0, barY / 160));
         nav.style.setProperty('--nav-veil', veil.toFixed(3));
         nav.classList.toggle('scrolled', targetY > 40);
 
@@ -2797,7 +2746,7 @@
         updateParallax(camPct);
 
         // Continua desenhando enquanto a câmera não alcançou o scroll
-        if (smoothY !== targetY) {
+        if (smoothY !== targetY || barY !== targetY) {
           rafId = requestAnimationFrame(renderFrame);
         } else {
           rafId = null;
@@ -3023,7 +2972,7 @@
         const links = Array.from(document.querySelectorAll('.nav-links a'));
         // cada link cobre a si mesmo e as seções que pertencem ao mesmo bloco
         const groups = {
-          '#hero': ['hero', 'manifesto'],
+          '#hero': ['hero'],
           '#projeto': ['projeto'],
           '#stack': ['stack', 'problemas'],
           '#aprendendo': ['aprendendo'],
@@ -3186,6 +3135,7 @@
   <script src="warp.js"></script>
   <script src="sky.js"></script>
   <script src="astronaut.js"></script>
+  <script src="foto.js"></script>
 <script>
 /* Rede de seguranca: se o navegador nao disparar os callbacks de entrada
    (IntersectionObserver / requestAnimationFrame parados, aba em segundo plano

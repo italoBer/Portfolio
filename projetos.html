@@ -37,13 +37,13 @@
 </style>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@300..700&family=JetBrains+Mono:wght@300..600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400..700&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@300..700&family=JetBrains+Mono:wght@300..600&display=swap" rel="stylesheet" />
 <style>
-:root{--bg:#050505;--text:#ececec;--text-muted:#9a9a9a;--accent:#0e9a28;--accent-label:#0e9a28;--accent-glow:rgba(14,154,40,.22);--border:rgba(255,255,255,.06);--f-display:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;--f-hero:'Zerafoc','Bricolage Grotesque',sans-serif;--f-body:'Geist',ui-sans-serif,system-ui,sans-serif;--f-mono:'JetBrains Mono',monospace;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;--space-16:4rem;--space-24:6rem;--radius:10px;--ease:cubic-bezier(.16,1,.3,1)}
+:root{--bg:#050505;--text:#ececec;--text-muted:#9a9a9a;--accent:#0e9a28;--accent-label:#0e9a28;--accent-glow:rgba(14,154,40,.22);--border:rgba(255,255,255,.06);--f-display:'Bricolage Grotesque',ui-sans-serif,system-ui,sans-serif;--f-hero:'Zerafoc','Bricolage Grotesque',sans-serif;--f-body:Arimo,Arial,Helvetica,sans-serif;--f-mono:'JetBrains Mono',monospace;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-6:1.5rem;--space-8:2rem;--space-12:3rem;--space-16:4rem;--space-24:6rem;--radius:10px;--ease:cubic-bezier(.16,1,.3,1)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 @media (min-width:901px){html{font-size:clamp(13px,calc(0.94vh + 5.2px),16px)}}
-body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--f-body);font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 html.warp-arriving body{opacity:0}
 body{transition:opacity .7s var(--ease)}
 a{color:var(--accent-label);text-decoration:none}
@@ -52,8 +52,8 @@ a:hover{color:#12b330}
 .container{width:100%;max-width:1180px;margin:0 auto;padding:0 var(--space-8);position:relative;z-index:1}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:var(--space-6) 0;background:linear-gradient(180deg,rgba(5,5,5,.92),rgba(5,5,5,.55) 70%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6)}
-.brand{display:flex;align-items:center;font-family:var(--f-body);font-size:1.15rem;font-weight:550;letter-spacing:-.01em;color:var(--text)}
-.brand em{font-style:normal;font-weight:550;color:var(--accent-label)}
+.brand{display:flex;align-items:center;font-family:var(--f-body);font-size:1.15rem;font-weight:700;letter-spacing:0;color:var(--text)}
+.brand em{font-style:normal;font-weight:700;color:var(--accent-label)}
 .brand-o{display:inline-block}
 .brand:hover .brand-o{animation:oBounce .75s cubic-bezier(.3,1.6,.4,1)}
 @keyframes oBounce{0%{transform:translateY(0)}35%{transform:translateY(-6px)}70%{transform:translateY(1px)}100%{transform:translateY(0)}}
@@ -63,8 +63,8 @@ a:hover{color:#12b330}
 /* Enquanto o ruído repinta, o blur do header sai de cena (senão a tela toda pisca) */
 body.glitching .nav,body.warping .nav{backdrop-filter:none;-webkit-backdrop-filter:none}
 /* O visual do card aceita foto no lugar do desenho: basta trocar o <svg> por <img class="proj-photo"> */
-.proj-photo{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05);transition:filter .5s var(--ease)}
-.proj-card:hover .proj-photo{filter:grayscale(.15) contrast(1)}
+.proj-photo{width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:grayscale(1) contrast(1.05);transition:filter .5s var(--ease)}
+.proj-card:hover .proj-photo,.proj-card:focus-visible .proj-photo{filter:grayscale(.15) contrast(1)}
 .back{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);display:inline-flex;align-items:center;gap:var(--space-2);transition:color .35s var(--ease)}
 .back:hover{color:var(--accent-label)}
 .back svg{width:14px;height:14px}
@@ -112,6 +112,13 @@ html.i18n-wait body{visibility:hidden}
 @media (max-width:900px){.proj-grid{grid-template-columns:1fr}.container{padding:0 var(--space-6)}.head{padding:calc(var(--space-16) + 3rem) 0 var(--space-12)}}
 @media (max-width:640px){.container{padding:0 var(--space-4)}.nav{padding:var(--space-4) 0}.brand{font-size:1rem}.page-lede{font-size:1rem}.filters{gap:6px;margin-top:var(--space-8);padding-top:var(--space-6)}.filter{font-size:.64rem;padding:.45rem .7rem}.proj-visual{height:130px}.proj-body{padding:var(--space-4)}.grid-wrap{padding-bottom:var(--space-16)}.foot{flex-direction:column;align-items:flex-start;gap:var(--space-4);padding:var(--space-8) 0 var(--space-12)}}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}html.warp-arriving body{opacity:1}}
+
+/* Tipografia dos rotulos: mesma regra do index. Fora o mono maiusculo
+   espacado; ele fica so nos chips de tecnologia dos cartoes. */
+.section-mark{font-family:var(--f-body);font-size:.84rem;letter-spacing:.01em;text-transform:none}
+.filter{font-family:var(--f-body);font-size:.78rem;letter-spacing:.01em;text-transform:none}
+.back{font-family:var(--f-body);font-size:.82rem;letter-spacing:.01em;text-transform:none}
+.proj-meta,.proj-role,.proj-status,.proj-year{font-family:var(--f-body);text-transform:none;letter-spacing:.01em}
 </style>
 <script>(function(){var s=null;try{s=localStorage.getItem('ib-lang')}catch(e){}var l=(navigator.languages&&navigator.languages[0])||navigator.language||'pt';var g=(s==='pt'||s==='en')?s:(/^pt/i.test(l)?'pt':'en');document.documentElement.lang=g==='en'?'en':'pt-BR';if(g==='en'){document.documentElement.className+=' i18n-wait';setTimeout(function(){document.documentElement.classList.remove('i18n-wait')},1200)}})()</script>
 </head>
@@ -153,18 +160,8 @@ html.i18n-wait body{visibility:hidden}
   <div class="container">
     <div class="proj-grid" id="grid">
 <article class="proj-card reveal" tabindex="0" data-tech="Python Automação">
-          <div class="proj-visual" aria-hidden="true">
-            <!-- Espaço reservado: quando houver foto do projeto, troque o <svg> abaixo por
-                 <img class="proj-photo" src="uploads/NOME.png?v=2" alt=""> -->
-            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
-              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><path d="M30 46h20l6 8h26v46H30z"/><path d="M42 34h20l6 8h26v46H42" stroke-opacity=".45"/></g>
-              <text x="60" y="84" text-anchor="middle" font-family="monospace" font-size="10" fill="#0e9a28" fill-opacity=".75">MM0001X</text>
-              <path d="M112 77h74" stroke="#0e9a28" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
-              <path d="M186 77l-8-5v10z" fill="#0e9a28"/>
-              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="200" y="30" width="72" height="90" rx="4"/></g>
-              <g fill="#ffffff" fill-opacity=".1"><rect x="208" y="40" width="56" height="16" rx="3"/><rect x="208" y="62" width="56" height="16" rx="3"/></g>
-              <rect x="208" y="84" width="56" height="16" rx="3" fill="#0e9a28" fill-opacity=".55"/>
-            </svg>
+          <div class="proj-visual">
+            <img class="proj-photo" src="uploads/folderflow-modelo.png?v=1" alt="Editor de modelo do FolderFlow, com a arvore de pastas e a previa da estrutura" data-en-alt="FolderFlow template editor, with the folder tree and the structure preview" loading="lazy" width="1118" height="770">
           </div>
           <div class="proj-body">
             <h3>FolderFlow</h3>
@@ -214,17 +211,8 @@ html.i18n-wait body{visibility:hidden}
         </article>
 
         <article class="proj-card reveal" tabindex="0" data-tech="Java Banco">
-          <div class="proj-visual" aria-hidden="true">
-            <!-- Espaço reservado: quando houver foto do projeto, troque o <svg> abaixo por
-                 <img class="proj-photo" src="uploads/NOME.png?v=2" alt=""> -->
-            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
-              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="24" y="28" width="98" height="94" rx="4"/><path d="M24 48h98"/></g>
-              <g font-family="monospace" font-size="9" fill="#0e9a28" fill-opacity=".8"><text x="34" y="72">POST /tasks</text><text x="34" y="90">GET  /tasks</text><text x="34" y="108">PUT  /tasks</text></g>
-              <text x="160" y="66" text-anchor="middle" font-family="monospace" font-size="9" fill="#0e9a28" fill-opacity=".6">auth</text>
-              <path d="M130 77h56" stroke="#0e9a28" stroke-width="2" stroke-dasharray="5 4" fill="none"/>
-              <path d="M186 77l-8-5v10z" fill="#0e9a28"/>
-              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><ellipse cx="238" cy="42" rx="32" ry="9"/><path d="M206 42v66c0 5 14.3 9 32 9s32-4 32-9V42"/><ellipse cx="238" cy="75" rx="32" ry="9" stroke-opacity=".4"/></g>
-            </svg>
+          <div class="proj-visual">
+            <img class="proj-photo" src="uploads/todolist-api.png?v=1" alt="Requisicao POST /tasks da Todo List API respondendo 200 no Render, com o JSON da tarefa criada" data-en-alt="POST /tasks request to the Todo List API answering 200 on Render, with the created task JSON" loading="lazy" width="1300" height="638">
           </div>
           <div class="proj-body">
             <h3>Todo List API</h3>
@@ -234,15 +222,8 @@ html.i18n-wait body{visibility:hidden}
         </article>
 
         <article class="proj-card reveal" tabindex="0" data-tech="JavaScript HTML CSS">
-          <div class="proj-visual" aria-hidden="true">
-            <!-- Espaço reservado: quando houver foto do projeto, troque o <svg> abaixo por
-                 <img class="proj-photo" src="uploads/NOME.png?v=2" alt=""> -->
-            <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
-              <g stroke="#ffffff" stroke-opacity=".8" stroke-width="1.8" fill="none"><rect x="106" y="16" width="88" height="118" rx="8"/><circle cx="150" cy="42" r="11"/></g>
-              <g fill="#ffffff" fill-opacity=".12"><rect x="118" y="64" width="64" height="13" rx="3"/><rect x="118" y="82" width="64" height="13" rx="3"/></g>
-              <rect x="118" y="100" width="64" height="13" rx="3" fill="#0e9a28" fill-opacity=".55"/>
-              <g stroke="#0e9a28" stroke-opacity=".75" stroke-width="1.6" fill="none"><path d="M96 60H62M96 88H62"/><circle cx="54" cy="60" r="7"/><circle cx="54" cy="88" r="7"/><path d="M204 60h34M204 88h34"/><circle cx="246" cy="60" r="7"/><circle cx="246" cy="88" r="7"/></g>
-            </svg>
+          <div class="proj-visual">
+            <img class="proj-photo" src="uploads/devlinks-capa.png?v=1" alt="Capa do projeto DevLinks, do curso Discover da Rocketseat" data-en-alt="Cover art of the DevLinks project, from Rocketseat's Discover course" loading="lazy" width="1920" height="1080" style="object-position:center">
           </div>
           <div class="proj-body">
             <h3>DevLinks</h3>
@@ -347,5 +328,6 @@ html.i18n-wait body{visibility:hidden}
   });
 })();
 </script>
+<script src="foto.js"></script>
 </body>
 </html>
